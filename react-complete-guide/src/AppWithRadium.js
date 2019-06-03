@@ -10,6 +10,7 @@
  //importo mi componente Person
  import Person from './Person/PersonWithRadium';
 
+ import {StyleRoot} from 'radium';
  
  const App =  props => {
  
@@ -99,14 +100,13 @@
     font : 'inherit',
     border: '1px solid blue',
     padding: '8px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+/* pseudo clases usando radium */
+      ':hover' : {
+        backgroundColor : "lightgreen",
+        color : 'black'
+      }
     };
-
-    //OJO ******  uso el comando eject una vez para decir que puedo tener opcion a manejar mi configuracion
-    // manualmente.
-    //Este comando me crea las carpetas scripts y config : npm run eject
-
-    
 
    let personsConditional = null;
    if(togglePersons.showPersons){
@@ -130,7 +130,10 @@
      );
             
      style.backgroundColor = 'red';
-    
+     style[':hover'] = {
+      backgroundColor : "salmon",
+      color : 'black'
+     };
 
    }
  
@@ -150,7 +153,7 @@
 
 
    return (
-  
+  <StyleRoot>
        <div className="App">
       
          <header className="App-header">
@@ -181,12 +184,13 @@
          {/*bind me devuelve una nueva funcion igual a la que lo invoca ,pero le puedo 
          pasar argumentos dentro de esa nueva funcion*/}
          
-       
+         {/* Les pongo keys a los botones porque ellos estan usando la variable style,
+        la cual usa a su vez radium para las seudo clases. Key es mandatorio para que radium funcione */}
          <button  style={style}
          onClick={switchNameHandler.bind(this,'Periquito')}
-        >Switch names</button>
+         key='assss'>Switch names</button>
  
-         <button style={style} 
+         <button style={style}  key='daddads'
            onClick={togglePersonsHandler}>Toggle Names</button>
         
         
@@ -196,13 +200,16 @@
          {personsConditional}
          
        </div>
-    
+      </StyleRoot>
      );
    
   
  };
  
  
-
+ 
+ 
+ //Radium actúa como wrapper (componente de orden mayor) de mi componente para inyectarle funcionalidad y sintaxis extra
+ //export default Radium(App);
  export default App;
  
