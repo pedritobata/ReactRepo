@@ -1,0 +1,17 @@
+/*  Este archivo css es visible para todo el proyecto por siacaso
+ pero yo lo usaré solo para mi componente Person, por eso creo una clase css Person*/
+.Person {
+    width: 60%;
+    margin: 16px auto;
+    border: 1px, solid, #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+
+}
+
+@media (min-width: 500px){
+    .Person{
+        width: 450px;
+    }
+}
