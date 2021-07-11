@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NewMeetupForm Should render correctly 1`] = `
+<form
+  className="form"
+>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <input
+      id="title"
+      name="title"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="image"
+    >
+      Image
+    </label>
+    <input
+      id="image"
+      name="image"
+      type="url"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="address"
+    >
+      Address
+    </label>
+    <input
+      id="address"
+      name="address"
+      type="text"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="description"
+    >
+      Description
+    </label>
+    <textarea
+      id="description"
+      name="description"
+      required={true}
+    />
+  </div>
+  <div
+    className="actions"
+  >
+    <button>
+      Add Meetup
+    </button>
+  </div>
+</form>
+`;
+
+exports[`NewMeetupForm should render correctly 1`] = `
+<form
+  className="form"
+>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="title"
+    >
+      Title
+    </label>
+    <input
+      id="title"
+      name="title"
+      required={true}
+      type="text"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="image"
+    >
+      Image
+    </label>
+    <input
+      id="image"
+      name="image"
+      type="url"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="address"
+    >
+      Address
+    </label>
+    <input
+      id="address"
+      name="address"
+      type="text"
+    />
+  </div>
+  <div
+    className="control"
+  >
+    <label
+      htmlFor="description"
+    >
+      Description
+    </label>
+    <textarea
+      id="description"
+      name="description"
+      required={true}
+    />
+  </div>
+  <div
+    className="actions"
+  >
+    <button>
+      Add Meetup
+    </button>
+  </div>
+</form>
+`;
