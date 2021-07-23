@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeetupItem should render correctly 1`] = `
+<li
+  className="item"
+>
+  <div
+    className="image"
+  >
+    <img />
+  </div>
+  <div
+    className="content"
+  >
+    <h3 />
+    <address />
+    <p />
+  </div>
+  <div
+    className="actions"
+  >
+    <button
+      onClick={[Function]}
+    >
+      To Favorites 💖
+    </button>
+  </div>
+</li>
+`;
