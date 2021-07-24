@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
 import classes from './NavBar.module.css';
+import FavoritesContext from '../../store/favorites-context';
 
 const NavBar = () => {
+    const favCtx = useContext(FavoritesContext);
 
     return (
         <header className={classes.header}>
@@ -11,7 +13,9 @@ const NavBar = () => {
                 <ul>
                     <li><Link to="/">All Meetups</Link></li>
                     <li><Link to="/add-meetup">Add Meetup</Link></li>
-                    <li><Link to="/favorites">Favorites</Link></li>
+                    <li><Link to="/favorites">Favorites</Link>
+                        <span className={classes.badge}>{favCtx.favotitesTotal}</span>
+                    </li>
                 </ul>
             </nav>
         </header>
