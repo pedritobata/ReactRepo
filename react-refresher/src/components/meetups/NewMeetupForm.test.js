@@ -1,5 +1,6 @@
 import { expect, it } from '@jest/globals';
 import { getDefaultNormalizer, render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import renderer from 'react-test-renderer';
 import NewMeetupForm from './NewMeetupForm';
 
@@ -36,5 +37,29 @@ describe('NewMeetupForm', () => {
         const descriptionField = fields[fields.length - 1];
         expect(descriptionField.name).toBe('description');
         expect(descriptionField.tagName).toMatch(/textarea/i);
+    })
+
+    it('should call parent onSubmitMeetup function when submitting', () => {
+        const mockOnSubmitMeetup = jest.fn()
+        render(<NewMeetupForm  onSubmitMeetup={mockOnSubmitMeetup} />);
+        const meetup = {
+            title: 'Perico los palotes',
+            image: 'hhtp://la.imagen.jpg',
+            address: 'Av Trinidad Moran',
+            description: 'Esta es como la p...',
+        }
+        const title = screen.getByLabelText('Title');
+        userEvent.type(title, meetup.title);
+        const image = screen.getByLabelText('Image');
+        userEvent.type(image, meetup.image);
+        const address = screen.getByLabelText('Address');
+        userEvent.type(address, meetup.address);
+        const description = screen.getByLabelText('Description');
+        userEvent.type(description, meetup.description);
+
+        userEvent.click(screen.getByRole('button'));
+
+        expect(mockOnSubmitMeetup).toHaveBeenCalledWith(meetup);
+        
     })
 })
