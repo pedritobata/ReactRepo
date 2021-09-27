@@ -1,0 +1,25 @@
+.link {
+    box-shadow: 3px 0 20px rgba(93, 91, 91, 0.3);
+    text-decoration: none;
+    color: #FFF;
+    padding: 1rem;
+    background-image: url("https://images.pexels.com/photos/359989/pexels-photo-359989.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.link:hover {
+    opacity: .8;
+}
+
+.title {
+    font-size: clamp(2rem, calc(1.5vw + 1rem), 2.5rem);
+    text-align: center;
+    font-weight: bold;
+}
+
+.description {
+    font-weight: bold;
+}
+

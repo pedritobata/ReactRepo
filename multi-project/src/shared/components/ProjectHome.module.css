@@ -1,0 +1,23 @@
+.projectHome {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    font-family: sans-serif;
+    font-size: clamp(2rem, calc(4vw + 1rem), 3rem);
+    color: rgb(85, 78, 78);
+    text-align: center;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(13rem, auto));
+    gap: 1rem;
+    padding: 0;
+}
+
+.backlink {
+    font-size: 1.5rem;
+    color: rgb(1, 76, 161);
+}
