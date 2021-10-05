@@ -1,0 +1,14 @@
+.label {
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.input {
+    padding: 5px;
+    outline: none;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 0.6rem;
+}

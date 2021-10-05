@@ -4,7 +4,7 @@ const projectLinkBackHoc = (Comp: React.FC, menuLink: string) => {
     return (props: any) => {
         return (
             <div>
-                <Link to={menuLink}>&lt; &lt; {menuLink.replace('/', '')}</Link>
+                <Link to={menuLink}>&lt; &lt; Back to {menuLink.replace('/', '')}</Link>
                 <Comp {...props}/>
             </div>
         )

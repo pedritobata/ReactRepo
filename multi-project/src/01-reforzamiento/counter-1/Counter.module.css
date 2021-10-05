@@ -1,0 +1,48 @@
+.title {
+    font-size: 3rem;
+    text-align: center;
+    margin: 2rem;
+}
+
+.result {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    vertical-align: center;
+}
+
+.result span {
+    font-size: 3.5rem;
+    color: rgb(192, 9, 146);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input {
+    
+}
+
+.buttons {
+    margin-top: 2rem;
+}
+
+.buttons button {
+    border: 0;
+    padding: 0.7rem 1.5rem;
+    font-size: 1.4rem;
+    background-color: rgb(192, 9, 146);
+    color: white;
+}
+
+.buttons button:hover { 
+    cursor: pointer;
+    opacity: .8;
+}
+
+.buttons > * + * {
+    margin-left: 1.2rem;
+}
