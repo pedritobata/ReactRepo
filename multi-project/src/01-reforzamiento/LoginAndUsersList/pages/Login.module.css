@@ -1,0 +1,63 @@
+.login {
+    --clr-primary: rgb(6, 75, 187);
+    --clr-text: rgb(61, 60, 60);
+    --size-text: 1.3rem;
+    --size-height-control: 3rem;
+
+}
+
+.title {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--clr-text);
+    margin: 2rem;
+}
+
+.form {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: space-between;
+}
+
+.formControl {
+    margin-bottom: 1.2rem;
+}
+
+.formControl label{
+    color: var(--clr-text);
+    font-size: var(--size-text);
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: .6rem;
+}
+
+.formControl input{
+    width: 100%;
+    height: var(--size-height-control);
+    font-size: var(--size-text);
+    padding: .7rem .7rem;
+    box-sizing: border-box;
+    border: 1px solid var(--clr-primary)
+}
+
+.btn {
+    align-self: center;
+    outline: none;
+    border: none;
+    font-size: var(--size-text);
+    font-weight: bold;
+    padding: .8rem 2rem;
+    box-sizing: border-box;
+    height: var(--size-height-control);
+    color: white;
+    background-color: var(--clr-primary);
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: .8;
+}
