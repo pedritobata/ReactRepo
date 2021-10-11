@@ -3,6 +3,7 @@ import projectLinkBackHoc from "../shared/hoc/projectLinkBackHoc";
 import Counter from "./counter-1/Counter";
 import Index from "./Index";
 import Login from "./LoginAndUsersList/pages/Login";
+import Provider from "./LoginAndUsersList/store/context";
 
 export enum Routes {
   counter = "counter",
@@ -13,7 +14,7 @@ export default function Router01() {
   const match = useRouteMatch();
 
   return (
-    <>
+    <Provider>
       <Switch>
         <Route exact path={`${match.path}`} component={Index} />
         <Route
@@ -25,6 +26,6 @@ export default function Router01() {
           component={projectLinkBackHoc(Login, match.path)}
         />
       </Switch>
-    </>
+    </Provider>
   );
 }
