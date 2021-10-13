@@ -27,13 +27,16 @@ export interface AppContext {
 }
 
 export const Context = React.createContext<AppContext>({
-    authState: initialState.auth,
-    collabsState: initialState.collabs,
-    setAuthState: () => {},
-    setCollabsState: () => {}
+  authState: initialState.auth,
+  collabsState: initialState.collabs,
+  setAuthState: () => {},
+  setCollabsState: () => {},
 });
 const Provider = ({ children }: any) => {
-  const [authData, dispatchAuth] = useReducer(authReducer, initialState.auth);
+  const [authData, dispatchAuth] = useReducer(authReducer, {
+    ...initialState.auth,
+    token: localStorage.getItem("token") || ''
+  });
   const [collabsData, dispatchCollabs] = useReducer(
     collabsReducer,
     initialState.collabs

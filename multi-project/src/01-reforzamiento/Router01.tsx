@@ -2,7 +2,7 @@ import { Switch, Route, useRouteMatch } from "react-router-dom";
 import projectLinkBackHoc from "../shared/hoc/projectLinkBackHoc";
 import Counter from "./counter-1/Counter";
 import Index from "./Index";
-import Login from "./LoginAndUsersList/pages/Login";
+import LoginAndCollaboratorsIndex from "./LoginAndUsersList/pages/Index";
 import Provider from "./LoginAndUsersList/store/context";
 
 export enum Routes {
@@ -14,18 +14,18 @@ export default function Router01() {
   const match = useRouteMatch();
 
   return (
-    <Provider>
-      <Switch>
-        <Route exact path={`${match.path}`} component={Index} />
-        <Route
-          path={`${match.path}/${Routes.counter}`}
-          component={projectLinkBackHoc(Counter, match.path)}
-        />
+    <Switch>
+      <Route exact path={`${match.path}`} component={Index} />
+      <Route
+        path={`${match.path}/${Routes.counter}`}
+        component={projectLinkBackHoc(Counter, match.path)}
+      />
+      <Provider>
         <Route
           path={`${match.path}/${Routes.loginAndCollaborators}`}
-          component={projectLinkBackHoc(Login, match.path)}
+          component={LoginAndCollaboratorsIndex}
         />
-      </Switch>
-    </Provider>
+      </Provider>
+    </Switch>
   );
 }
