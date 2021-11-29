@@ -1,7 +1,7 @@
 import { Response, AuthPayload } from '../types/types';
 
 class AuthService {
-    private baseUrl: string = 'https://reqres.in/api';
+    private baseUrl: string = process.env.REACT_APP_REQRES_BASE_URL || '';
 
     async login(email: string, password: string): Promise<Response<AuthPayload>> {
         let token = '';
