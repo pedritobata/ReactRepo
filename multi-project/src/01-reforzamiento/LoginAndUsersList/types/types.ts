@@ -39,7 +39,7 @@ export interface AuthPayload {
 
 export interface CollaboratorsPayload {
     page?: number;
-    collabs: Collaborator[];
+    collabs?: Collaborator[];
     error?: string;
 }
 
