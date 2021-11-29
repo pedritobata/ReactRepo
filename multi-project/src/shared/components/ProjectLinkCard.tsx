@@ -13,6 +13,7 @@ export default function ProjectLinkCard({ projectLink }: Props) {
       className={classes.link}
       style={{ backgroundImage: `url(${projectLink.imageUrl})` }}
     >
+      <div className={classes.overlay}></div>
       <h3 className={classes.title}>{projectLink.title}</h3>
       <p className={classes.description}>{projectLink.description}</p>
     </NavLink>
