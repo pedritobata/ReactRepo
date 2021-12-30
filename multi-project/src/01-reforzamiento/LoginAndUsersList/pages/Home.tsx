@@ -7,7 +7,8 @@ const Home = () => {
     const {collabsState : {collabs, error, isLoading, page, collabsFiltered}, setCollabsState} = useContext(Context);
     useEffect(() => {
         (async () => {
-            setCollabsState(fetchCollabsRequest());
+            if(collabs?.length !== 0) return;
+            //setCollabsState(fetchCollabsRequest());
             const userService = new UserService();
             const response = await userService.fetchAllCollabs();
             if(response.errorMessage) {
@@ -16,7 +17,7 @@ const Home = () => {
                 setCollabsState(fetchCollabsSuccess(response.data.collabs!, response.data.page!));
             }
         })();
-    }, [setCollabsState]);
+    }, [setCollabsState, collabs]);
 
     if(isLoading) {
         return <p>Loading..</p>
