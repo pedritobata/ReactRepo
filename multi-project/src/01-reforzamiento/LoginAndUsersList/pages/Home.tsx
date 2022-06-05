@@ -9,32 +9,18 @@ const Home = () => {
     const {collabsState : {collabs, error, isLoading, page, collabsFiltered}, setCollabsState} = useContext(Context);
     const dispatcherRef = useRef(setCollabsState);
     useEffect(() => {
-        console.log("Looping adentro...", counterRef.current);
-        
-        if(dispatcherRef.current === setCollabsState) {
-        console.log("Looping adentro...", counterRef.current);
-        counterRef.current = counterRef.current + 1 ;
-       
-        setCollabsState(fetchCollabsRequest());
-        }
-        /* if(counterRef.current < 10) {
-            (async () => {
-                setCollabsState(fetchCollabsRequest());
-                const userService = new UserService();
-                const response = await userService.fetchAllCollabs();
-                if(response.errorMessage) {
-                    setCollabsState(fetchCollabsFail(response.errorMessage))
-                } else {
-                    setCollabsState(fetchCollabsSuccess(response.data.collabs!, response.data.page!));
-                }
-            })();
-        } */
-        
-        return () => {
-            
-            console.log("Desmontando Home..", counterRef.current)
-        };
-    }, []);
+        (async () => {
+            if(collabs?.length !== 0) return;
+            //setCollabsState(fetchCollabsRequest());
+            const userService = new UserService();
+            const response = await userService.fetchAllCollabs();
+            if(response.errorMessage) {
+                setCollabsState(fetchCollabsFail(response.errorMessage))
+            } else {
+                setCollabsState(fetchCollabsSuccess(response.data.collabs!, response.data.page!));
+            }
+        })();
+    }, [setCollabsState, collabs]);
 
     if(isLoading) {
         return <p>Loading..</p>
