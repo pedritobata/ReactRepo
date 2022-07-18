@@ -19,6 +19,12 @@ export default function Index() {
             description: 'Sign in and get a list of collaborators. Filtering is available',
             link: `${match.path}/${Routes.loginAndCollaborators}`,
             imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoRWruvPK_1erGlSEe3d9OazALJsbquPM8ZQ&usqp=CAU'
+        },
+        {
+            title: 'Pokemons',
+            description: 'Practicing with the pokemon API',
+            link: `${match.path}/${Routes.pokemon}`,
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVa19c2tiq-V4x2PAFqdIWx7FAW71EsH2AKQ&usqp=CAU'
         }
     ];
     return (
