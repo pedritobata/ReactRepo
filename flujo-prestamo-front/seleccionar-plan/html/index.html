@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultar Plan</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script defer src="../../common/init.js"></script>
+    <script defer src="../js/script.js"></script>
+  </head>
+  <body>
+    <section class="selectPlan__container">
+      <header class="selectPlan__header">
+        <h1 class="selectPlan__title">Nuevo préstamo</h1>
+      </header>
+      <h2 class="selectPlan__subTitle">Seleccionar plan</h2>
+      <div class="selectPlan__changeAmount-container">
+        <button type="button" class="selectPlan__changeAmount-button">Elegir otro monto</button>
+        <form class="selectPlan__changeAmount-form" action="#">
+          <input class="selectPlan__changeAmount-input" type="number" value="" />
+        </form>
+      </div>
+      <ul id="id_selectPlan_list" class="selectPlan__list">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </ul>
+    </section>
+  </body>
+</html>

@@ -8,6 +8,9 @@ export default function MainLinks() {
         <ul>
           <NavLink to="/01-reforzamiento">01 Reforzamiento</NavLink>
         </ul>
+        <ul>
+          <NavLink to="/02-pdf-viewer">02 PDF Viewer</NavLink>
+        </ul>
       </nav>
     </>
   );

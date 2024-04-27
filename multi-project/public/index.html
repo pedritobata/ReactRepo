@@ -25,6 +25,161 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script
+      src="https://mozilla.github.io/pdf.js/build/pdf.mjs"
+      type="module"
+    ></script>
+    <script type="module">
+      // If absolute URL from the remote server is provided, configure the CORS
+      // header on that server.
+      var url =
+        "https://raw.githubusercontent.com/mozilla/pdf.js/ba2edeae/web/compressed.tracemonkey-pldi-09.pdf";
+
+      // Loaded via <script> tag, create shortcut to access PDF.js exports.
+      // console.log("globalThis =>", globalThis);
+      var { pdfjsLib } = globalThis;
+
+      // The workerSrc property shall be specified.
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        "//mozilla.github.io/pdf.js/build/pdf.worker.mjs";
+
+      var pdfDoc = null,
+        pageNum = 1,
+        pageRendering = false,
+        pageNumPending = null,
+        scale = 0.8,
+        canvas = document.getElementById("the-canvas"),
+        ctx = canvas.getContext("2d"),
+        pages = [];
+
+      // console.log("the-canvas =>", canvas);
+
+      function drawPage(index, callback) {
+        console.log("drawPage", index)
+        var img = new Image();
+        img.onload = function () {
+          /* this will draw the image loaded onto canvas at position 0,0
+           at the optional width and height of the canvas.
+           'this' is current image loaded 
+        */
+          ctx.drawImage(img, 0, 0, ctx.canvas.width, ctx.canvas.height);
+          console.log("drawn on load", index)
+          const imageContainer = document.getElementById('the-image-target');
+          imageContainer.appendChild(img)
+          callback && callback(); // invoke callback when we're done
+        };
+        img.src = pages[index]; // start loading the data-uri as source
+        // console.log("img", img)
+      }
+
+
+      /**
+       * Get page info from document, resize canvas accordingly, and render page.
+       * @param num Page number.
+       */
+      function renderPage(num) {
+        pageRendering = true;
+        // Using promise to fetch the page
+        pdfDoc.getPage(num).then(function (page) {
+          var viewport = page.getViewport({ scale: scale });
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          // Render PDF page into canvas context
+          var renderContext = {
+            canvasContext: ctx,
+            viewport: viewport,
+          };
+          var renderTask = page.render(renderContext);
+
+          // Wait for rendering to finish
+          renderTask.promise.then(function () {
+            // store compressed image data in array
+            console.log("push on pages")
+            pages.push(canvas.toDataURL());
+            console.log("pushed", pages)
+
+            pageRendering = false;
+            if (pageNumPending !== null) {
+              // New page rendering is pending
+              renderPage(pageNumPending);
+              pageNumPending = null;
+            }
+            drawPage(num - 1)
+          });
+        });
+
+        // Update page counters
+        document.getElementById("page_num").textContent = num;
+      }
+
+      /**
+       * If another page rendering in progress, waits until the rendering is
+       * finised. Otherwise, executes rendering immediately.
+       */
+      function queueRenderPage(num) {
+        if (pageRendering) {
+          pageNumPending = num;
+        } else {
+          renderPage(num);
+        }
+      }
+
+      /**
+       * Displays previous page.
+       */
+      function onPrevPage() {
+        if (pageNum <= 1) {
+          return;
+        }
+        pageNum--;
+        queueRenderPage(pageNum);
+      }
+      document.getElementById("prev").addEventListener("click", onPrevPage);
+
+      /**
+       * Displays next page.
+       */
+      function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) {
+          return;
+        }
+        pageNum++;
+        queueRenderPage(pageNum);
+      }
+      document.getElementById("next").addEventListener("click", onNextPage);
+
+    
+      /**
+       * Asynchronously downloads PDF.
+       */
+      pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+        pdfDoc = pdfDoc_;
+        document.getElementById("page_count").textContent = pdfDoc.numPages;
+
+        // Initial/first page rendering
+        renderPage(pageNum);
+        console.log("to iterate", pages.length)
+        
+      });
+      // pages.forEach((_, index) => drawPage(index));
+    </script>
+    <style>
+      #the-canvas {
+        border: 1px solid black;
+        direction: ltr;
+      }
+
+      .canvas-img-container{
+        position: relative;
+      }
+
+      #the-image-target{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
