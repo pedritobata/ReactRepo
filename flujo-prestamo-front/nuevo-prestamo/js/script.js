@@ -40,7 +40,14 @@ const dummyData = {
 const SELECT_CAMPAIGNS_SCREEN_ID = "id_BanCo_newLoan_SelectCampaigns_screen";
 const SELECT_PRODUCTS_SCREEN_ID = "id_BanCo_newLoan_SelectProducts_screen";
 
-let navigator;
+let renderer;
+
+/***************** UTILS ***************** */
+function removeListenersFromElement(element) {
+  const newElement = element.cloneNode(true);
+  element.parentNode.replaceChild(newElement, element);
+  return newElement;
+}
 
 /***************** INIT ***************** */
 
@@ -70,6 +77,7 @@ class NewLoanHTTPFetcher {
   }
 
   get(path, params) {
+    return dummyData; // TODO: Eliminar esta linea!!!!!!
     const queryParams = params ? `?${this.encodeQueryData(params)}` : "";
     const url = `${this.baseUrl}${path}${queryParams}`;
     return fetch(url, this.requestOptions)
@@ -79,8 +87,8 @@ class NewLoanHTTPFetcher {
         return result;
       })
       .catch((error) => {
-        console.log("error", error);
-        return dummyData; // TODO: Eliminar esta linea!!!!!!
+        console.log("error en fetcher", error);
+        return [];
       });
   }
 }
@@ -116,6 +124,14 @@ class NewLoanStorage {
 
   buildIdentifier(fieldName) {
     return `newLoanBanCo-${this.customerId}-${fieldName}`;
+  }
+
+  saveCurrentForm(screenId) {
+    localStorage.setItem(this.buildIdentifier("currentForm"), screenId);
+  }
+
+  get currentForm() {
+    return localStorage.getItem(this.buildIdentifier("currentForm"));
   }
 
   saveSelectedCampaign(campaignId) {
@@ -159,9 +175,6 @@ class SelectCampaigns {
 
   init() {
     try {
-      this.list = document.getElementById("id_selectCampaigns_list");
-      if (!this.list) throw new Error();
-
       this.fetcher = new NewLoanHTTPFetcher();
       // this.utils = new NewLoanUtilsBanCo();
       this.storage = new NewLoanStorage(this.customerId);
@@ -173,44 +186,49 @@ class SelectCampaigns {
   }
 
   async render() {
-    console.log("start =>", this.fetcher);
-    const campaigns = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
-    );
-    const temp = campaigns.data.documentTypes; // TODO cambiar por el real campo!!
-    const noResultsEl = document.createElement("p", {
-      text: "No se encontraron campañas disponibles",
-    });
-    if (!temp || !temp.length) {
-      this.list.appendChild(noResultsEl);
-    } else {
-      this.list.replaceChildren();
-      temp.forEach((camp) => {
-        const campItemEl = document.createElement("li");
-        campItemEl.classList.add("selectionScreen__listItem");
-        campItemEl.id = camp.code;
-        campItemEl.addEventListener("click", (ev) => {
-          this.storage.saveSelectedCampaign(campItemEl.id);
-          navigator.render(SELECT_PRODUCTS_SCREEN_ID);
-          // alert('seleccionado:' + this.storage.selectedCampaign);
-        });
-        const titleEl = document.createElement("h3");
-        titleEl.textContent = camp.description;
-        campItemEl.appendChild(titleEl);
-        const startDateEl = document.createElement("p");
-        startDateEl.textContent = `Fecha inicio: ${camp.code}`;
-        campItemEl.appendChild(startDateEl);
-        const endDateEl = document.createElement("p");
-        endDateEl.textContent = `Fecha fin: ${camp.code}`;
-        campItemEl.appendChild(endDateEl);
-
-        /*  const link = document.createElement("a");
-        link.classList.add("selectionScreen__listItem");
-        link.setAttribute("href", "#");
-        link.appendChild(campItemEl); */
-
-        this.list.appendChild(campItemEl);
+    try {
+      this.storage.saveCurrentForm(SELECT_CAMPAIGNS_SCREEN_ID);
+      this.list = document.getElementById("id_selectCampaigns_list");
+      const campaigns = await this.fetcher.get(
+        `/Customers/document-types/?personType=PJ`
+      );
+      const temp = campaigns.data.documentTypes; // TODO cambiar por el real campo!!
+      const noResultsEl = document.createElement("p", {
+        text: "No se encontraron campañas disponibles",
       });
+      this.list.replaceChildren();
+      if (!temp || !temp.length) {
+        this.list.appendChild(noResultsEl);
+      } else {
+        temp.forEach((camp) => {
+          const campItemEl = document.createElement("li");
+          campItemEl.classList.add("newLoan__selectionScreen__listItem");
+          campItemEl.id = camp.code;
+          campItemEl.addEventListener("click", (ev) => {
+            this.storage.saveSelectedCampaign(campItemEl.id);
+            renderer.navigate(SELECT_PRODUCTS_SCREEN_ID);
+            // alert('seleccionado:' + this.storage.selectedCampaign);
+          });
+          const titleEl = document.createElement("h3");
+          titleEl.textContent = camp.description;
+          campItemEl.appendChild(titleEl);
+          const startDateEl = document.createElement("p");
+          startDateEl.textContent = `Fecha inicio: ${camp.code}`;
+          campItemEl.appendChild(startDateEl);
+          const endDateEl = document.createElement("p");
+          endDateEl.textContent = `Fecha fin: ${camp.code}`;
+          campItemEl.appendChild(endDateEl);
+
+          /*  const link = document.createElement("a");
+          link.classList.add("selectionScreen__listItem");
+          link.setAttribute("href", "#");
+          link.appendChild(campItemEl); */
+
+          this.list.appendChild(campItemEl);
+        });
+      }
+    } catch (err) {
+      console.log("Error al renderizar Select campaigns", err);
     }
   }
 }
@@ -243,6 +261,7 @@ class SelectProducts {
   }
 
   async render() {
+    this.storage.saveCurrentForm(SELECT_PRODUCTS_SCREEN_ID);
     const campaignId = this.storage.selectedCampaign;
     // TODO agregar el param id de campaña a la petición
     const products = await this.fetcher.get(
@@ -260,7 +279,7 @@ class SelectProducts {
       this.list.replaceChildren();
       temp.forEach((prod) => {
         const prodItemEl = document.createElement("li");
-        prodItemEl.classList.add("selectionScreen__listItem");
+        prodItemEl.classList.add("newLoan__selectionScreen__listItem");
         prodItemEl.id = prod.code;
         prodItemEl.addEventListener("click", (ev) => {
           this.storage.saveSelectedProduct(prodItemEl.id);
@@ -292,7 +311,9 @@ class SelectProducts {
 
 /***************** SELECT PLAN ***************** */
 
-/***************** NAVIGATOR ***************** */
+
+
+// mantener el orden en que aparecen las pantallas para la correcta navegacion
 const configScreens = [
   {
     id: SELECT_CAMPAIGNS_SCREEN_ID,
@@ -306,71 +327,89 @@ const configScreens = [
   },
 ];
 
-class Navigator {
+/***************** HEADER ***************** */
+/**
+ * Clase para mostrar un header y opcion de regresar al formulario anterior
+ */
+class Header {
   constructor(customerId) {
     this.customerId = customerId;
-    if (this.init()) {
-      this.render();
-    }
-  }
-
-  navigate(screenId) {
-    configScreens.forEach((screen) => {
-      console.log("screen =>", screen);
-      const currentScreenEl = document.getElementById(screen.id);
-      if (screen.id === screenId) {
-        this[screen.name] = new screen.Component(this.customerId);
-        currentScreenEl.style.display = "block";
-      } else {
-        this[screen.name] = null;
-        currentScreenEl.style.display = "none";
-      }
-    });
+    this.init();
+    this.render();
   }
 
   init() {
+    this.storage = new NewLoanStorage(this.customerId);
+  }
+
+  render() {
+    const arrow = document.getElementById("id_BanCo_newLoan_LeftArrow");
+    const newArrow = removeListenersFromElement(arrow);
+    newArrow.addEventListener("click", () => {
+      console.log('currFormIdx =>', arrow);
+      const currFormIdx = configScreens.findIndex(
+        (screen) => screen.id === this.storage.currentForm
+      );
+      if (currFormIdx > 0) {
+        renderer.navigate(configScreens[currFormIdx - 1].id);
+      }
+    });
+  }
+}
+
+/***************** RENDERER ***************** */
+class Renderer {
+  constructor(customerId) {
+    this.customerId = customerId;
+    this.init();
+  }
+
+  init() {
+    new Header(this.customerId);
+    this.navigate(SELECT_CAMPAIGNS_SCREEN_ID);
+  }
+
+  navigate(screenId) {
     try {
-      this.navigate(SELECT_CAMPAIGNS_SCREEN_ID);
-      /* this.selectCampaignsScreen = new SelectCampaigns(this.customerId);
-      this.selectProductsScreen = null;
-      const campaignsScreenEl = document.getElementById(
-        SELECT_CAMPAIGNS_SCREEN_ID
-      );
-      campaignsScreenEl.style.display = "block";
-      const productsScreenEl = document.getElementById(
-        SELECT_PRODUCTS_SCREEN_ID
-      );
-      productsScreenEl.style.display = "none"; */
-      // new SelectProducts(this.customerId);
-      return true;
+      configScreens.forEach((screen) => {
+        // console.log("screen =>", screen);
+        if (screen.id === screenId) {
+          this[screen.name] = new screen.Component(this.customerId);
+          this.mount(screen.id);
+          if (screen.id === SELECT_CAMPAIGNS_SCREEN_ID) {
+            this.unmount("id_BanCo_newLoan_LeftArrow");
+          } else {
+            this.mount("id_BanCo_newLoan_LeftArrow");
+            // header.setBackListener(() => this.navigate());
+          }
+        } else {
+          this[screen.name] = null;
+          this.unmount(screen.id);
+        }
+      });
     } catch (err) {
-      console.log("Error al navegar");
-      return false;
+      console.log("Error al navegar", err);
     }
   }
 
-  render(screenId) {
-    // if (screenId === SELECT_CAMPAIGNS_SCREEN_ID) this.init();
-
+  mount(screenId) {
     try {
-      this.navigate(screenId);
-      /*  if (screenId === SELECT_PRODUCTS_SCREEN_ID) {
-        this.selectProductsScreen = new SelectProducts(this.customerId);
-        this.selectCampaignsScreen = null;
-        const productsScreenEl = document.getElementById(
-          SELECT_PRODUCTS_SCREEN_ID
-        );
-        productsScreenEl.style.display = "block";
-        const campaignsScreenEl = document.getElementById(
-          SELECT_CAMPAIGNS_SCREEN_ID
-        );
-        campaignsScreenEl.style.display = "none";
-      }  */
+      const currentScreenEl = document.getElementById(screenId);
+      currentScreenEl.style.display = "block";
     } catch (err) {
-      console.log("Error al navegar");
+      console.log("Error al renderizar elemento");
+    }
+  }
+
+  unmount(screenId) {
+    try {
+      const currentScreenEl = document.getElementById(screenId);
+      currentScreenEl.style.display = "none";
+    } catch (err) {
+      console.log("Error al desmontar elemento");
     }
   }
 }
 
 /***************** RUN !!! ***************** */
-navigator = new Navigator(props.customerId);
+renderer = new Renderer(props.customerId);
