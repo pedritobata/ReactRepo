@@ -6,6 +6,9 @@
   font-family: "Work Sans", sans-serif;
 
   --color-primary: #003366;
+  --color-secondary: #3a7abb;
+  --color-light: rgb(236, 240, 240);
+  --color-danger: rgb(255, 155, 155);
 }
 
 /************ HEADER **************/
@@ -23,6 +26,64 @@
   color: white;
   letter-spacing: 1px;
   font-size: 1.8em;
+}
+
+/************ ERROR BANNER **************/
+.newLoan__errorBanner {
+  width: 150px;
+  max-width: 200px;
+  height: 100px;
+  background-color: var(--color-danger);
+  color: white;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/************ UTILS **************/
+.unclickable {
+  pointer-events: none;
+}
+
+.centered {
+  text-align: center;
+}
+
+.fadeIn {
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation-name: smooth-appear, fadeIn;
+  animation-duration: 1.4s, 2s;
+
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes smooth-appear {
+  to {
+    top: 110px;
+  }
 }
 
 /************ SELECTION LIST **************/
@@ -44,7 +105,7 @@
 
 .newLoan__selectionScreen__listItem {
   flex: 25% 1;
-  background-color: rgb(236, 240, 240);
+  background-color: var(--color-light);
   list-style-type: none;
   text-decoration: none;
   color: black;
@@ -59,6 +120,77 @@
 .newLoan__selectionScreen__listItem:hover {
   transform: scale(1.02);
   transition: all 0.3s ease-in-out;
+}
+
+/************ SELECT PLAN **************/
+.newLoan__selectPlan__changeAmount-container {
+  width: 30%;
+  margin: auto;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 4em; */
+  /* align-items: center; */
+}
+
+.newLoan__selectPlan__changeAmount-button {
+  min-height: 80px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--color-primary);
+  background-color: white;
+  border: 2px solid var(--color-primary);
+}
+
+.newLoan__selectPlan__changeAmount-button:hover {
+  background-color: var(--color-light);
+}
+
+.newLoan__selectPlan__changeAmount-button:disabled {
+  background-color: white;
+  cursor: not-allowed;
+}
+
+.newLoan__selectPlan__changeAmount-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newLoan__selectPlan__changeAmount-buttonContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4em;
+  gap: 1em;
+}
+
+.newLoan__selectPlan__changeAmount-input {
+}
+
+.newLoan__selectPlan__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  gap: 2em;
+  width: 30%;
+  margin: auto;
+}
+
+.newLoan__selectPlan__listItem-selected {
+  border: 2px solid var(--color-secondary);
+  margin-top: 1em;
+}
+
+.newLoan__selectPlan__listItem-selected > h3 {
+  margin-top: 0px;
+}
+
+.newLoan__selectPlan__viewPreQualified {
+  align-self: flex-end;
+  font-weight: bold;
 }
 
 /************ SPINNER **************/
@@ -152,7 +284,7 @@
   }
 }
 
-/************ LEFT ARROw **************/
+/************ LEFT ARROW **************/
 .newLoan__arrow-left {
   position: absolute;
   left: 2em;
@@ -170,4 +302,62 @@
   -ms-transform: rotate(-45deg) scale(1.02); */
   transform: scale(1.2) rotate(-45deg);
   transition: all 0.3s ease-in-out;
+}
+
+/************ APROVAL CHECK MARK **************/
+.newLoan__confirmLoanScreen__aprovalCheck {
+  position: relative;
+}
+
+.newLoan__confirmLoanScreen__aprovalCheck svg {
+  width: 120px;
+  display: block;
+  margin: 40px auto 0;
+}
+.newLoan__confirmLoanScreen__aprovalCheck .path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 2;
+}
+.newLoan__confirmLoanScreen__aprovalCheck .path.circle {
+  -webkit-animation: dash 2s ease-in-out;
+  animation: dash 2s ease-in-out;
+}
+
+.newLoan__confirmLoanScreen__aprovalCheck .path.check {
+  stroke-dashoffset: -100;
+  -webkit-animation: dash-check 2s 0.4s ease-in-out forwards;
+  animation: dash-check 2s 0.4s ease-in-out forwards;
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes dash-check {
+  0% {
+    stroke-dashoffset: -300;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@keyframes dash-check {
+  0% {
+    stroke-dashoffset: -300;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
 }

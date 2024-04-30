@@ -15,14 +15,20 @@
         <h1 class="newLoan__headerTitle">Nuevo préstamo</h1>
       </header>
 
-      <!-- SelectCampaigns class-->
-      <section id="id_BanCo_newLoan_SelectCampaigns_screen">
-        <!-- <header class="selectionScreen__header">
-    <h1 class="selectionScreen__title">Nuevo préstamo</h1>
-  </header> -->
+      <!-- ErroBanner class-->
+      <div id="id_BanCo_newLoan_errorBanner" class="newLoan__errorBanner">
+        <span>X</span>
+        <p></p>
+      </div>
+
+      <!-- SelectCampaign class-->
+      <section id="id_BanCo_newLoan_SelectCampaign_screen">
         <h2 class="newLoan__selectionScreen__subTitle">Seleccionar campaña</h2>
-        <ul id="id_selectCampaigns_list" class="newLoan__selectionScreen__list">
-          <div class="lds-roller">
+        <ul
+          id="id_BanCo_newLoan_selectCampaign_list"
+          class="newLoan__selectionScreen__list"
+        >
+          <!-- <div class="lds-roller">
             <div></div>
             <div></div>
             <div></div>
@@ -31,21 +37,21 @@
             <div></div>
             <div></div>
             <div></div>
-          </div>
+          </div> -->
         </ul>
       </section>
 
-      <!-- SelectProducts class-->
+      <!-- SelectProduct class-->
       <section
-        id="id_BanCo_newLoan_SelectProducts_screen"
+        id="id_BanCo_newLoan_SelectProduct_screen"
         class="newLoan__selectionScreen__container"
       >
-        <!-- <header class="selectionScreen__header">
-      <h1 class="selectionScreen__title">Nuevo préstamo</h1>
-    </header> -->
         <h2 class="newLoan__selectionScreen__subTitle">Seleccionar Producto</h2>
-        <ul id="id_selectProducts_list" class="newLoan__selectionScreen__list">
-          <div class="lds-roller">
+        <ul
+          id="id_BanCo_newLoan_selectProduct_list"
+          class="newLoan__selectionScreen__list"
+        >
+          <!--  <div class="lds-roller">
             <div></div>
             <div></div>
             <div></div>
@@ -54,9 +60,156 @@
             <div></div>
             <div></div>
             <div></div>
-          </div>
+          </div> -->
         </ul>
       </section>
+
+      <!-- SelectPlan class-->
+      <section
+        id="id_BanCo_newLoan_SelectPlan_screen"
+        class="newLoan__selectionScreen__container"
+      >
+        <h2 class="newLoan__selectionScreen__subTitle">Seleccionar Plan</h2>
+        <div class="newLoan__selectPlan__changeAmount-container">
+          <div
+            id="id_BanCo_newLoan_selectPlan_otroMontoButtonContainer"
+            class="newLoan__selectPlan__changeAmount-buttonContainer"
+          >
+            <button
+              id="id_BanCo_newLoan_selectPlan_otroMontoButton"
+              type="button"
+              disabled
+              class="newLoan__selectPlan__changeAmount-button"
+            >
+              Elegir otro monto
+            </button>
+            <a
+              id="id_BanCo_newLoan_selectPlan_viewPreQualified"
+              class="newLoan__selectPlan__viewPreQualified"
+              href="#"
+              >Ver precalificados</a
+            >
+          </div>
+
+          <form
+            id="id_BanCo_newLoan_selectPlan_otroMontoForm"
+            class="newLoan__selectPlan__changeAmount-form"
+            action="#"
+          >
+            <input
+              id="id_BanCo_newLoan_selectPlan_otroMontoForm-input"
+              class="newLoan__selectPlan__changeAmount-input"
+              type="number"
+              value=""
+            />
+            <div class="newLoan__buttonsContainer">
+              <button
+                type="button"
+                id="id_BanCo_newLoan_selectPlan_otroMontoCancelar"
+                class="newLoan__button-cancelar"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                id="id_BanCo_newLoan_selectPlan_otroMontoCalcular"
+                class="newLoan__button-aceptar"
+              >
+                Calcular
+              </button>
+            </div>
+          </form>
+        </div>
+        <ul
+          id="id_BanCo_newLoan_selectPlan_list"
+          class="newLoan__selectPlan__list"
+        >
+          <!-- <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div> -->
+        </ul>
+      </section>
+
+      <!-- ConfirmLoan class-->
+      <section
+        id="id_BanCo_newLoan_ConfirmLoan_screen"
+        class="newLoan__confirmLoanScreen__container"
+      >
+        <header class="newLoan__confirmLoanScreen__aprovalCheck">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130.2 130.2">
+            <circle class="path circle" fill="none" stroke="#73AF55" stroke-width="6" stroke-miterlimit="10" cx="65.1" cy="65.1" r="62.1"/>
+            <polyline class="path check" fill="none" stroke="#73AF55" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>
+          </svg>
+          <h2 class="newLoan__selectionScreen__subTitle centered fadeIn">El préstamo se acreditó correctamente</h2>
+        </header>
+        <div
+          id="id_BanCo_newLoan_ConfirmLoan_info"
+          class="newLoan__confirmLoanScreen__info"
+        >
+          <div
+            id="id_BanCo_newLoan_ConfirmLoan_infoHeader"
+            class="newLoan__confirmLoanScreen__info__header"
+          >
+            <h3 class="newLoan__confirmLoanScreen__info__title"></h3>
+            <p class="newLoan__confirmLoanScreen__info__date"></p>
+          </div>
+          <div
+            id="id_BanCo_newLoan_ConfirmLoan_infoDataContainer"
+            class="newLoan__confirmLoanScreen__info__dataContainer"
+          >
+            <!--  <div class="newLoan__confirmLoanScreen__info__importe "></div>
+            <div class="newLoan__confirmLoanScreen__info__cuenta"></div>
+            <div class="newLoan__confirmLoanScreen__info__subCuenta"></div>
+            <div class="newLoan__confirmLoanScreen__info__cuotas"></div>
+            <div class="newLoan__confirmLoanScreen__info__tasas"></div> -->
+          </div>
+        </div>
+      </section>
+
+      <!------------ Templates ----------->
+      <!-- Spinner -->
+      <template id="id_BanCo_newLoan_spinnerTemplate">
+        <div id="id_BanCo_newLoan_spinner" class="lds-roller">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </template>
+
+      <!-- Confirm info section -->
+     <!--  <template id="id_BanCo_newLoan_infoSectionTemplate">
+        <div
+          id="id_BanCo_newLoan_infoSection"
+          class="newLoan__confirmLoanScreen__info__section"
+        ></div>
+      </template> -->
+
+      <!-- Confirm info section item -->
+      <!-- <template id="id_BanCo_newLoan_infoSectionItemTemplate">
+        <div
+          id="id_BanCo_newLoan_infoSectionItem"
+          class="newLoan__confirmLoanScreen__info__sectionItem"
+        >
+          <span
+            class="newLoan__confirmLoanScreen__info__sectionItemSubtitle"
+          ></span>
+          <span
+            class="newLoan__confirmLoanScreen__info__sectionItemValue"
+          ></span>
+        </div>
+      </template> -->
     </main>
   </body>
 </html>
