@@ -1,41 +1,82 @@
-// const customerId = '18fb48fc-b674-4ff7-8b54-2005525e89d5';
-const props = {
+const propsFake = {
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTQxNzE2MzEsImV4cCI6MTcxNDE3MzQzMSwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNDE3MTYzMSIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6Ijh4eFVSMndqY0ZxSUtBTURyYzE1cHBQakxNVEJLKzZhZnplamhkSVRKc3c9Iiwic3BhLXVzZXIiOiJrYXdVakkzdVdTVkZ6M1NIVzV2SEdFUGZOOGZsRW1Wa2lKa0R3aTVTWC9ZPSIsInNwYS1rZXkiOiJTclNsQkQweng0bG0rNHlzZ1JpdEU3dXA5djRrWENFeGs4UytNQW0yUzNFPSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.Wd3y2DlAcFM7QlyZl9XOprpewXVkP75T0bZ7FgXCVkuFajjlGsFdkcmly6JMr2LrkPnixRxY9Mnwm2b4OKt1vf-RdL68FQuoELVtxviu901iUcuCk7_irXXGhDwrpD3xdfytAtgmmh2es9BHeUtZMVGWCZk9L990OCXKUl1jDZtUOpmpDGtbBPlkIhYEFjUpyqsjSJgUt9yRD_Fs56ZIu-rhmsDJ7yjAEmBq1njptArSgys-2V96b9b0rBcmegeZBbzpodQgGkU2yQGgek-HVgJaSxc0pr5IqsnNOMKjliP6cl0XC-a053yF6rHyJezSu-0G-eH8QMmHCdzr6RagNw",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTQ0OTM5OTUsImV4cCI6MTcxNDQ5NTc5NSwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNDQ5Mzk5NSIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjA0ZjYwL29Vdkg5SzNMdU1ORGZDWGJmMVQxTi9Lb21ucEZXSWVJT1hIYUU9Iiwic3BhLXVzZXIiOiJ5OGVQWC8xZGZQeUFGeThkd0ZLMkV2ZDc3Q2h6M3pMWTZkbkhUYjBIcndNPSIsInNwYS1rZXkiOiJuSSsyNUtPVE1TZS9QQ3Z5N0w5WUxqNm5HSjhkY3RRcWpoM0tGVzQvY2t3PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.PBrBsBJ5pVkxrPgfJ1NppT43fc_aaxuLcX0ud1uTVW_tPsx6aLwNmfGua2OHpRiDGhuJoDbkn1YwS-lycf0A41-Uubaw7nepzrDRky9EkYo_z0RD507mDt5znPmx0IKHsxq6O2KtOXELP1THN_4ZHV4HFOEmq0Pb41X6g4tvttdKYYYUMRf8LdCPKeor0-E4FZacjG4CCKVdzOHu7R4hcMOGI_8RzuK1cmpbDGw7BzuE4UZtsbUgW9gptJbKl6OahX3c5QuDGgQci2uQGyF1gLhgC4eNzSmw9krJBKwQXhJ1SDDHeEtlSz8zO5uyev6y_8IgeyEZGDwSoznZiYwd2g",
   customerId: "1e7963eb-d36a-4847-a31c-c8629f8ccdeb",
 };
 
-const dummyData = {
-  data: {
-    documentTypes: [
-      {
-        code: "55",
-        description: "CNV Authorization Number",
-      },
-      {
-        code: "98",
-        description: "Correspondent Abroad",
-      },
-      {
-        code: "13",
-        description: "Court",
-      },
-      {
-        code: "14",
-        description: "File Number",
-      },
-      {
-        code: "12",
-        description: "Main File",
-      },
-      {
-        code: "1",
-        description: "Tax ID",
-      },
-    ],
+const dummyCampanas = [
+  {
+    campaignId: "219",
+    description: "PMO ADM PBCA PP1 + PASIVO + JUBNAC - FEB-JUN 2023",
+    startDate: "2023-04-15T00:00:00",
+    endDate: "2025-04-15T00:00:00",
   },
-  metadata: "",
-};
+  {
+    campaignId: "221",
+    description: "AGUINALDO-Asalariados Enero-Junio 2023",
+    startDate: "2023-05-01T00:00:00",
+    endDate: "2025-05-01T00:00:00",
+  },
+];
+
+const dummyProductos = [
+  {
+    campaignId: "219",
+    productId: "583407",
+    description: "PASIVOS",
+    state: "H",
+    channel: "ELECTRONICO",
+    branch: "99",
+  },
+];
+
+const dummyRecalculo = [
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "4300.07",
+    cantidadCuotas: "24",
+    montoCuota: "498.70122356100313",
+  },
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "4300.07",
+    cantidadCuotas: "48",
+    montoCuota: "445.5660114420453",
+  },
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "4300.07",
+    cantidadCuotas: "60",
+    montoCuota: "440.78566510314687",
+  },
+];
+
+const dummyPlanes = [
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "460200",
+    cantidadCuotas: "24",
+    montoCuota: "53371.75",
+  },
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "515100",
+    cantidadCuotas: "48",
+    montoCuota: "53373.79",
+  },
+  {
+    campaignId: "219",
+    productId: "583407",
+    montoTotal: "520600",
+    cantidadCuotas: "60",
+    montoCuota: "53364.94",
+  },
+];
 
 const dummyConfirmation = {
   title: "Préstamo precalificado",
@@ -87,8 +128,6 @@ const ID_ERROR_BANNER = "id_BanCo_newLoan_errorBanner";
 const ID_SPINNER_TEMPLATE = "id_BanCo_newLoan_spinnerTemplate";
 const ID_SPINNER = "id_BanCo_newLoan_spinner";
 
-// let renderer;
-
 /***************** UTILS ***************** */
 function removeListenersFromElement(element) {
   const newElement = element.cloneNode(true);
@@ -107,7 +146,6 @@ function setSpinner(parentId, cssClasses) {
       });
     }
     parent.appendChild(spinnerClone);
-    // return spinnerClone;
   }
 }
 
@@ -117,7 +155,6 @@ function showErrorBanner(message, renderer) {
     if (timer) clearInterval(timer);
   }, 4500);
   const closeBtn = document.querySelector(`#${ID_ERROR_BANNER} div span`);
-  // closeBtn.parentElement.classList.add('flexible');
   const newCloseBtn = removeListenersFromElement(closeBtn);
   newCloseBtn.addEventListener("click", () => {
     if (timer) clearInterval(timer);
@@ -128,28 +165,92 @@ function showErrorBanner(message, renderer) {
   renderer.mount(ID_ERROR_BANNER);
 }
 
-/* class ErrorBanner {
-  static show(message) {
-    const timer = setTimeout(() => {
-      renderer.unmount(ID_ERROR_BANNER);
-      if (timer) clearInterval(timer);
-    }, 4500);
-    const closeBtn = document.querySelector(`#${ID_ERROR_BANNER} div span`);
-    // closeBtn.parentElement.classList.add('flexible');
-    const newCloseBtn = removeListenersFromElement(closeBtn);
-    newCloseBtn.addEventListener("click", () => {
-      if (timer) clearInterval(timer);
-      renderer.unmount(ID_ERROR_BANNER);
-    });
-    const errorMessage = document.querySelector(`#${ID_ERROR_BANNER} div p`);
-    errorMessage.textContent = message;
-    renderer.mount(ID_ERROR_BANNER);
+/**
+ * formatea fechas a dd-mes-yyyy
+ * @param {string} date en formato yyyy-mm-ddTime.
+ * @return {string} fecha en formato dd-<mes en letras>-yyyy
+ */
+function formatDate(date) {
+  const months = {
+    1: "Ene",
+    2: "Feb",
+    3: "Mar",
+    4: "Abr",
+    5: "May",
+    6: "Jun",
+    7: "Jul",
+    8: "Ago",
+    9: "Set",
+    10: "Oct",
+    11: "Nov",
+    12: "Dic",
+  };
+  try {
+    const dateArr = date.split("T")[0].split("-");
+    const day = Number(dateArr[2]);
+    const month = months[Number(dateArr[1])];
+    const year = dateArr[0];
+    return `${day}-${month}-${year}`;
+  } catch (err) {
+    console.log("Error de formato de fecha", err);
+    return date;
   }
-} */
+}
+
+/**
+ * formatea cantidades al formato requerido por BanCo
+ * @param {string} amount.
+ * @return {string} formato de BanCo
+ */
+function formatAmount(amount, currency = "$") {
+  if (/[0-9]+/.test(Number(amount))) return `${currency} ${formatNumber(amount)}`;
+  return amount;
+}
+
+function formatNumber(
+  number,
+  decimals = 2,
+  decPoint = ",",
+  thousandsSep = "."
+) {
+  if (number === 0) return number;
+  number = `${number}`.replace(/[^0-9+\-Ee.]/g, "");
+  const n = !isFinite(+number) ? 0 : +number;
+  const prec = !isFinite(+decimals)
+    ? number % 1 === 0
+      ? 0
+      : 2
+    : Math.abs(number % 1 === 0 ? 0 : decimals);
+  const sep = thousandsSep;
+  const dec = decPoint;
+  let s = "";
+  const toFixedFix = (n, prec) => {
+    if (`${n}`.indexOf("e") === -1) {
+      return +`${Math.round(`${n}e+${prec}`)}e-${prec}`;
+    }
+    const arr = `${n}`.split("e");
+    let sig = "";
+    if (+arr[1] + prec > 0) {
+      sig = "+";
+    }
+    return (+`${Math.round(
+      `${+arr[0]}e${sig}${+arr[1] + prec}`
+    )}e-${prec}`).toFixed(prec);
+  };
+  s = (prec ? toFixedFix(n, prec).toString() : `${Math.round(n)}`).split(".");
+  if (s[0].length > 3) {
+    s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+  }
+  if ((s[1] || "").length < prec) {
+    s[1] = s[1] || "";
+    s[1] += new Array(prec - s[1].length + 1).join("0");
+  }
+  return s.join(dec);
+}
 
 /***************** SERVICES ***************** */
 class NewLoanHTTPFetcher {
-  baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/Customer";
+  baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
 
   constructor() {
     this.configRequest();
@@ -159,7 +260,7 @@ class NewLoanHTTPFetcher {
     const headers = new Headers();
     headers.append("accept", "text/plain");
     headers.append("Content-Type", "application/json-patch+json");
-    headers.append("Authorization", `Bearer ${props.token}`);
+    headers.append("Authorization", `Bearer ${propsFake.token}`);
     this.requestOptions = {
       headers,
       redirect: "follow",
@@ -175,9 +276,8 @@ class NewLoanHTTPFetcher {
   }
 
   async get(path, params) {
-    // return dummyData; // TODO: Eliminar esta linea!!!!!!
     const controller = new AbortController();
-    const idTimer = setTimeout(() => controller.abort(), 2000); // TODO quitar timer!!
+    const idTimer = setTimeout(() => controller.abort(), 20000); // TODO quitar timer!!
 
     const queryParams = params ? `?${this.encodeQueryData(params)}` : "";
     const url = `${this.baseUrl}${path}${queryParams}`;
@@ -186,41 +286,36 @@ class NewLoanHTTPFetcher {
         ...this.requestOptions,
         signal: controller.signal,
       });
+      console.log("response.ok =>", response.ok);
+      if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
       clearTimeout(idTimer); // TODO quitar esta linea!!
-      console.log("response =>", response.ok);
+
       return response.json(); // mandar areglo vacio si no se obtiene data o respuesta!!
     } catch (err) {
       console.log("error en fetcher", err);
-      return dummyData.data.documentTypes; // [];
+      // TODO enviar arreglo vacio, no dummy!!!!. Quitar los if cuando ya se depliegue
+      if (path.includes("campaigns")) {
+        return dummyCampanas;
+      }
+      if (path.includes("products")) {
+        return dummyProductos;
+      }
+      if (path.includes("plans")) {
+        return dummyPlanes;
+      }
+      if (path.includes("recalculate")) {
+        return dummyRecalculo;
+      }
+      if (path.includes("confirmation")) {
+        return dummyConfirmation;
+      }
+
+      return [];
     }
   }
 }
 
-/* class NewLoanUtilsBanCo {
-  constructor() {
-    // super();
-  }
-
-  static createHtmlElement(elType, { text, cssClasses, id }) {
-    const element = document.createElement(elType);
-    if (id) {
-      element.id = id;
-    }
-    if (cssClasses) {
-      cssClasses.forEach((cssClass) => element.classList.add(cssClass));
-    }
-    if (text) {
-      element.textContent = text;
-    }
-
-    return element;
-  }
-} */
-
 class NewLoanStorage {
-  /* selectedCampaign = '';
-  selectedProduct = '';
- */
   constructor(customerId) {
     this.customerId = customerId;
   }
@@ -239,7 +334,6 @@ class NewLoanStorage {
 
   saveSelectedCampaign(campaignId) {
     console.log("setter", campaignId);
-    // this.selectedCampaign = campaignId;
     localStorage.setItem(this.buildIdentifier("campaign"), campaignId);
   }
 
@@ -248,7 +342,6 @@ class NewLoanStorage {
   }
 
   saveSelectedProduct(productId) {
-    // this.selectedProduct = productId
     localStorage.setItem(this.buildIdentifier("product"), productId);
   }
 
@@ -257,7 +350,6 @@ class NewLoanStorage {
   }
 
   saveAnotherAmount(amount) {
-    // this.selectedProduct = productId
     localStorage.setItem(this.buildIdentifier("anotherAmount"), amount);
   }
 
@@ -266,30 +358,15 @@ class NewLoanStorage {
   }
 
   saveConfirmData(confirmData) {
-    // this.selectedProduct = productId
     localStorage.setItem(this.buildIdentifier("confirmData"), confirmData);
   }
 
   get confirmData() {
     return localStorage.getItem(this.buildIdentifier("confirmData"));
   }
-
-  /* saveSelectedPlan(planId) {
-    // this.selectedProduct = productId
-    localStorage.setItem(this.buildIdentifier("plan"), planId);
-  }
-
-  get selectedPlan() {
-    return localStorage.getItem(this.buildIdentifier("plan"));
-  } */
 }
 
-// window.newLoanBanCo = {};
-// window.newLoanBanCo.NewLoanHTTPFetcher = NewLoanHTTPFetcherBanCo;
-// window.newLoanBanCo.NewLoanUtils = NewLoanUtilsBanCo;
-// window.newLoanBanCo.NewLoanStorage = NewLoanStorageBanCo;
-
-console.log("PROPS =>", props);
+// console.log("PROPS =>", props);
 
 /***************** SELECT CAMPAIGN ***************** */
 /**
@@ -307,7 +384,6 @@ class SelectCampaign {
   init() {
     try {
       this.fetcher = new NewLoanHTTPFetcher();
-      // this.utils = new NewLoanUtilsBanCo();
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -323,51 +399,38 @@ class SelectCampaign {
       this.list = document.getElementById(ID_SELECT_CAMPAIGN_LIST);
       this.list.replaceChildren();
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
-      // this.list.appendChild(spinner);
-      const campaigns = await this.fetcher.get(
-        `/Customers/document-types/?personType=PJ`
-      );
+      // TODO cambiar por la real data!!
+      const campaigns = await this.fetcher.get("/campaigns/campaigns", {
+        CUIL: "",
+      });
       console.log("campaigns => ", campaigns);
       this.renderer.destroy(ID_SPINNER);
-      /* const spinner = document.getElementById(ID_SPINNER);
-      console.log('spinner => ', spinner);
-      spinner.remove(); */
-      // this.renderer.unmount(ID_SPINNER);
-      // const temp = campaigns.data.documentTypes; // TODO cambiar por el real campo!!
       const noResultsEl = document.createElement("p");
       noResultsEl.textContent = "No se encontraron campañas disponibles";
-      // this.list.replaceChildren();
       if (!campaigns || !campaigns.length) {
         this.list.appendChild(noResultsEl);
       } else {
-        campaigns.forEach((camp) => {
+        campaigns.forEach(({ campaignId, description, startDate, endDate }) => {
           const campItemEl = document.createElement("li");
           campItemEl.classList.add("newLoan__selectionScreen__listItem");
-          campItemEl.id = camp.code;
+          campItemEl.id = campaignId;
           campItemEl.addEventListener("click", (ev) => {
             this.storage.saveSelectedCampaign(campItemEl.id);
             this.renderer.navigate(SELECT_PRODUCT_SCREEN_ID);
-            // alert('seleccionado:' + this.storage.selectedCampaign);
           });
           const titleEl = document.createElement("h3");
-          titleEl.textContent = camp.description;
+          titleEl.textContent = description;
           campItemEl.appendChild(titleEl);
           const startDateEl = document.createElement("p");
-          startDateEl.textContent = `Fecha inicio: ${camp.code}`;
+          startDateEl.textContent = `Fecha inicio: ${formatDate(startDate)}`;
           campItemEl.appendChild(startDateEl);
           const endDateEl = document.createElement("p");
-          endDateEl.textContent = `Fecha fin: ${camp.code}`;
+          endDateEl.textContent = `Fecha fin: ${formatDate(endDate)}`;
           campItemEl.appendChild(endDateEl);
-
-          /*  const link = document.createElement("a");
-          link.classList.add("selectionScreen__listItem");
-          link.setAttribute("href", "#");
-          link.appendChild(campItemEl); */
 
           this.list.appendChild(campItemEl);
         });
       }
-      // renderer.mount(SELECT_CAMPAIGN_SCREEN_ID);
     } catch (err) {
       console.log("Error al renderizar Select campaigns", err);
     }
@@ -390,7 +453,6 @@ class SelectProduct {
   init() {
     try {
       this.fetcher = new NewLoanHTTPFetcher();
-      // this.utils = new NewLoanUtilsBanCo();
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -405,52 +467,43 @@ class SelectProduct {
     this.list = document.getElementById(ID_SELECT_PRODUCT_LIST);
     this.list.replaceChildren();
     setSpinner(SELECT_PRODUCT_SCREEN_ID);
-    // this.list.appendChild(spinner);
     const campaignId = this.storage.selectedCampaign;
-    // TODO agregar el param id de campaña a la petición
-    const products = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
-    );
+    // TODO agregar el param id de campaña a la petición. Usar la data real
+    const products = await this.fetcher.get("/campaign/products", {
+      CUIL: "",
+      campaignId,
+    });
     console.log("products =>", products);
     this.renderer.destroy(ID_SPINNER);
-    // const temp = products.data.documentTypes; // TODO cambiar por el real campo!!
     const noResultsEl = document.createElement("p");
     noResultsEl.textContent = "No se encontraron productos disponibles";
-    // this.list.replaceChildren();
     if (!products || !products.length) {
       this.list.appendChild(noResultsEl);
     } else {
-      products.forEach((prod) => {
+      products.forEach(({ productId, description, state, channel, branch }) => {
         const prodItemEl = document.createElement("li");
         prodItemEl.classList.add("newLoan__selectionScreen__listItem");
-        prodItemEl.id = prod.code;
+        prodItemEl.id = productId;
         prodItemEl.addEventListener("click", (ev) => {
           this.storage.saveSelectedProduct(prodItemEl.id);
           this.renderer.navigate(SELECT_PLAN_SCREEN_ID);
-          // alert('seleccionado:' + prodItemEl.id);
         });
         const titleEl = document.createElement("h3");
-        titleEl.textContent = prod.description;
+        titleEl.textContent = description;
         prodItemEl.appendChild(titleEl);
         const estadoEl = document.createElement("p");
-        estadoEl.textContent = `Estado: ${prod.code}`;
+        estadoEl.textContent = `Estado: ${state}`;
         prodItemEl.appendChild(estadoEl);
         const canalEl = document.createElement("p");
-        canalEl.textContent = `Canal: ${prod.code}`;
+        canalEl.textContent = `Canal: ${channel}`;
         prodItemEl.appendChild(canalEl);
         const sucursalEl = document.createElement("p");
-        sucursalEl.textContent = `Sucursal: ${prod.code}`;
+        sucursalEl.textContent = `Sucursal: ${branch}`;
         prodItemEl.appendChild(sucursalEl);
-
-        /* const link = document.createElement("a");
-        link.classList.add("selectProduct__listItem");
-        link.setAttribute("href", "/seleccionar-plan/html/index.html");
-        link.appendChild(prodItemEl); */
 
         this.list.appendChild(prodItemEl);
       });
     }
-    // renderer.mount(SELECT_PRODUCT_SCREEN_ID);
   }
 }
 
@@ -470,7 +523,6 @@ class SelectPlan {
   init() {
     try {
       this.fetcher = new NewLoanHTTPFetcher();
-      // this.utils = new NewLoanUtilsBanCo();
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -481,48 +533,31 @@ class SelectPlan {
 
   renderPlansList(plans) {
     this.renderer.mount(ID_SELECT_PLAN_LIST);
-    /*  this.list = document.getElementById(ID_SELECT_PLAN_LIST);
-    this.list.replaceChildren(); */
-    // const spinner = getSpinner();
-    // this.list.appendChild(spinner);
     console.log("plans =>", plans);
 
     const noResultsEl = document.createElement("p");
     noResultsEl.textContent = "No se encontraron planes disponibles";
-    // this.list.replaceChildren();
     if (!plans || !plans.length) {
       this.list.appendChild(noResultsEl);
     } else {
-      plans.forEach((plan) => {
+      // TODO realizar el mapeo real!!!
+      plans.forEach(({ productId, cantidadCuotas, montoTotal, montoCuota }) => {
         const planItemEl = document.createElement("li");
-        // const infoContainer = document.createElement("div");
-        // infoContainer.classList.add("newLoan__selectionScreen__listItem");
         planItemEl.classList.add("newLoan__selectionScreen__listItem");
-        planItemEl.id = plan.code;
+        planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
+        planItemEl.id = productId;
         planItemEl.addEventListener("click", async (ev) => {
-          // this.storage.saveSelectedPlan(planItemEl.id);
-          // renderer.navigate(SELECT_PLAN_SCREEN_ID);
-          // alert('seleccionado:' + planItemEl.id);
-          // ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER
-          /* const buttonContainer = document.getElementById(
-            ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER
-          ); */
-
           setSpinner(ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER);
-          // buttonContainer.appendChild(spinner);
-          // console.log("buttonContainer =>", buttonContainer);
-          // buttonContainer.appendChild();
           planItemEl.classList.add("newLoan__selectPlan__listItem-selected");
           this.list.childNodes.forEach((child) =>
-            child.classList.add("unclickable")
+            child.classList.add("banCo-newLoan-unclickable")
           );
           const confirmationResp = await this.getLoanConfirmation(
             planItemEl.id
           );
-          // document.getElementById(ID_SPINNER).remove();
           this.renderer.destroy(ID_SPINNER);
           if (confirmationResp.codError === "0") {
-            //exito
+            // exito
             this.storage.saveConfirmData(JSON.stringify(confirmationResp));
             this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
           } else {
@@ -535,20 +570,34 @@ class SelectPlan {
               "newLoan__selectPlan__listItem-selected"
             );
             this.list.childNodes.forEach((child) =>
-              child.classList.remove("unclickable")
+              child.classList.remove("banCo-newLoan-unclickable")
             );
           }
         });
 
-        const titleEl = document.createElement("h3");
-        titleEl.textContent = plan.description;
-        planItemEl.appendChild(titleEl);
+        const amountEl = document.createElement("span");
+        amountEl.classList.add("newLoan__selectionScreen__listItemPlan-amount");
+        amountEl.textContent = `${formatAmount(montoTotal)}`;
+        planItemEl.appendChild(amountEl);
 
-        /* const link = document.createElement("a");
-    link.classList.add("selectProduct__listItem");
-    link.setAttribute("href", "/seleccionar-plan/html/index.html");
-    link.appendChild(prodItemEl); */
+        const installmentsContainer = document.createElement("p");
+        installmentsContainer.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsContainer"
+        );
+        const installmentsQty = document.createElement("span");
+        installmentsQty.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsQty"
+        );
+        installmentsQty.textContent = `${cantidadCuotas} Cuotas de`;
+        installmentsContainer.appendChild(installmentsQty);
+        const installmentsAmount = document.createElement("span");
+        installmentsAmount.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsAmount"
+        );
+        installmentsAmount.textContent = `${formatAmount(montoCuota)}`;
+        installmentsContainer.appendChild(installmentsAmount);
 
+        planItemEl.appendChild(installmentsContainer);
         this.list.appendChild(planItemEl);
       });
     }
@@ -556,7 +605,8 @@ class SelectPlan {
 
   async getLoanConfirmation(planId) {
     const confirmation = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
+      "confirmation",
+      {} // TODO mapear servicio de confirmación!!!
     );
     const temp = dummyConfirmation;
     if (temp.cuenta) {
@@ -568,21 +618,21 @@ class SelectPlan {
 
   async renderPreQualifiedLoanPlans(amountBtn) {
     this.storage.saveAnotherAmount("0");
-    // get plans data
-    const planId = this.storage.selectedPlan;
+    const campaignId = this.storage.selectedCampaign;
+    const productId = this.storage.selectedProduct;
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     this.renderer.unmount(ID_LINK_VIEW_PRE_QUALIFIED);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
-    // this.renderer.mount(ID_SELECT_PLAN_LIST);
-    // TODO agregar el param id del plan a la petición
+    // TODO agregar el param id del plan a la petición. Usar data real
     console.log("renderPreQualifiedLoanPlans!!");
     setSpinner(SELECT_PLAN_SCREEN_ID);
-    const plans = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
-    );
+    const plans = await this.fetcher.get("/campaign/product/plans", {
+      CUIL: "",
+      campaignId,
+      productId,
+    });
     this.renderer.destroy(ID_SPINNER);
-    // const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
     if (plans?.length) {
       amountBtn.disabled = false;
     }
@@ -594,19 +644,20 @@ class SelectPlan {
     console.log("amount.value =>", amount.value);
     if (Number(amount.value) <= 0 || amount.value === "")
       return showErrorBanner("Debe ingresar un monto válido", this.renderer);
-    // get plans data
     this.storage.saveAnotherAmount(amount.value);
-    // this.renderer.mount(ID_SELECT_PLAN_LIST);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
     setSpinner(SELECT_PLAN_SCREEN_ID);
-    const planId = this.storage.selectedPlan;
-    // TODO agregar el param id del plan y el amount.value a la petición
-    const plans = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
-    );
+    const campaignId = this.storage.selectedCampaign;
+    const productId = this.storage.selectedProduct;
+    // TODO agregar el param id del plan y el amount.value a la petición. Usar data real
+    const plans = await this.fetcher.get("/campaign/product/recalculate", {
+      CUIL: "",
+      campaignId,
+      productId,
+      amount: amount.value,
+    });
     this.renderer.destroy(ID_SPINNER);
-    // const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
     if (plans?.length) {
       amountBtn.disabled = false;
     } else {
@@ -632,8 +683,6 @@ class SelectPlan {
     this.renderer.mount(SELECT_PLAN_SCREEN_ID);
     this.storage.saveCurrentForm(SELECT_PLAN_SCREEN_ID);
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
-    // this.renderer.mount(ID_SELECT_PLAN_LIST);
-    // this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     const amountInput = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_FORM_INPUT
     );
@@ -641,7 +690,6 @@ class SelectPlan {
     const newAmountBtn = removeListenersFromElement(amountBtn);
     newAmountBtn.addEventListener("click", (ev) => {
       amountInput.value = "";
-      // ev.preventDefault();
       console.log("newAmountBtn!!");
       this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       this.renderer.unmount(ID_SELECT_PLAN_LIST);
@@ -653,8 +701,6 @@ class SelectPlan {
     newCalcularBtn.addEventListener("click", async (ev) => {
       console.log("amountInput =>", amountInput.value);
       ev.stopPropagation();
-      // this.renderer.mount(ID_SELECT_PLAN_LIST);
-      // this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       await this.renderRecalculatedLoanPlans(amountInput, newAmountBtn);
     });
     const cancelarBtn = document.getElementById(
@@ -663,12 +709,10 @@ class SelectPlan {
     const newCancelarBtn = removeListenersFromElement(cancelarBtn);
     newCancelarBtn.addEventListener("click", async (ev) => {
       ev.stopPropagation();
-      // this.renderer.mount(ID_SELECT_PLAN_LIST);
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     });
 
-    // renderer?.mount(SELECT_PLAN_SCREEN_ID);
     if (!this.storage.anotherAmount || this.storage.anotherAmount === "0") {
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     } else {
@@ -695,8 +739,6 @@ class ConfirmLoan {
 
   init() {
     try {
-      // this.fetcher = new NewLoanHTTPFetcher();
-      // this.utils = new NewLoanUtilsBanCo();
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -741,19 +783,9 @@ class ConfirmLoan {
     this.screen = document.getElementById(CONFIRM_LOAN_SCREEN_ID);
     this.info = document.getElementById(ID_CONFIRM_LOAN_INFO);
     const infoHeader = document.getElementById(ID_CONFIRM_LOAN_INFO_HEADER);
-    // const infoDataContainer = document.getElementById(ID_CONFIRM_LOAN_INFO_DATA_CONTAINER);
-    // const spinner = getSpinner();
-    // this.list.appendChild(spinner);
-    // const campaignId = this.storage.selectedCampaign;
-    // TODO agregar el param id de campaña a la petición
-    /* const products = await this.fetcher.get(
-      `/Customers/document-types/?personType=PJ`
-    ); */
-    //console.log("products =>", products);
     const confirmData = JSON.parse(this.storage.confirmData);
     const noResultsEl = document.createElement("p");
     noResultsEl.textContent = "No se pudo obtener la data de confirmación";
-    // this.list.replaceChildren();
     if (!confirmData || Object.keys(confirmData).length === 0) {
       this.screen.appendChild(noResultsEl);
       this.renderer.unmount(this.info);
@@ -789,11 +821,10 @@ class ConfirmLoan {
       ];
       this.renderInfoSection(section);
     }
-    // renderer?.mount(CONFIRM_LOAN_SCREEN_ID);
   }
 }
 
-// mantener el orden en que aparecen las pantallas para la correcta navegacion
+// Mantener el orden en que aparecen las pantallas para la correcta navegacion
 const configScreens = [
   {
     id: SELECT_CAMPAIGN_SCREEN_ID,
@@ -845,7 +876,6 @@ class Header {
         this.renderer.navigate(configScreens[currFormIdx - 1].id);
       }
     });
-    // renderer?.mount(ID_LEFT_ARROW);
   }
 }
 
@@ -869,7 +899,6 @@ class Renderer {
       configScreens.forEach((screen) => {
         if (screen.id === screenId) {
           this[screen.name] = new screen.Component(this.customerId, this);
-          // this.mount(screen.id);
           if (
             screen.id === SELECT_CAMPAIGN_SCREEN_ID ||
             screen.id === CONFIRM_LOAN_SCREEN_ID
@@ -878,7 +907,6 @@ class Renderer {
             this.unmount(ID_LEFT_ARROW);
           } else {
             this.mount(ID_LEFT_ARROW);
-            // header.setBackListener(() => this.navigate());
           }
         } else {
           this[screen.name] = null;
@@ -938,4 +966,5 @@ class Renderer {
 
 /***************** RUN !!! ***************** */
 console.log("Ruuunnnn");
-const renderer = new Renderer(props.customerId);
+
+const renderer = new Renderer(propsFake.customerId);

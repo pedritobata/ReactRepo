@@ -13,6 +13,7 @@
   --color-danger-light: rgb(255, 220, 220);
   --color-danger: rgb(255, 57, 57);
   --color-grey: rgb(143, 143, 143);
+  --color-success: rgb(4, 168, 78);
 
   --size-container-medium: 40%;
 }
@@ -41,15 +42,10 @@
   width: 18%;
   z-index: 100;
   border: 1px solid var(--color-danger);
- /*  display: none;
-  justify-content: center;
-  align-items: center; */
-  /* max-width: 200px; */
   height: 70px;
   background-color: var(--color-danger-light);
-  color: var(--color-danger);;
+  color: var(--color-danger);
   font-weight: bold;
- /*  font-size: 1.2em; */
 }
 
 .newLoan__errorBanner > div {
@@ -67,7 +63,6 @@
   top: 1px;
   cursor: pointer;
   font-size: 1.4em;
-  /* color: red; */
 }
 
 .newLoan__errorBanner > div > p {
@@ -77,19 +72,15 @@
 }
 
 /************ UTILS **************/
-.unclickable {
+.banCo-newLoan-unclickable {
   pointer-events: none;
 }
 
-.centered {
+.banCo-newLoan-centered {
   text-align: center;
 }
 
-/* .flexible {
-  display: flex !important;
-}
- */
-.fadeInTop {
+.banCo-newLoan-fadeInTop {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1.5s;
   -webkit-animation-fill-mode: both;
@@ -102,7 +93,7 @@
   animation-duration: 1.4s, 2s;
 }
 
-.fadeInBottom {
+.banCo-newLoan-fadeInBottom {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1.5s;
   -webkit-animation-fill-mode: both;
@@ -114,14 +105,13 @@
   animation-duration: 1.4s, 2s;
 }
 
-.fadeInRight {
+.banCo-newLoan-fadeInRight {
   -webkit-animation-duration: 1.5s;
   animation-duration: 1.5s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
   position: absolute;
   right: -100%;
- /*  transform: translateY(-20%); */
   animation-name: smooth-appearRight, fadeIn;
   animation-duration: 1.4s, 2s;
 }
@@ -201,6 +191,11 @@
   transition: all 0.3s ease-in-out;
 }
 
+.newLoan__selectionScreen__listItem > p {
+  font-weight: 550;
+  color: rgb(85, 84, 84);
+}
+
 /************ SELECT PLAN **************/
 .newLoan__selectPlan__changeAmount-container {
   width: var(--size-container-medium);
@@ -209,8 +204,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* gap: 4em; */
-  /* align-items: center; */
 }
 
 .newLoan__selectPlan__changeAmount-button {
@@ -292,18 +285,12 @@ input[type="number"] {
   width: 100%;
   padding: 5px 12px;
   font-size: 1.2em;
-  /* margin: 3px 0; */
   box-sizing: border-box;
-  /* width: 80%; */
   margin-bottom: 1.5em;
 }
 
 .newLoan__selectPlan__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 0px;
-  gap: 2em;
   width: var(--size-container-medium);
   margin: auto;
 }
@@ -320,6 +307,32 @@ input[type="number"] {
 .newLoan__selectPlan__viewPreQualified {
   align-self: flex-end;
   font-weight: bold;
+}
+
+.newLoan__selectionScreen__listItemPlan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 2em;
+  margin: 1.5em 0;
+}
+
+.newLoan__selectionScreen__listItemPlan-amount {
+  font-weight: 600;
+}
+
+.newLoan__selectionScreen__listItemPlan-installmentsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.newLoan__selectionScreen__listItemPlan-installmentsQty {
+  color: var(--color-grey);
+}
+
+.newLoan__selectionScreen__listItemPlan-installmentsAmount {
+  color: var(--color-success);
 }
 
 /************ CONFIRM LOAN **************/
@@ -485,8 +498,8 @@ input[type="number"] {
 }
 
 .newLoan__arrow-left:hover {
-  /*   -webkit-transform: rotate(-45deg) scale(1.02);
-  -ms-transform: rotate(-45deg) scale(1.02); */
+  -webkit-transform: rotate(-45deg) scale(1.02);
+  -ms-transform: rotate(-45deg) scale(1.02);
   transform: scale(1.2) rotate(-45deg);
   transition: all 0.3s ease-in-out;
 }
@@ -495,7 +508,6 @@ input[type="number"] {
 .newLoan__confirmLoanScreen__aprovalCheck {
   position: relative;
   margin-bottom: 3em;
-/*   z-index: 1000; */
 }
 
 .newLoan__confirmLoanScreen__aprovalCheck svg {
