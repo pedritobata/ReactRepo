@@ -79,7 +79,8 @@ const ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER =
   "id_BanCo_newLoan_selectPlan_otroMontoButtonContainer";
 const ID_CONFIRM_LOAN_INFO = "id_BanCo_newLoan_ConfirmLoan_info";
 const ID_CONFIRM_LOAN_INFO_HEADER = "id_BanCo_newLoan_ConfirmLoan_infoHeader";
-const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER = "id_BanCo_newLoan_ConfirmLoan_infoDataContainer";
+const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER =
+  "id_BanCo_newLoan_ConfirmLoan_infoDataContainer";
 
 const ID_ERROR_BANNER = "id_BanCo_newLoan_errorBanner";
 const ID_SPINNER_TEMPLATE = "id_BanCo_newLoan_spinnerTemplate";
@@ -109,7 +110,7 @@ function getSpinner(cssClasses) {
 
 class ErrorBanner {
   static show(message) {
-    const timer = setInterval(() => {
+    const timer = setTimeout(() => {
       renderer.unmount(ID_ERROR_BANNER);
       if (timer) clearInterval(timer);
     }, 3000);
@@ -141,6 +142,7 @@ class NewLoanHTTPFetcher {
     this.requestOptions = {
       headers,
       redirect: "follow",
+      timeout: 2000
     };
   }
 
@@ -151,20 +153,25 @@ class NewLoanHTTPFetcher {
     return ret.join("&");
   }
 
-  get(path, params) {
-    return dummyData; // TODO: Eliminar esta linea!!!!!!
+  async get(path, params) {
+    // return dummyData; // TODO: Eliminar esta linea!!!!!!
+    const controller = new AbortController();
+    const idTimer = setTimeout(() => controller.abort(), 2000); // TODO quitar timer!!
+
     const queryParams = params ? `?${this.encodeQueryData(params)}` : "";
     const url = `${this.baseUrl}${path}${queryParams}`;
-    return fetch(url, this.requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
-      .catch((error) => {
-        console.log("error en fetcher", error);
-        return [];
+    try {
+      const response = await fetch(url, {
+        ...this.requestOptions,
+        signal: controller.signal,
       });
+      clearTimeout(idTimer); // TODO quitar esta linea!!
+      console.log("response =>", response.ok);
+      return response.json();  // mandar areglo vacio si no se obtiene data o respuesta!!
+    } catch (err) {
+      console.log("error en fetcher", err);
+      return dummyData.data.documentTypes // [];
+    }
   }
 }
 
@@ -268,8 +275,9 @@ console.log("PROPS =>", props);
  * Clase para formulario de seleccionar campaña
  */
 class SelectCampaign {
-  constructor(customerId) {
+  constructor(customerId, renderer) {
     this.customerId = customerId;
+    this.renderer = renderer;
     if (this.init()) {
       this.render();
     }
@@ -289,28 +297,29 @@ class SelectCampaign {
 
   async render() {
     try {
+      this.renderer.mount(SELECT_CAMPAIGN_SCREEN_ID);
       this.storage.saveCurrentForm(SELECT_CAMPAIGN_SCREEN_ID);
       this.list = document.getElementById(ID_SELECT_CAMPAIGN_LIST);
-      const spinner = getSpinner();
-      this.list.appendChild(spinner);
+      // const spinner = getSpinner();
+      // this.list.appendChild(spinner);
       const campaigns = await this.fetcher.get(
         `/Customers/document-types/?personType=PJ`
       );
-      const temp = campaigns.data.documentTypes; // TODO cambiar por el real campo!!
-      const noResultsEl = document.createElement("p", {
-        text: "No se encontraron campañas disponibles",
-      });
+      console.log('campaigns => ', campaigns);
+      // const temp = campaigns.data.documentTypes; // TODO cambiar por el real campo!!
+      const noResultsEl = document.createElement("p");
+      noResultsEl.textContent = "No se encontraron campañas disponibles";
       this.list.replaceChildren();
-      if (!temp || !temp.length) {
+      if (!campaigns || !campaigns.length) {
         this.list.appendChild(noResultsEl);
       } else {
-        temp.forEach((camp) => {
+        campaigns.forEach((camp) => {
           const campItemEl = document.createElement("li");
           campItemEl.classList.add("newLoan__selectionScreen__listItem");
           campItemEl.id = camp.code;
           campItemEl.addEventListener("click", (ev) => {
             this.storage.saveSelectedCampaign(campItemEl.id);
-            renderer.navigate(SELECT_PRODUCT_SCREEN_ID);
+            this.renderer.navigate(SELECT_PRODUCT_SCREEN_ID);
             // alert('seleccionado:' + this.storage.selectedCampaign);
           });
           const titleEl = document.createElement("h3");
@@ -331,7 +340,7 @@ class SelectCampaign {
           this.list.appendChild(campItemEl);
         });
       }
-      renderer.mount(SELECT_CAMPAIGN_SCREEN_ID);
+      // renderer.mount(SELECT_CAMPAIGN_SCREEN_ID);
     } catch (err) {
       console.log("Error al renderizar Select campaigns", err);
     }
@@ -343,8 +352,9 @@ class SelectCampaign {
  * Clase para formulario de seleccionar un producto de una campaña
  */
 class SelectProduct {
-  constructor(customerId) {
+  constructor(customerId, renderer) {
     this.customerId = customerId;
+    this.renderer = renderer;
     if (this.init()) {
       this.render();
     }
@@ -363,31 +373,31 @@ class SelectProduct {
   }
 
   async render() {
+    this.renderer.mount(SELECT_PRODUCT_SCREEN_ID);
     this.storage.saveCurrentForm(SELECT_PRODUCT_SCREEN_ID);
     this.list = document.getElementById(ID_SELECT_PRODUCT_LIST);
-    const spinner = getSpinner();
-    this.list.appendChild(spinner);
+    // const spinner = await getSpinner();
+    // this.list.appendChild(spinner);
     const campaignId = this.storage.selectedCampaign;
     // TODO agregar el param id de campaña a la petición
     const products = await this.fetcher.get(
       `/Customers/document-types/?personType=PJ`
     );
-    //console.log("products =>", products);
-    const temp = products.data.documentTypes; // TODO cambiar por el real campo!!
-    const noResultsEl = document.createElement("p", {
-      text: "No se encontraron productos disponibles",
-    });
+    console.log("products =>", products);
+    // const temp = products.data.documentTypes; // TODO cambiar por el real campo!!
+    const noResultsEl = document.createElement("p");
+    noResultsEl.textContent = "No se encontraron productos disponibles";
     this.list.replaceChildren();
-    if (!temp || !temp.length) {
+    if (!products || !products.length) {
       this.list.appendChild(noResultsEl);
     } else {
-      temp.forEach((prod) => {
+      products.forEach((prod) => {
         const prodItemEl = document.createElement("li");
         prodItemEl.classList.add("newLoan__selectionScreen__listItem");
         prodItemEl.id = prod.code;
         prodItemEl.addEventListener("click", (ev) => {
           this.storage.saveSelectedProduct(prodItemEl.id);
-          renderer.navigate(SELECT_PLAN_SCREEN_ID);
+          this.renderer.navigate(SELECT_PLAN_SCREEN_ID);
           // alert('seleccionado:' + prodItemEl.id);
         });
         const titleEl = document.createElement("h3");
@@ -411,7 +421,7 @@ class SelectProduct {
         this.list.appendChild(prodItemEl);
       });
     }
-    renderer.mount(SELECT_PRODUCT_SCREEN_ID);
+    // renderer.mount(SELECT_PRODUCT_SCREEN_ID);
   }
 }
 
@@ -420,8 +430,9 @@ class SelectProduct {
  * Clase para formulario de seleccionar un plan de un producto
  */
 class SelectPlan {
-  constructor(customerId) {
+  constructor(customerId, renderer) {
     this.customerId = customerId;
+    this.renderer = renderer;
     if (this.init()) {
       this.render();
     }
@@ -440,10 +451,10 @@ class SelectPlan {
   }
 
   renderPlansList(plans) {
-    renderer.mount(ID_SELECT_PLAN_LIST);
+    // this.renderer.mount(ID_SELECT_PLAN_LIST);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
-    const spinner = getSpinner();
-    this.list.appendChild(spinner);
+    // const spinner = getSpinner();
+    // this.list.appendChild(spinner);
     console.log("plans =>", plans);
 
     const noResultsEl = document.createElement("p", {
@@ -483,7 +494,7 @@ class SelectPlan {
           if (confirmationResp.codError === "0") {
             //exito
             this.storage.saveConfirmData(JSON.stringify(confirmationResp));
-            renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
+            this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
           } else {
             ErrorBanner.show(
               "Error de confirmación del préstamo, codigo" +
@@ -528,17 +539,19 @@ class SelectPlan {
     this.storage.saveAnotherAmount("0");
     // get plans data
     const planId = this.storage.selectedPlan;
+    this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+    this.renderer.unmount(ID_LINK_VIEW_PRE_QUALIFIED);
+    // this.renderer.mount(ID_SELECT_PLAN_LIST);
     // TODO agregar el param id del plan a la petición
     const plans = await this.fetcher.get(
       `/Customers/document-types/?personType=PJ`
     );
-    const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
-    if (temp?.length) {
+    // const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
+    if (plans?.length) {
       amountBtn.disabled = false;
     }
-    renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
-    renderer.unmount(ID_LINK_VIEW_PRE_QUALIFIED);
-    this.renderPlansList(temp);
+    
+    this.renderPlansList(plans);
   }
 
   async renderRecalculatedLoanPlans(amount, amountBtn) {
@@ -547,36 +560,41 @@ class SelectPlan {
       return ErrorBanner.show("Debe ingresar un monto");
     // get plans data
     this.storage.saveAnotherAmount(amount.value);
+    // this.renderer.mount(ID_SELECT_PLAN_LIST);
     const planId = this.storage.selectedPlan;
     // TODO agregar el param id del plan y el amount.value a la petición
     const plans = await this.fetcher.get(
       `/Customers/document-types/?personType=PJ`
     );
-    const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
-    if (temp?.length) {
+    // const temp = plans.data?.documentTypes; // TODO cambiar por el real campo!!
+    if (plans?.length) {
       amountBtn.disabled = false;
     } else {
       // Errores que trae el servicio de recalculo, monto no permitido etc. mensajes del back
       return ErrorBanner.show("Error al recalcular monto");
     }
-    renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+    this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
       ID_LINK_VIEW_PRE_QUALIFIED
     );
-    const newViewPreQualifiedLink =
-      removeListenersFromElement(viewPreQualifiedLink);
+    const newViewPreQualifiedLink = removeListenersFromElement(
+      viewPreQualifiedLink
+    );
     newViewPreQualifiedLink.addEventListener("click", async () => {
       await this.renderPreQualifiedLoanPlans(amountBtn);
     });
-    renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
+    this.renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
     this.renderPlansList(
-      temp.map((plan) => ({ ...plan, description: plan.code }))
+      plans.map((plan) => ({ ...plan, description: plan.code }))
     );
   }
 
   async render() {
+    this.renderer.mount(SELECT_PLAN_SCREEN_ID);
     this.storage.saveCurrentForm(SELECT_PLAN_SCREEN_ID);
-    renderer?.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+    this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+    this.renderer.mount(ID_SELECT_PLAN_LIST);
+    this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     const amountInput = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_FORM_INPUT
     );
@@ -584,8 +602,8 @@ class SelectPlan {
     const newAmountBtn = removeListenersFromElement(amountBtn);
     newAmountBtn.addEventListener("click", () => {
       amountInput.value = "";
-      renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
-      renderer.unmount(ID_SELECT_PLAN_LIST);
+      this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+      this.renderer.unmount(ID_SELECT_PLAN_LIST);
     });
     const calcularBtn = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_CALCULAR
@@ -593,6 +611,8 @@ class SelectPlan {
     const newCalcularBtn = removeListenersFromElement(calcularBtn);
     newCalcularBtn.addEventListener("click", async () => {
       console.log("amountInput =>", amountInput.value);
+      this.renderer.mount(ID_SELECT_PLAN_LIST);
+      this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       await this.renderRecalculatedLoanPlans(amountInput, newAmountBtn);
     });
     const cancelarBtn = document.getElementById(
@@ -600,10 +620,12 @@ class SelectPlan {
     );
     const newCancelarBtn = removeListenersFromElement(cancelarBtn);
     newCancelarBtn.addEventListener("click", async () => {
+      this.renderer.mount(ID_SELECT_PLAN_LIST);
+      this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     });
 
-    renderer?.mount(SELECT_PLAN_SCREEN_ID);
+    // renderer?.mount(SELECT_PLAN_SCREEN_ID);
     if (!this.storage.anotherAmount || this.storage.anotherAmount === "0") {
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     } else {
@@ -640,26 +662,35 @@ class ConfirmLoan {
   }
 
   renderInfoSection(items) {
-    const infoDataContainer = document.getElementById(ID_CONFIRM_LOAN_INFO_DATA_CONTAINER);
-    const infoSection = document.createElement('div');
-    infoSection.classList.add('newLoan__confirmLoanScreen__info__section');
-    const infoSectionItem = document.createElement('div');
-    infoSectionItem.classList.add('newLoan__confirmLoanScreen__info__sectionItem');
-    items.forEach(item => {
-      const infoSectionItemSubTitle = document.createElement('span');
-      infoSectionItemSubTitle.classList.add('newLoan__confirmLoanScreen__info__sectionItemSubtitle');
+    const infoDataContainer = document.getElementById(
+      ID_CONFIRM_LOAN_INFO_DATA_CONTAINER
+    );
+    const infoSection = document.createElement("div");
+    infoSection.classList.add("newLoan__confirmLoanScreen__info__section");
+    items.forEach((item) => {
+      const infoSectionItem = document.createElement("div");
+      infoSectionItem.classList.add(
+        "newLoan__confirmLoanScreen__info__sectionItem"
+      );
+      const infoSectionItemSubTitle = document.createElement("span");
+      infoSectionItemSubTitle.classList.add(
+        "newLoan__confirmLoanScreen__info__sectionItemSubtitle"
+      );
       infoSectionItemSubTitle.textContent = item.label;
-      const infoSectionItemValue = document.createElement('span');
-      infoSectionItemValue.classList.add('newLoan__confirmLoanScreen__info__sectionItemValue');
+      const infoSectionItemValue = document.createElement("span");
+      infoSectionItemValue.classList.add(
+        "newLoan__confirmLoanScreen__info__sectionItemValue"
+      );
       infoSectionItemValue.textContent = item.value;
       infoSectionItem.appendChild(infoSectionItemSubTitle);
       infoSectionItem.appendChild(infoSectionItemValue);
       infoSection.appendChild(infoSectionItem);
       infoDataContainer.appendChild(infoSection);
-    }); 
+    });
   }
 
   async render() {
+    renderer?.mount(CONFIRM_LOAN_SCREEN_ID);
     this.storage.saveCurrentForm(CONFIRM_LOAN_SCREEN_ID);
     this.screen = document.getElementById(CONFIRM_LOAN_SCREEN_ID);
     this.info = document.getElementById(ID_CONFIRM_LOAN_INFO);
@@ -682,43 +713,38 @@ class ConfirmLoan {
       this.screen.appendChild(noResultsEl);
       renderer.unmount(this.info);
     } else {
-      const title = infoHeader.querySelector('h3');
+      const title = infoHeader.querySelector("h3");
       title.textContent = confirmData.title;
-      const date = infoHeader.querySelector('p');
+      const date = infoHeader.querySelector("p");
       date.textContent = `${confirmData.fechaNego} - ${confirmData.horaPrestamo}`;
 
-      let section = [
-        { label: "Importe" , value: `$ ${confirmData.importe}` }
-      ]
+      let section = [{ label: "Importe", value: `$ ${confirmData.importe}` }];
+      this.renderInfoSection(section);
+
+      section = [{ label: "Cuenta", value: confirmData.cuenta }];
       this.renderInfoSection(section);
 
       section = [
-        { label: "Cuenta" , value: confirmData.cuenta }
-      ]
+        { label: "Nro Subcuenta", value: confirmData.subCuenta },
+        { label: "Nro Operación", value: confirmData.certificado },
+      ];
       this.renderInfoSection(section);
 
       section = [
-        { label: "Nro Subcuenta" , value: confirmData.subCuenta },
-        { label: "Nro Operación" , value: confirmData.certificado },
-      ]
-      this.renderInfoSection(section);
-    
-      section = [
-        { label: "Nro Cuotas" , value: confirmData.prestamoCuotas },
-        { label: "Valor cuotas" , value: confirmData.prestamoImpCuotas },
-      ]
+        { label: "Nro Cuotas", value: confirmData.prestamoCuotas },
+        { label: "Valor cuotas", value: confirmData.prestamoImpCuotas },
+      ];
       this.renderInfoSection(section);
 
       section = [
-        { label: "TNA" , value: confirmData.tna },
-        { label: "TEA" , value: confirmData.tea },
-        { label: "TEM" , value: confirmData.tem },
-        { label: "CFT" , value: confirmData.cft },
-      ]
+        { label: "TNA", value: confirmData.tna },
+        { label: "TEA", value: confirmData.tea },
+        { label: "TEM", value: confirmData.tem },
+        { label: "CFT", value: confirmData.cft },
+      ];
       this.renderInfoSection(section);
-
     }
-    renderer?.mount(CONFIRM_LOAN_SCREEN_ID);
+    // renderer?.mount(CONFIRM_LOAN_SCREEN_ID);
   }
 }
 
@@ -793,9 +819,10 @@ class Renderer {
 
   navigate(screenId) {
     try {
+      this.storage.saveAnotherAmount("0");
       configScreens.forEach((screen) => {
         if (screen.id === screenId) {
-          this[screen.name] = new screen.Component(this.customerId);
+          this[screen.name] = new screen.Component(this.customerId, this);
           // this.mount(screen.id);
           if (
             screen.id === SELECT_CAMPAIGN_SCREEN_ID ||
