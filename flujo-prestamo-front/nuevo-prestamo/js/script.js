@@ -119,6 +119,8 @@ const ID_LINK_VIEW_PRE_QUALIFIED =
   "id_BanCo_newLoan_selectPlan_viewPreQualified";
 const ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER =
   "id_BanCo_newLoan_selectPlan_otroMontoButtonContainer";
+const ID_SELECT_PLAN_OTRO_MONTO_TEXT =
+  "id_BanCo_newLoan_selectPlan_otroMontoText";
 const ID_CONFIRM_LOAN_INFO = "id_BanCo_newLoan_ConfirmLoan_info";
 const ID_CONFIRM_LOAN_INFO_HEADER = "id_BanCo_newLoan_ConfirmLoan_infoHeader";
 const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER =
@@ -365,15 +367,15 @@ class NewLoanStorage {
   }
 
   reset() {
-    this.saveCurrentForm('');
-    this.saveSelectedCampaign('');
-    this.saveSelectedProduct('');
-    this.saveAnotherAmount('');
-    this.saveConfirmData('')
+    this.saveCurrentForm("");
+    this.saveSelectedCampaign("");
+    this.saveSelectedProduct("");
+    this.saveAnotherAmount("");
+    this.saveConfirmData("");
   }
 }
 
-// console.log("PROPS =>", props);
+//console.log("PROPS =>", props);
 
 /***************** SELECT CAMPAIGN ***************** */
 /**
@@ -643,9 +645,14 @@ class SelectPlan {
   }
 
   async renderRecalculatedLoanPlans(amount, amountBtn) {
-    if (Number(amount.value) <= 0 || amount.value === "")
+    if (Number(amount) <= 0 || amount === "" || amount === "undefined")
       return showErrorBanner("Debe ingresar un monto válido", this.renderer);
-    this.storage.saveAnotherAmount(amount.value);
+    this.storage.saveAnotherAmount(amount);
+    const anotherAmountText = document.getElementById(
+      ID_SELECT_PLAN_OTRO_MONTO_TEXT
+    );
+    anotherAmountText.textContent = `$ ${amount}`;
+    this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
     setSpinner(SELECT_PLAN_SCREEN_ID);
@@ -656,7 +663,7 @@ class SelectPlan {
       CUIL: "",
       campaignId,
       productId,
-      amount: amount.value,
+      amount,
     });
     this.renderer.destroy(ID_SPINNER);
     if (plans?.length) {
@@ -672,6 +679,7 @@ class SelectPlan {
     const newViewPreQualifiedLink =
       removeListenersFromElement(viewPreQualifiedLink);
     newViewPreQualifiedLink.addEventListener("click", async () => {
+      this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       await this.renderPreQualifiedLoanPlans(amountBtn);
     });
     this.renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
@@ -684,6 +692,7 @@ class SelectPlan {
     this.renderer.mount(SELECT_PLAN_SCREEN_ID);
     this.storage.saveCurrentForm(SELECT_PLAN_SCREEN_ID);
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
+    this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
     const amountInput = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_FORM_INPUT
     );
@@ -691,6 +700,7 @@ class SelectPlan {
     const newAmountBtn = removeListenersFromElement(amountBtn);
     newAmountBtn.addEventListener("click", (ev) => {
       amountInput.value = "";
+      this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       this.renderer.unmount(ID_SELECT_PLAN_LIST);
     });
@@ -700,7 +710,7 @@ class SelectPlan {
     const newCalcularBtn = removeListenersFromElement(calcularBtn);
     newCalcularBtn.addEventListener("click", async (ev) => {
       ev.stopPropagation();
-      await this.renderRecalculatedLoanPlans(amountInput, newAmountBtn);
+      await this.renderRecalculatedLoanPlans(amountInput.value, newAmountBtn);
     });
     const cancelarBtn = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_CANCELAR
@@ -712,7 +722,11 @@ class SelectPlan {
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     });
 
-    if (!this.storage.anotherAmount || this.storage.anotherAmount === "0") {
+    if (
+      !this.storage.anotherAmount ||
+      this.storage.anotherAmount === "undefined" ||
+      this.storage.anotherAmount === "0"
+    ) {
       await this.renderPreQualifiedLoanPlans(newAmountBtn);
     } else {
       await this.renderRecalculatedLoanPlans(

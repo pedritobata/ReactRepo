@@ -216,6 +216,14 @@
   border: 2px solid var(--color-primary);
 }
 
+.newLoan__selectPlan__changeAmount-text {
+  display: none;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2em;
+  text-align: center;
+}
+
 .newLoan__selectPlan__changeAmount-button:hover {
   background-color: var(--color-light);
 }
@@ -234,7 +242,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 3em;
+  margin-bottom: 2.5em;
   gap: 1em;
 }
 
