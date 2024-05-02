@@ -373,7 +373,7 @@ class NewLoanStorage {
   }
 }
 
-console.log("PROPS =>", props);
+// console.log("PROPS =>", props);
 
 /***************** SELECT CAMPAIGN ***************** */
 /**
