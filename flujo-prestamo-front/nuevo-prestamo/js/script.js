@@ -1,97 +1,130 @@
 const propsFake = {
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTQ0OTM5OTUsImV4cCI6MTcxNDQ5NTc5NSwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNDQ5Mzk5NSIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjA0ZjYwL29Vdkg5SzNMdU1ORGZDWGJmMVQxTi9Lb21ucEZXSWVJT1hIYUU9Iiwic3BhLXVzZXIiOiJ5OGVQWC8xZGZQeUFGeThkd0ZLMkV2ZDc3Q2h6M3pMWTZkbkhUYjBIcndNPSIsInNwYS1rZXkiOiJuSSsyNUtPVE1TZS9QQ3Z5N0w5WUxqNm5HSjhkY3RRcWpoM0tGVzQvY2t3PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.PBrBsBJ5pVkxrPgfJ1NppT43fc_aaxuLcX0ud1uTVW_tPsx6aLwNmfGua2OHpRiDGhuJoDbkn1YwS-lycf0A41-Uubaw7nepzrDRky9EkYo_z0RD507mDt5znPmx0IKHsxq6O2KtOXELP1THN_4ZHV4HFOEmq0Pb41X6g4tvttdKYYYUMRf8LdCPKeor0-E4FZacjG4CCKVdzOHu7R4hcMOGI_8RzuK1cmpbDGw7BzuE4UZtsbUgW9gptJbKl6OahX3c5QuDGgQci2uQGyF1gLhgC4eNzSmw9krJBKwQXhJ1SDDHeEtlSz8zO5uyev6y_8IgeyEZGDwSoznZiYwd2g",
-  customerId: "1e7963eb-d36a-4847-a31c-c8629f8ccdeb",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUwMzQwOTAsImV4cCI6MTcxNTAzNTg5MCwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTAzNDA5MCIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjYwdXdCcTZxWkRtSnpoeDhRZTlyS1dpbUJVN3lzOWtUbU51N2hXVE1NRXc9Iiwic3BhLXVzZXIiOiJqMTJzRjJqT3N1UlNkVXR2cDNRWDZ2OHA1R2pWaDZpUmNjbElwaklrNGlBPSIsInNwYS1rZXkiOiJPZUQ1SFl0dDRNYmJBd3VnOStvc1EwaU90ZDA0V2J4TjRRSFdoY0U2TUh3PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.CzBKclwTWl_FR2_k0lCDre87evhyfmdhcrvNs-PrsVHD9lVTnHHNEcnQdk82HEJzzsUvWDVd6vDllMLbG80rjToiE-xecU4AIaQu-sr6RULta5q2Mqv-JgoBcULirUFmeiYF5sxqqKEB0XZfg_BSxQyrA-6WDVrrOcvxsNcwWhEinCmytQbNMBFY9-4X1MoG1G-NcZljdm-ZMBvnn3MmNktphL00RfueyZGYP6eJCfuRY--oB9M_FPqOTSzbGXldd_IQuriBQW0C1ofO3ZPkUWxGW65wwSQr6yeTYYDlvh1yvIybdFy5dHui0oq9LeirW38XZdd_Wx6nw-6XDWnvrA",
+  customerId: "6f5f2ce5-bac7-43ba-84df-4bffdf09e19a",
 };
 
-const dummyCampanas = [
-  {
-    campaignId: "219",
-    description: "PMO ADM PBCA PP1 + PASIVO + JUBNAC - FEB-JUN 2023",
-    startDate: "2023-04-15T00:00:00",
-    endDate: "2025-04-15T00:00:00",
-  },
-  {
-    campaignId: "221",
-    description: "AGUINALDO-Asalariados Enero-Junio 2023",
-    startDate: "2023-05-01T00:00:00",
-    endDate: "2025-05-01T00:00:00",
-  },
-];
+const dummyCampanas = {
+  cuil: "20045149715",
+  emailList: ["mullersofia@gmail.com"],
+  campaigns: [
+    {
+      campaignId: "219",
+      description: "PMO ADM PBCA PP1 + PASIVO + JUBNAC - FEB-JUN 2023",
+      startDate: "2023-04-15T00:00:00",
+      endDate: "2025-04-15T00:00:00",
+    },
+    {
+      campaignId: "221",
+      description: "AGUINALDO-Asalariados Enero-Junio 2023",
+      startDate: "2023-05-01T00:00:00",
+      endDate: "2025-05-01T00:00:00",
+    },
+  ],
+};
 
 const dummyProductos = [
   {
     campaignId: "219",
-    productId: "583407",
-    description: "PASIVOS",
+    productId: "642677",
+    description: "JUBNAC",
     state: "H",
     channel: "ELECTRONICO",
     branch: "99",
+    account: "1603",
+    subAccount: "1",
+    operationType: "7",
+    module: "21",
+    currency: "80",
   },
 ];
 
 const dummyRecalculo = [
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "4300.07",
-    cantidadCuotas: "24",
-    montoCuota: "498.70122356100313",
+    productId: "642677",
+    totalAmount: 130000.07,
+    installmentQuantity: 24,
+    installmentAmount: 15076.776,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "4300.07",
-    cantidadCuotas: "48",
-    montoCuota: "445.5660114420453",
+    productId: "642677",
+    totalAmount: 130000.07,
+    installmentQuantity: 48,
+    installmentAmount: 13470.389,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "4300.07",
-    cantidadCuotas: "60",
-    montoCuota: "440.78566510314687",
+    productId: "642677",
+    totalAmount: 130000.07,
+    installmentQuantity: 60,
+    installmentAmount: 13325.868,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
 ];
 
 const dummyPlanes = [
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "460200",
-    cantidadCuotas: "24",
-    montoCuota: "53371.75",
+    productId: "642677",
+    totalAmount: 190400.0,
+    installmentQuantity: 24,
+    installmentAmount: 22081.66,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "515100",
-    cantidadCuotas: "48",
-    montoCuota: "53373.79",
+    productId: "642677",
+    totalAmount: 213100.0,
+    installmentQuantity: 48,
+    installmentAmount: 22081.06,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
   {
     campaignId: "219",
-    productId: "583407",
-    montoTotal: "520600",
-    cantidadCuotas: "60",
-    montoCuota: "53364.94",
+    productId: "642677",
+    totalAmount: 215400.0,
+    installmentQuantity: 60,
+    installmentAmount: 22079.92,
+    tna: 101.0,
+    tem: 8.301369863013708,
+    tea: 163.86374594874832,
+    cft: 0.0,
   },
 ];
 
 const dummyConfirmation = {
-  title: "Préstamo precalificado",
-  fechaNego: "15-Sep-2023",
-  horaPrestamo: "8:40 AM",
-  importe: "50,000.00",
-  cuenta: "455767",
-  subCuenta: "1",
-  certificado: "517450",
-  prestamoCuotas: 24,
-  prestamoImpCuotas: "2.989,42",
-  tna: "101,00%",
-  tea: "163,86%",
-  tem: "8,30%",
-  cft: "39,67%",
+  certificate: "236658",
+  errorCode: "0",
+  errorDescription: "El prestamo no se encuentra habilitado",
+  loanDate: "2024-05-06T15:20:00",
+  amount: 190400.0,
+  accountNumber: "1603",
+  subAccountNumber: "1",
+  installmentQuantity: 24,
+  installmentAmount: 22081.66,
+  tna: 101.0,
+  tem: 8.301369863013708,
+  tea: 163.86374594874832,
+  cft: 0.0,
 };
 
 /***************** IDS ***************** */
@@ -121,6 +154,7 @@ const ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER =
   "id_BanCo_newLoan_selectPlan_otroMontoButtonContainer";
 const ID_SELECT_PLAN_OTRO_MONTO_TEXT =
   "id_BanCo_newLoan_selectPlan_otroMontoText";
+const ID_SELECT_PLAN_EMAIL_CONTAINER = "id_BanCo_newLoan_selectPlan_emailContainer";
 const ID_CONFIRM_LOAN_INFO = "id_BanCo_newLoan_ConfirmLoan_info";
 const ID_CONFIRM_LOAN_INFO_HEADER = "id_BanCo_newLoan_ConfirmLoan_infoHeader";
 const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER =
@@ -291,8 +325,13 @@ class NewLoanHTTPFetcher {
       });
       if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
       clearTimeout(idTimer); // TODO quitar esta linea!!
+      const data = await response.json();
+      if (data.statusCode && data.statusCode === 400)
+        throw new Error(`Bad request ${data.value}`);
+      if (data.length === 0)
+        throw new Error('No se obtuvo resultados');
 
-      return response.json(); // mandar areglo vacio si no se obtiene data o respuesta!!
+      return data; // mandar areglo vacio si no se obtiene data o respuesta!!
     } catch (err) {
       console.log("Error en fetcher", err);
       // TODO enviar arreglo vacio, no dummy!!!!. Quitar los if cuando ya se depliegue
@@ -311,6 +350,33 @@ class NewLoanHTTPFetcher {
       if (path.includes("confirmation")) {
         return dummyConfirmation;
       }
+
+      return [];
+    }
+  }
+
+  async post(path = "", payload) {
+    const controller = new AbortController();
+    const idTimer = setTimeout(() => controller.abort(), 20000); // TODO quitar timer!!
+
+    const strPayload = payload ? JSON.stringify(payload) : "";
+    const url = `${this.baseUrl}${path}`;
+    try {
+      const response = await fetch(url, {
+        ...this.requestOptions,
+        signal: controller.signal,
+        method: "POST",
+        body: strPayload,
+      });
+      if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
+      clearTimeout(idTimer); // TODO quitar esta linea!!
+
+      return response.json(); // mandar areglo vacio si no se obtiene data o respuesta!!
+    } catch (err) {
+      console.log("Error en fetcher", err);
+      // TODO enviar arreglo vacio, no dummy!!!!. Quitar los if cuando ya se depliegue
+
+      return dummyConfirmation;
 
       return [];
     }
@@ -342,12 +408,15 @@ class NewLoanStorage {
     return localStorage.getItem(this.buildIdentifier("campaign"));
   }
 
-  saveSelectedProduct(productId) {
-    localStorage.setItem(this.buildIdentifier("product"), productId);
+  saveSelectedProduct(product) {
+    localStorage.setItem(
+      this.buildIdentifier("product"),
+      JSON.stringify(product)
+    );
   }
 
   get selectedProduct() {
-    return localStorage.getItem(this.buildIdentifier("product"));
+    return JSON.parse(localStorage.getItem(this.buildIdentifier("product")));
   }
 
   saveAnotherAmount(amount) {
@@ -358,12 +427,23 @@ class NewLoanStorage {
     return localStorage.getItem(this.buildIdentifier("anotherAmount"));
   }
 
+  saveCustomerData(customerData) {
+    localStorage.setItem(
+      this.buildIdentifier("customerData"),
+      JSON.stringify(customerData)
+    );
+  }
+
+  get customerData() {
+    return JSON.parse(localStorage.getItem(this.buildIdentifier("customerData")));
+  }
+
   saveConfirmData(confirmData) {
-    localStorage.setItem(this.buildIdentifier("confirmData"), confirmData);
+    localStorage.setItem(this.buildIdentifier("confirmData"), JSON.stringify(confirmData));
   }
 
   get confirmData() {
-    return localStorage.getItem(this.buildIdentifier("confirmData"));
+    return JSON.parse(localStorage.getItem(this.buildIdentifier("confirmData")));
   }
 
   reset() {
@@ -372,6 +452,7 @@ class NewLoanStorage {
     this.saveSelectedProduct("");
     this.saveAnotherAmount("");
     this.saveConfirmData("");
+    this.saveCustomerData("");
   }
 }
 
@@ -409,35 +490,42 @@ class SelectCampaign {
       this.list.replaceChildren();
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
       // TODO cambiar por la real data!!
-      const campaigns = await this.fetcher.get("/campaigns/campaigns", {
-        CUIL: "",
+      const campaignsResp = await this.fetcher.get("/campaigns", {
+        customerId: propsFake.customerId,
       });
       this.renderer.destroy(ID_SPINNER);
-      const noResultsEl = document.createElement("p");
-      noResultsEl.textContent = "No se encontraron campañas disponibles";
-      if (!campaigns || !campaigns.length) {
+      if (!campaignsResp || !campaignsResp.campaigns?.length) {
+        const noResultsEl = document.createElement("p");
+        noResultsEl.textContent =
+          "No existen Campañas disponibles para el cliente";
         this.list.appendChild(noResultsEl);
       } else {
-        campaigns.forEach(({ campaignId, description, startDate, endDate }) => {
-          const campItemEl = document.createElement("li");
-          campItemEl.classList.add("newLoan__selectionScreen__listItem");
-          campItemEl.id = campaignId;
-          campItemEl.addEventListener("click", (ev) => {
-            this.storage.saveSelectedCampaign(campItemEl.id);
-            this.renderer.navigate(SELECT_PRODUCT_SCREEN_ID);
-          });
-          const titleEl = document.createElement("h3");
-          titleEl.textContent = description;
-          campItemEl.appendChild(titleEl);
-          const startDateEl = document.createElement("p");
-          startDateEl.textContent = `Fecha inicio: ${formatDate(startDate)}`;
-          campItemEl.appendChild(startDateEl);
-          const endDateEl = document.createElement("p");
-          endDateEl.textContent = `Fecha fin: ${formatDate(endDate)}`;
-          campItemEl.appendChild(endDateEl);
-
-          this.list.appendChild(campItemEl);
+        this.storage.saveCustomerData({
+          cuil: campaignsResp.cuil,
+          emailList: campaignsResp.emailList,
         });
+        campaignsResp.campaigns.forEach(
+          ({ campaignId, description, startDate, endDate }) => {
+            const campItemEl = document.createElement("li");
+            campItemEl.classList.add("newLoan__selectionScreen__listItem");
+            campItemEl.id = campaignId;
+            campItemEl.addEventListener("click", (ev) => {
+              this.storage.saveSelectedCampaign(campItemEl.id);
+              this.renderer.navigate(SELECT_PRODUCT_SCREEN_ID);
+            });
+            const titleEl = document.createElement("h3");
+            titleEl.textContent = description;
+            campItemEl.appendChild(titleEl);
+            const startDateEl = document.createElement("p");
+            startDateEl.textContent = `Fecha inicio: ${formatDate(startDate)}`;
+            campItemEl.appendChild(startDateEl);
+            const endDateEl = document.createElement("p");
+            endDateEl.textContent = `Fecha fin: ${formatDate(endDate)}`;
+            campItemEl.appendChild(endDateEl);
+
+            this.list.appendChild(campItemEl);
+          }
+        );
       }
     } catch (err) {
       console.log("Error al renderizar Select campaigns", err);
@@ -478,21 +566,23 @@ class SelectProduct {
     const campaignId = this.storage.selectedCampaign;
     // TODO agregar el param id de campaña a la petición. Usar la data real
     const products = await this.fetcher.get("/campaign/products", {
-      CUIL: "",
+      CUIL: this.storage.customerData.cuil,
       campaignId,
     });
     this.renderer.destroy(ID_SPINNER);
-    const noResultsEl = document.createElement("p");
-    noResultsEl.textContent = "No se encontraron productos disponibles";
     if (!products || !products.length) {
+      const noResultsEl = document.createElement("p");
+      noResultsEl.textContent =
+        "No existen Préstamos Precalificados Electrónicos para el cliente";
       this.list.appendChild(noResultsEl);
     } else {
-      products.forEach(({ productId, description, state, channel, branch }) => {
+      products.forEach((product) => {
+        const { productId, description, state, channel, branch } = product;
         const prodItemEl = document.createElement("li");
         prodItemEl.classList.add("newLoan__selectionScreen__listItem");
         prodItemEl.id = productId;
         prodItemEl.addEventListener("click", (ev) => {
-          this.storage.saveSelectedProduct(prodItemEl.id);
+          this.storage.saveSelectedProduct(product);
           this.renderer.navigate(SELECT_PLAN_SCREEN_ID);
         });
         const titleEl = document.createElement("h3");
@@ -540,91 +630,123 @@ class SelectPlan {
 
   renderPlansList(plans) {
     this.renderer.mount(ID_SELECT_PLAN_LIST);
-    const noResultsEl = document.createElement("p");
-    noResultsEl.textContent = "No se encontraron planes disponibles";
     if (!plans || !plans.length) {
+      const noResultsEl = document.createElement("p");
+      noResultsEl.textContent = "No se encontraron planes disponibles";
       this.list.appendChild(noResultsEl);
     } else {
+      const { branch, account, subAccount, operationType, module, currency } =
+        this.storage.selectedProduct;
+      // logica para mostrar modal solicitando email si el cliente no lo tuviera
+      this.renderer.mount(ID_SELECT_PLAN_EMAIL_CONTAINER);
+
+
       // TODO realizar el mapeo real!!!
-      plans.forEach(({ productId, cantidadCuotas, montoTotal, montoCuota }) => {
-        const planItemEl = document.createElement("li");
-        planItemEl.classList.add("newLoan__selectionScreen__listItem");
-        planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
-        planItemEl.id = productId;
-        planItemEl.addEventListener("click", async (ev) => {
-          setSpinner(ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER);
-          planItemEl.classList.add("newLoan__selectPlan__listItem-selected");
-          this.list.childNodes.forEach((child) =>
-            child.classList.add("banCo-newLoan-unclickable")
-          );
-          const confirmationResp = await this.getLoanConfirmation(
-            planItemEl.id
-          );
-          this.renderer.destroy(ID_SPINNER);
-          if (confirmationResp.codError === "0") {
-            // exito
-            this.storage.saveConfirmData(JSON.stringify(confirmationResp));
-            this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
-          } else {
-            showErrorBanner(
-              "Error de confirmación del préstamo, codigo" +
-                confirmationResp.codError,
-              this.renderer
-            );
-            planItemEl.classList.remove(
-              "newLoan__selectPlan__listItem-selected"
-            );
+      plans.forEach(
+        ({
+          productId,
+          installmentQuantity,
+          totalAmount,
+          installmentAmount,
+          campaignId,
+          tna,
+          tem,
+          tea,
+          cft,
+        }) => {
+          const planItemEl = document.createElement("li");
+          planItemEl.classList.add("newLoan__selectionScreen__listItem");
+          planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
+          planItemEl.id = productId;
+          planItemEl.addEventListener("click", async (ev) => {
+            setSpinner(ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER);
+            planItemEl.classList.add("newLoan__selectPlan__listItem-selected");
             this.list.childNodes.forEach((child) =>
-              child.classList.remove("banCo-newLoan-unclickable")
+              child.classList.add("banCo-newLoan-unclickable")
             );
-          }
-        });
+            // modal tambien para confirmar que se quiere solicitar el plan elegido
 
-        const amountEl = document.createElement("span");
-        amountEl.classList.add("newLoan__selectionScreen__listItemPlan-amount");
-        amountEl.textContent = `${formatAmount(montoTotal)}`;
-        planItemEl.appendChild(amountEl);
+            const confirmationResp = await this.getLoanConfirmation({
+              InstallmentQuantity: installmentQuantity,
+              InstallmentAmount: installmentAmount,
+              TNA: tna,
+              TEM: tem,
+              TEA: tea,
+              cft,
+              Branch: branch,
+              AccountNumber: account,
+              SubAccountNumber: subAccount,
+              OperationType: operationType,
+              Module: module,
+              Currency: currency,
+              Amount: totalAmount,
+              CampaignId: campaignId,
+              ProductoId: productId,
+            });
+            this.renderer.destroy(ID_SPINNER);
+            if (confirmationResp.errorCode === "0") {
+              // exito
+              this.storage.saveConfirmData(confirmationResp);
+              this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
+            } else {
+              showErrorBanner(
+                "Error de confirmación del préstamo, codigo" +
+                  confirmationResp.errorCode,
+                this.renderer
+              );
+              planItemEl.classList.remove(
+                "newLoan__selectPlan__listItem-selected"
+              );
+              this.list.childNodes.forEach((child) =>
+                child.classList.remove("banCo-newLoan-unclickable")
+              );
+            }
+          });
 
-        const installmentsContainer = document.createElement("p");
-        installmentsContainer.classList.add(
-          "newLoan__selectionScreen__listItemPlan-installmentsContainer"
-        );
-        const installmentsQty = document.createElement("span");
-        installmentsQty.classList.add(
-          "newLoan__selectionScreen__listItemPlan-installmentsQty"
-        );
-        installmentsQty.textContent = `${cantidadCuotas} Cuotas de`;
-        installmentsContainer.appendChild(installmentsQty);
-        const installmentsAmount = document.createElement("span");
-        installmentsAmount.classList.add(
-          "newLoan__selectionScreen__listItemPlan-installmentsAmount"
-        );
-        installmentsAmount.textContent = `${formatAmount(montoCuota)}`;
-        installmentsContainer.appendChild(installmentsAmount);
+          const amountEl = document.createElement("span");
+          amountEl.classList.add(
+            "newLoan__selectionScreen__listItemPlan-amount"
+          );
+          amountEl.textContent = `${formatAmount(totalAmount)}`;
+          planItemEl.appendChild(amountEl);
 
-        planItemEl.appendChild(installmentsContainer);
-        this.list.appendChild(planItemEl);
-      });
+          const installmentsContainer = document.createElement("p");
+          installmentsContainer.classList.add(
+            "newLoan__selectionScreen__listItemPlan-installmentsContainer"
+          );
+          const installmentsQty = document.createElement("span");
+          installmentsQty.classList.add(
+            "newLoan__selectionScreen__listItemPlan-installmentsQty"
+          );
+          installmentsQty.textContent = `${installmentQuantity} Cuotas de`;
+          installmentsContainer.appendChild(installmentsQty);
+          const installmentsAmount = document.createElement("span");
+          installmentsAmount.classList.add(
+            "newLoan__selectionScreen__listItemPlan-installmentsAmount"
+          );
+          installmentsAmount.textContent = `${formatAmount(installmentAmount)}`;
+          installmentsContainer.appendChild(installmentsAmount);
+
+          planItemEl.appendChild(installmentsContainer);
+          this.list.appendChild(planItemEl);
+        }
+      );
     }
   }
 
-  async getLoanConfirmation(planId) {
-    const confirmation = await this.fetcher.get(
-      "confirmation",
-      {} // TODO mapear servicio de confirmación!!!
+  async getLoanConfirmation(payload) {
+    const confirmation = await this.fetcher.post(
+      "",
+      payload // TODO mapear servicio de confirmación!!!
     );
-    const temp = dummyConfirmation;
-    if (temp.cuenta) {
-      return { ...temp, codError: "0" };
-    } else {
-      return { ...temp, codError: "1" };
-    }
+
+    return confirmation;
   }
 
   async renderPreQualifiedLoanPlans(amountBtn) {
     this.storage.saveAnotherAmount("0");
     const campaignId = this.storage.selectedCampaign;
-    const productId = this.storage.selectedProduct;
+    const { productId } = this.storage.selectedProduct;
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     this.renderer.unmount(ID_LINK_VIEW_PRE_QUALIFIED);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
@@ -632,7 +754,7 @@ class SelectPlan {
     // TODO agregar el param id del plan a la petición. Usar data real
     setSpinner(SELECT_PLAN_SCREEN_ID);
     const plans = await this.fetcher.get("/campaign/product/plans", {
-      CUIL: "",
+      CUIL: this.storage.customerData.cuil,
       campaignId,
       productId,
     });
@@ -657,10 +779,10 @@ class SelectPlan {
     this.list.replaceChildren();
     setSpinner(SELECT_PLAN_SCREEN_ID);
     const campaignId = this.storage.selectedCampaign;
-    const productId = this.storage.selectedProduct;
+    const productId = this.storage.selectedProduct.productId;
     // TODO agregar el param id del plan y el amount.value a la petición. Usar data real
     const plans = await this.fetcher.get("/campaign/product/recalculate", {
-      CUIL: "",
+      CUIL: this.storage.customerData.cuil,
       campaignId,
       productId,
       amount,
@@ -683,9 +805,7 @@ class SelectPlan {
       await this.renderPreQualifiedLoanPlans(amountBtn);
     });
     this.renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
-    this.renderPlansList(
-      plans.map((plan) => ({ ...plan, description: plan.code }))
-    );
+    this.renderPlansList(plans);
   }
 
   async render() {
@@ -796,7 +916,7 @@ class ConfirmLoan {
     this.screen = document.getElementById(CONFIRM_LOAN_SCREEN_ID);
     this.info = document.getElementById(ID_CONFIRM_LOAN_INFO);
     const infoHeader = document.getElementById(ID_CONFIRM_LOAN_INFO_HEADER);
-    const confirmData = JSON.parse(this.storage.confirmData);
+    const confirmData = this.storage.confirmData;
     const noResultsEl = document.createElement("p");
     noResultsEl.textContent = "No se pudo obtener la data de confirmación";
     if (!confirmData || Object.keys(confirmData).length === 0) {
@@ -804,25 +924,27 @@ class ConfirmLoan {
       this.renderer.unmount(this.info);
     } else {
       const title = infoHeader.querySelector("h3");
-      title.textContent = confirmData.title;
+      title.textContent = "Préstamo precalificado";
       const date = infoHeader.querySelector("p");
-      date.textContent = `${confirmData.fechaNego} - ${confirmData.horaPrestamo}`;
+      date.textContent = `${formatDate(confirmData.loanDate)} - ${
+        confirmData.loanDate.split("T")[1]
+      }`;
 
-      let section = [{ label: "Importe", value: `$ ${confirmData.importe}` }];
+      let section = [{ label: "Importe", value: `$ ${confirmData.amount}` }];
       this.renderInfoSection(section);
 
-      section = [{ label: "Cuenta", value: confirmData.cuenta }];
+      section = [{ label: "Cuenta", value: confirmData.accountNumber }];
       this.renderInfoSection(section);
 
       section = [
-        { label: "Nro Subcuenta", value: confirmData.subCuenta },
-        { label: "Nro Operación", value: confirmData.certificado },
+        { label: "Nro Subcuenta", value: confirmData.subAccountNumber },
+        { label: "Nro Operación", value: confirmData.certificate },
       ];
       this.renderInfoSection(section);
 
       section = [
-        { label: "Nro Cuotas", value: confirmData.prestamoCuotas },
-        { label: "Valor cuotas", value: confirmData.prestamoImpCuotas },
+        { label: "Nro Cuotas", value: confirmData.installmentQuantity },
+        { label: "Valor cuotas", value: confirmData.installmentAmount },
       ];
       this.renderInfoSection(section);
 

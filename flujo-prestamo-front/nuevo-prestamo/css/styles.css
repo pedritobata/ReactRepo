@@ -68,7 +68,7 @@
 .newLoan__errorBanner > div > p {
   font-size: 0.92em;
   margin: 0;
-  line-height: 1.2
+  line-height: 1.2;
 }
 
 /************ UTILS **************/
@@ -222,6 +222,31 @@
   font-weight: bold;
   font-size: 2em;
   text-align: center;
+}
+
+.newLoan__selectPlan__emailContainer {
+  display: none;
+  margin: 1em auto 3em;
+  text-align: center;
+}
+
+.newLoan__selectPlan__emailContainer > label {
+  color: var(--color-primary);
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.newLoan__selectPlan__emailContainer > p {
+  color: var(--color-danger);
+  font-weight: 400;
+  margin-top: 0.5em;
+}
+
+.newLoan__selectPlan__emailContainer > label > input {
+  font-size: 0.85em;
+  min-width: 18%;
+  padding: 6px 8px;
+  margin-left: 10px;
 }
 
 .newLoan__selectPlan__changeAmount-button:hover {
