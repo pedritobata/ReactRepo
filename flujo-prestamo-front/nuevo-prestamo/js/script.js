@@ -113,7 +113,7 @@ const dummyPlanes = [
 
 const dummyConfirmation = {
   certificate: "236658",
-  errorCode: "0",
+  errorCode: "1",
   errorDescription: "El prestamo no se encuentra habilitado",
   loanDate: "2024-05-06T15:20:00",
   amount: 190400.0,
@@ -154,11 +154,17 @@ const ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER =
   "id_BanCo_newLoan_selectPlan_otroMontoButtonContainer";
 const ID_SELECT_PLAN_OTRO_MONTO_TEXT =
   "id_BanCo_newLoan_selectPlan_otroMontoText";
-const ID_SELECT_PLAN_EMAIL_CONTAINER = "id_BanCo_newLoan_selectPlan_emailContainer";
+const ID_SELECT_PLAN_EMAIL_CONTAINER =
+  "id_BanCo_newLoan_selectPlan_emailContainer";
 const ID_CONFIRM_LOAN_INFO = "id_BanCo_newLoan_ConfirmLoan_info";
 const ID_CONFIRM_LOAN_INFO_HEADER = "id_BanCo_newLoan_ConfirmLoan_infoHeader";
 const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER =
   "id_BanCo_newLoan_ConfirmLoan_infoDataContainer";
+
+const ID_MODAL_CONTAINER = "id_BanCo_newLoan_modal";
+const ID_MODAL_BUTTON_CANCEL = "id_BanCo_newLoan_modal_cancelar";
+const ID_MODAL_BUTTON_ACCEPT = "id_BanCo_newLoan_modal_aceptar";
+const ID_BACKDROP = "id_BanCo_newLoan_backdrop";
 
 const ID_ERROR_BANNER = "id_BanCo_newLoan_errorBanner";
 const ID_SPINNER_TEMPLATE = "id_BanCo_newLoan_spinnerTemplate";
@@ -185,11 +191,11 @@ function setSpinner(parentId, cssClasses) {
   }
 }
 
-function showErrorBanner(message, renderer) {
+function showErrorBanner(message, renderer, duration = 3000) {
   const timer = setTimeout(() => {
     renderer.unmount(ID_ERROR_BANNER);
     if (timer) clearInterval(timer);
-  }, 4500);
+  }, duration);
   const closeBtn = document.querySelector(`#${ID_ERROR_BANNER} div span`);
   const newCloseBtn = removeListenersFromElement(closeBtn);
   newCloseBtn.addEventListener("click", () => {
@@ -199,6 +205,20 @@ function showErrorBanner(message, renderer) {
   const errorMessage = document.querySelector(`#${ID_ERROR_BANNER} div p`);
   errorMessage.textContent = message;
   renderer.mount(ID_ERROR_BANNER);
+}
+
+function showModal(renderer) {
+  renderer.mount(ID_BACKDROP);
+  renderer.mount(ID_MODAL_CONTAINER);
+
+  const cancelBtn = document.getElementById(ID_MODAL_BUTTON_CANCEL);
+  const newCancelBtn = removeListenersFromElement(cancelBtn);
+  newCancelBtn.addEventListener("click", () => {
+    renderer.unmount(ID_BACKDROP);
+    renderer.unmount(ID_MODAL_CONTAINER);
+  });
+  const acceptBtn = document.getElementById(ID_MODAL_BUTTON_ACCEPT);
+  const newAcceptBtn = removeListenersFromElement(acceptBtn);
 }
 
 /**
@@ -285,6 +305,12 @@ function formatNumber(
   return s.join(dec);
 }
 
+function validateEmail(email) {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+}
+
 /***************** SERVICES ***************** */
 class NewLoanHTTPFetcher {
   baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
@@ -314,7 +340,7 @@ class NewLoanHTTPFetcher {
 
   async get(path, params) {
     const controller = new AbortController();
-    const idTimer = setTimeout(() => controller.abort(), 20000); // TODO quitar timer!!
+    const idTimer = setTimeout(() => controller.abort(), 3000); // TODO quitar timer!!
 
     const queryParams = params ? `?${this.encodeQueryData(params)}` : "";
     const url = `${this.baseUrl}${path}${queryParams}`;
@@ -328,8 +354,7 @@ class NewLoanHTTPFetcher {
       const data = await response.json();
       if (data.statusCode && data.statusCode === 400)
         throw new Error(`Bad request ${data.value}`);
-      if (data.length === 0)
-        throw new Error('No se obtuvo resultados');
+      if (data.length === 0) throw new Error("No se obtuvo resultados");
 
       return data; // mandar areglo vacio si no se obtiene data o respuesta!!
     } catch (err) {
@@ -435,15 +460,22 @@ class NewLoanStorage {
   }
 
   get customerData() {
-    return JSON.parse(localStorage.getItem(this.buildIdentifier("customerData")));
+    return JSON.parse(
+      localStorage.getItem(this.buildIdentifier("customerData"))
+    );
   }
 
   saveConfirmData(confirmData) {
-    localStorage.setItem(this.buildIdentifier("confirmData"), JSON.stringify(confirmData));
+    localStorage.setItem(
+      this.buildIdentifier("confirmData"),
+      JSON.stringify(confirmData)
+    );
   }
 
   get confirmData() {
-    return JSON.parse(localStorage.getItem(this.buildIdentifier("confirmData")));
+    return JSON.parse(
+      localStorage.getItem(this.buildIdentifier("confirmData"))
+    );
   }
 
   reset() {
@@ -635,11 +667,47 @@ class SelectPlan {
       noResultsEl.textContent = "No se encontraron planes disponibles";
       this.list.appendChild(noResultsEl);
     } else {
-      const { branch, account, subAccount, operationType, module, currency } =
-        this.storage.selectedProduct;
-      // logica para mostrar modal solicitando email si el cliente no lo tuviera
-      this.renderer.mount(ID_SELECT_PLAN_EMAIL_CONTAINER);
+      const {
+        branch,
+        account,
+        subAccount,
+        operationType,
+        module,
+        currency,
+      } = this.storage.selectedProduct;
+      let isValidEmail = false;
+      // mostrar email si ya existe o solicitarlo si no
+      const email = this.storage.customerData.emailList[0];
+      const emailContainerEl = this.renderer.mount(
+        ID_SELECT_PLAN_EMAIL_CONTAINER
+      );
+      const emailLabelEl = emailContainerEl?.querySelector("label");
+      const emailInputEl = emailContainerEl?.querySelector("label > input");
+      const emailErrorMsgEl = emailContainerEl?.querySelector("p");
+      if (email) {
+        emailLabelEl.childNodes[0].textContent = "";
+        emailInputEl.disabled = true;
+        emailInputEl.value = email;
+        this.renderer.hide(emailErrorMsgEl);
+        isValidEmail = true;
+      }
+      const newEmailInputEl = removeListenersFromElement(emailInputEl);
+      newEmailInputEl?.addEventListener("keyup", (ev) => {
+        const value = ev.target.value;
+        if (value === "") {
+          isValidEmail = false;
+          this.renderer.hide(emailErrorMsgEl);
+          return;
+        }
+        if (!validateEmail(value)) {
+          isValidEmail = false;
+          this.renderer.show(emailErrorMsgEl);
+          return;
+        }
 
+        this.renderer.hide(emailErrorMsgEl);
+        isValidEmail = true;
+      });
 
       // TODO realizar el mapeo real!!!
       plans.forEach(
@@ -659,13 +727,22 @@ class SelectPlan {
           planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
           planItemEl.id = productId;
           planItemEl.addEventListener("click", async (ev) => {
-            setSpinner(ID_SELECT_PLAN_OTRO_MONTO_BUTTON_CONTAINER);
+            if (!isValidEmail) {
+              newEmailInputEl.focus();
+              return showErrorBanner(
+                "Igrese un email válido",
+                this.renderer,
+                2100
+              );
+            }
             planItemEl.classList.add("newLoan__selectPlan__listItem-selected");
             this.list.childNodes.forEach((child) =>
               child.classList.add("banCo-newLoan-unclickable")
             );
             // modal tambien para confirmar que se quiere solicitar el plan elegido
+            return showModal(this.renderer);
 
+            setSpinner(ID_SELECT_PLAN_EMAIL_CONTAINER);
             const confirmationResp = await this.getLoanConfirmation({
               InstallmentQuantity: installmentQuantity,
               InstallmentAmount: installmentAmount,
@@ -690,9 +767,9 @@ class SelectPlan {
               this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
             } else {
               showErrorBanner(
-                "Error de confirmación del préstamo, codigo" +
-                  confirmationResp.errorCode,
-                this.renderer
+                `Error de confirmación del préstamo, codigo ${confirmationResp.errorCode}`,
+                this.renderer,
+                5000
               );
               planItemEl.classList.remove(
                 "newLoan__selectPlan__listItem-selected"
@@ -770,11 +847,11 @@ class SelectPlan {
     if (Number(amount) <= 0 || amount === "" || amount === "undefined")
       return showErrorBanner("Debe ingresar un monto válido", this.renderer);
     this.storage.saveAnotherAmount(amount);
-    const anotherAmountText = document.getElementById(
+    const anotherAmountText = this.renderer.mount(
       ID_SELECT_PLAN_OTRO_MONTO_TEXT
     );
     anotherAmountText.textContent = `$ ${amount}`;
-    this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
+
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
     setSpinner(SELECT_PLAN_SCREEN_ID);
@@ -798,8 +875,9 @@ class SelectPlan {
     const viewPreQualifiedLink = document.getElementById(
       ID_LINK_VIEW_PRE_QUALIFIED
     );
-    const newViewPreQualifiedLink =
-      removeListenersFromElement(viewPreQualifiedLink);
+    const newViewPreQualifiedLink = removeListenersFromElement(
+      viewPreQualifiedLink
+    );
     newViewPreQualifiedLink.addEventListener("click", async () => {
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       await this.renderPreQualifiedLoanPlans(amountBtn);
@@ -823,6 +901,7 @@ class SelectPlan {
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       this.renderer.unmount(ID_SELECT_PLAN_LIST);
+      this.renderer.unmount(ID_SELECT_PLAN_EMAIL_CONTAINER);
     });
     const calcularBtn = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_CALCULAR
@@ -911,9 +990,9 @@ class ConfirmLoan {
   async render() {
     const headerTitle = document.getElementById(ID_HEADER_TITLE);
     headerTitle.textContent = "Ticket préstamo";
-    this.renderer.mount(CONFIRM_LOAN_SCREEN_ID);
+
     this.storage.saveCurrentForm(CONFIRM_LOAN_SCREEN_ID);
-    this.screen = document.getElementById(CONFIRM_LOAN_SCREEN_ID);
+    this.screen = this.renderer.mount(CONFIRM_LOAN_SCREEN_ID);
     this.info = document.getElementById(ID_CONFIRM_LOAN_INFO);
     const infoHeader = document.getElementById(ID_CONFIRM_LOAN_INFO_HEADER);
     const confirmData = this.storage.confirmData;
@@ -1067,6 +1146,8 @@ class Renderer {
     } catch (err) {
       console.log("Error al renderizar elemento", err);
     }
+
+    return currentEl;
   }
 
   unmount(element) {
@@ -1081,6 +1162,38 @@ class Renderer {
       currentEl.style.display = "none";
     } catch (err) {
       console.log("Error al desmontar elemento", err);
+    }
+  }
+
+  hide(element) {
+    let currentEl;
+    try {
+      if (typeof element === "string") {
+        currentEl = document.getElementById(element);
+      } else {
+        currentEl = element;
+      }
+
+      currentEl.classList.remove("banCo-newLoan-visible");
+      currentEl.classList.add("banCo-newLoan-hidden");
+    } catch (err) {
+      console.log("Error al ocultar elemento", err);
+    }
+  }
+
+  show(element) {
+    let currentEl;
+    try {
+      if (typeof element === "string") {
+        currentEl = document.getElementById(element);
+      } else {
+        currentEl = element;
+      }
+
+      currentEl.classList.remove("banCo-newLoan-hidden");
+      currentEl.classList.add("banCo-newLoan-visible");
+    } catch (err) {
+      console.log("Error al mostrar elemento", err);
     }
   }
 

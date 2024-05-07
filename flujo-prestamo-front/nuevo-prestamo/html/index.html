@@ -17,6 +17,30 @@
         </h1>
       </header>
 
+      <!-- Modal -->
+      <div id="id_BanCo_newLoan_backdrop" class="banCo-newLoan-backdrop"></div>
+      <div id="id_BanCo_newLoan_modal" class="banCo-newLoan-modalContainer">
+        <div class="banCo-newLoan-modalContent">
+          <div class="newLoan__selectPlan__newAmount-buttonsContainer">
+            <button
+              type="button"
+              id="id_BanCo_newLoan_modal_cancelar"
+              class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnCancelar"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              id="id_BanCo_newLoan_modal_aceptar"
+              class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnAceptar"
+            >
+              Aceptar
+            </button>
+          </div>
+        </div>
+       
+      </div>
+
       <!-- ErrorBanner -->
       <div
         id="id_BanCo_newLoan_errorBanner"
@@ -118,7 +142,7 @@
         >
           <label>
             Ingrese email
-            <input type="email" />
+            <input type="text" value="" />
           </label>
           <p>Email inválido</p>
         </div>
