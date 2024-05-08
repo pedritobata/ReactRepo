@@ -387,7 +387,7 @@ input[type="number"] {
 .newLoan__confirmLoanScreen__info {
   width: 60%;
   border: 1px solid var(--color-primary);
-  margin: 3em auto;
+  margin: 2em auto;
 }
 
 .newLoan__confirmLoanScreen__info__header {
@@ -556,9 +556,49 @@ input[type="number"] {
 .banCo-newLoan-modalContent {
   display: flex;
   flex-direction: column;
-  padding: 1em 3em;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0 3em;
+  height: 100%;
 }
 
+.banCo-newLoan-modal-customContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.newLoan__modalContent__amount {
+  text-align: center;
+  font-size: 1.6em;
+  font-weight: bold;
+}
+
+.newLoan__modalContent__installments {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.newLoan__modalContent__installments > span:nth-child(1) { 
+  font-weight: bold;
+  margin-right: 3px;
+}
+
+.newLoan__modalContent__installments > span:nth-child(2) { 
+  font-weight: bold;
+  color: var(--color-success);
+  margin-left: 3px;
+}
+
+.banCo-newLoan-modalMessage {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-primary);
+  font-weight: bold;
+}
 
 /************ LEFT ARROW **************/
 .newLoan__arrow-left {

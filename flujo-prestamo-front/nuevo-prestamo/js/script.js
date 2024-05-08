@@ -1,7 +1,7 @@
 const propsFake = {
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUwMzQwOTAsImV4cCI6MTcxNTAzNTg5MCwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTAzNDA5MCIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjYwdXdCcTZxWkRtSnpoeDhRZTlyS1dpbUJVN3lzOWtUbU51N2hXVE1NRXc9Iiwic3BhLXVzZXIiOiJqMTJzRjJqT3N1UlNkVXR2cDNRWDZ2OHA1R2pWaDZpUmNjbElwaklrNGlBPSIsInNwYS1rZXkiOiJPZUQ1SFl0dDRNYmJBd3VnOStvc1EwaU90ZDA0V2J4TjRRSFdoY0U2TUh3PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.CzBKclwTWl_FR2_k0lCDre87evhyfmdhcrvNs-PrsVHD9lVTnHHNEcnQdk82HEJzzsUvWDVd6vDllMLbG80rjToiE-xecU4AIaQu-sr6RULta5q2Mqv-JgoBcULirUFmeiYF5sxqqKEB0XZfg_BSxQyrA-6WDVrrOcvxsNcwWhEinCmytQbNMBFY9-4X1MoG1G-NcZljdm-ZMBvnn3MmNktphL00RfueyZGYP6eJCfuRY--oB9M_FPqOTSzbGXldd_IQuriBQW0C1ofO3ZPkUWxGW65wwSQr6yeTYYDlvh1yvIybdFy5dHui0oq9LeirW38XZdd_Wx6nw-6XDWnvrA",
-  customerId: "6f5f2ce5-bac7-43ba-84df-4bffdf09e19a",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUxOTMyODksImV4cCI6MTcxNTE5NTA4OSwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTE5MzI4OSIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6InM1N2lVUUxpazQyalBLNFlycnp1ZzdSVUliMVQzc05pVEZyajhCK3pDeVk9Iiwic3BhLXVzZXIiOiIrT0V1MFZ4NkJXUVJDbXRybk9zckJaOEVKYlU4a2hYWGVHYkRMcFFnY2EwPSIsInNwYS1rZXkiOiJqNTRDL25FeWkvdHhSNXlrdnQyZk56R0NzMHNROGtsQWZWRm9Zc3E4Mm44PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.r095n2hgKpPAelO3eOrINWRTiLRnQlti8ZeY3C4J1eJiFZFNEDZSAFiAP4k1jyaVj84ebCH0KJ1NBzujkUgmBqo_t9ApMhu_X51d1FdXqzQiCDHxjMkfzVfxe4HiwTRnfnLkKiPc3reNXnDz2Y5pkNud_UxObVDrczjhnUhmYyv3XAr500QyOJDElHBo9DzMvu6VEPXrfD9Tg_YpqMHSZbf080Hg2xDoWtUjj5YjRS02aGQbXPmus-foY8CAqJqsBK_Rqnv6DNpinPm7fd-HDVh6Wk7ghVBxPM1PV1c2OqdTOIZWYGFBmWxvTAXkJuvOwvJcVF2QooZaKkXypDvEmA",
+  customerId: "a9063427-3d39-435a-bb91-b80713d4e008",
 };
 
 const dummyCampanas = {
@@ -113,7 +113,7 @@ const dummyPlanes = [
 
 const dummyConfirmation = {
   certificate: "236658",
-  errorCode: "1",
+  errorCode: "0",
   errorDescription: "El prestamo no se encuentra habilitado",
   loanDate: "2024-05-06T15:20:00",
   amount: 190400.0,
@@ -164,6 +164,9 @@ const ID_CONFIRM_LOAN_INFO_DATA_CONTAINER =
 const ID_MODAL_CONTAINER = "id_BanCo_newLoan_modal";
 const ID_MODAL_BUTTON_CANCEL = "id_BanCo_newLoan_modal_cancelar";
 const ID_MODAL_BUTTON_ACCEPT = "id_BanCo_newLoan_modal_aceptar";
+const ID_MODAL_MESSAGE = "id_BanCo_newLoan_modal_message";
+const ID_MODAL_CONTENT = "id_BanCo_newLoan_modal_content";
+const ID_MODAL_CUSTOM_CONTENT = "id_BanCo_newLoan_modal_customContent";
 const ID_BACKDROP = "id_BanCo_newLoan_backdrop";
 
 const ID_ERROR_BANNER = "id_BanCo_newLoan_errorBanner";
@@ -207,18 +210,34 @@ function showErrorBanner(message, renderer, duration = 3000) {
   renderer.mount(ID_ERROR_BANNER);
 }
 
-function showModal(renderer) {
+function showModal(
+  renderer,
+  { message, content, onAccepted = () => {}, onCanceled = () => {} }
+) {
   renderer.mount(ID_BACKDROP);
   renderer.mount(ID_MODAL_CONTAINER);
+  const messageEl = document.getElementById(ID_MODAL_MESSAGE);
+  messageEl.textContent = message;
+  if (content) {
+    const contentEl = document.getElementById(ID_MODAL_CUSTOM_CONTENT);
+    contentEl.replaceChildren();
+    contentEl.appendChild(content);
+  }
 
   const cancelBtn = document.getElementById(ID_MODAL_BUTTON_CANCEL);
   const newCancelBtn = removeListenersFromElement(cancelBtn);
-  newCancelBtn.addEventListener("click", () => {
+  newCancelBtn.addEventListener("click", async (ev) => {
     renderer.unmount(ID_BACKDROP);
     renderer.unmount(ID_MODAL_CONTAINER);
+    await onCanceled(ev);
   });
   const acceptBtn = document.getElementById(ID_MODAL_BUTTON_ACCEPT);
   const newAcceptBtn = removeListenersFromElement(acceptBtn);
+  newAcceptBtn.addEventListener("click", async (ev) => {
+    renderer.unmount(ID_BACKDROP);
+    renderer.unmount(ID_MODAL_CONTAINER);
+    await onAccepted(ev);
+  });
 }
 
 /**
@@ -339,28 +358,30 @@ class NewLoanHTTPFetcher {
   }
 
   async get(path, params) {
-    const controller = new AbortController();
-    const idTimer = setTimeout(() => controller.abort(), 3000); // TODO quitar timer!!
+    /* const controller = new AbortController();
+    const idTimer = setTimeout(() => controller.abort(), 3000); */
 
     const queryParams = params ? `?${this.encodeQueryData(params)}` : "";
     const url = `${this.baseUrl}${path}${queryParams}`;
     try {
       const response = await fetch(url, {
         ...this.requestOptions,
-        signal: controller.signal,
+        // signal: controller.signal,
       });
       if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
-      clearTimeout(idTimer); // TODO quitar esta linea!!
+      // clearTimeout(idTimer);
       const data = await response.json();
-      if (data.statusCode && data.statusCode === 400)
-        throw new Error(`Bad request ${data.value}`);
-      if (data.length === 0) throw new Error("No se obtuvo resultados");
+      if (
+        (typeof data === "object" && Object.keys(data).length === 0) ||
+        (Array.isArray(data) && data.length === 0)
+      ) {
+        throw new Error("No se obtuvo resultados");
+      }
 
-      return data; // mandar areglo vacio si no se obtiene data o respuesta!!
+      return data;
     } catch (err) {
       console.log("Error en fetcher", err);
-      // TODO enviar arreglo vacio, no dummy!!!!. Quitar los if cuando ya se depliegue
-      if (path.includes("campaigns")) {
+      /* if (path.includes("campaigns")) {
         return dummyCampanas;
       }
       if (path.includes("products")) {
@@ -374,36 +395,40 @@ class NewLoanHTTPFetcher {
       }
       if (path.includes("confirmation")) {
         return dummyConfirmation;
-      }
+      } */
 
-      return [];
+      return null;
     }
   }
 
   async post(path = "", payload) {
-    const controller = new AbortController();
-    const idTimer = setTimeout(() => controller.abort(), 20000); // TODO quitar timer!!
+    /* const controller = new AbortController();
+    const idTimer = setTimeout(() => controller.abort(), 20000); */
 
     const strPayload = payload ? JSON.stringify(payload) : "";
     const url = `${this.baseUrl}${path}`;
     try {
       const response = await fetch(url, {
         ...this.requestOptions,
-        signal: controller.signal,
+        // signal: controller.signal,
         method: "POST",
         body: strPayload,
       });
       if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
-      clearTimeout(idTimer); // TODO quitar esta linea!!
+      // clearTimeout(idTimer);
+      const data = await response.json();
+      if (
+        (typeof data === "object" && Object.keys(data).length === 0) ||
+        (Array.isArray(data) && data.length === 0)
+      ) {
+        throw new Error("No se obtuvo resultados");
+      }
 
-      return response.json(); // mandar areglo vacio si no se obtiene data o respuesta!!
+      return data;
     } catch (err) {
       console.log("Error en fetcher", err);
-      // TODO enviar arreglo vacio, no dummy!!!!. Quitar los if cuando ya se depliegue
-
-      return dummyConfirmation;
-
-      return [];
+      // return dummyConfirmation;
+      return null;
     }
   }
 }
@@ -521,7 +546,6 @@ class SelectCampaign {
       this.list = document.getElementById(ID_SELECT_CAMPAIGN_LIST);
       this.list.replaceChildren();
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
-      // TODO cambiar por la real data!!
       const campaignsResp = await this.fetcher.get("/campaigns", {
         customerId: propsFake.customerId,
       });
@@ -596,7 +620,6 @@ class SelectProduct {
     this.list.replaceChildren();
     setSpinner(SELECT_PRODUCT_SCREEN_ID);
     const campaignId = this.storage.selectedCampaign;
-    // TODO agregar el param id de campaña a la petición. Usar la data real
     const products = await this.fetcher.get("/campaign/products", {
       CUIL: this.storage.customerData.cuil,
       campaignId,
@@ -660,22 +683,92 @@ class SelectPlan {
     }
   }
 
+  async sendPlanConfirmation({
+    productId,
+    installmentQuantity,
+    totalAmount,
+    installmentAmount,
+    campaignId,
+    tna,
+    tem,
+    tea,
+    cft,
+    module,
+    branch,
+    account,
+    subAccount,
+    operationType,
+    currency,
+  }) {
+    setSpinner(ID_SELECT_PLAN_EMAIL_CONTAINER);
+    this.list.childNodes.forEach((child) =>
+      child.classList.add("banCo-newLoan-unclickable")
+    );
+    this.renderer.hide(ID_LINK_VIEW_PRE_QUALIFIED);
+    this.amountBtn.disabled = true;
+    const confirmationResp = await this.getLoanConfirmation({
+      InstallmentQuantity: installmentQuantity,
+      InstallmentAmount: installmentAmount,
+      TNA: tna,
+      TEM: tem,
+      TEA: tea,
+      cft,
+      Branch: branch,
+      AccountNumber: account,
+      SubAccountNumber: subAccount,
+      OperationType: operationType,
+      Module: module,
+      Currency: currency,
+      Amount: totalAmount,
+      CampaignId: campaignId,
+      ProductoId: productId,
+    });
+    this.renderer.destroy(ID_SPINNER);
+    if (confirmationResp?.errorCode === "0") {
+      // exito
+      this.storage.saveConfirmData(confirmationResp);
+      this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
+    } else {
+      showErrorBanner(
+        `Error de confirmación del préstamo, codigo ${confirmationResp?.errorCode}`,
+        this.renderer,
+        5000
+      );
+      this.list.childNodes.forEach((child) =>
+        child.classList.remove("banCo-newLoan-unclickable")
+      );
+      this.amountBtn.disabled = false;
+      this.renderer.show(ID_LINK_VIEW_PRE_QUALIFIED);
+    }
+  }
+
+  renderModalContent({ installmentQuantity, totalAmount, installmentAmount }) {
+    const contentEl = document.createElement("div");
+
+    const amountEl = document.createElement("p");
+    amountEl.classList.add("newLoan__modalContent__amount");
+    amountEl.textContent = `${formatAmount(totalAmount)}`;
+    const installmentsEl = document.createElement("p");
+    installmentsEl.classList.add("newLoan__modalContent__installments");
+    installmentsEl.innerHTML = `<span>${installmentQuantity}</span> cuotas de <span>${formatAmount(
+      installmentAmount
+    )}</span>`;
+
+    contentEl.appendChild(amountEl);
+    contentEl.appendChild(installmentsEl);
+
+    return contentEl;
+  }
+
   renderPlansList(plans) {
     this.renderer.mount(ID_SELECT_PLAN_LIST);
     if (!plans || !plans.length) {
       const noResultsEl = document.createElement("p");
+      noResultsEl.classList.add("banCo-newLoan-centered");
       noResultsEl.textContent = "No se encontraron planes disponibles";
       this.list.appendChild(noResultsEl);
     } else {
-      const {
-        branch,
-        account,
-        subAccount,
-        operationType,
-        module,
-        currency,
-      } = this.storage.selectedProduct;
-      let isValidEmail = false;
+      let isValidEmail = true; // TODO cambiar a false cuando se habilite pedir email a ususario
       // mostrar email si ya existe o solicitarlo si no
       const email = this.storage.customerData.emailList[0];
       const emailContainerEl = this.renderer.mount(
@@ -689,6 +782,15 @@ class SelectPlan {
         emailInputEl.disabled = true;
         emailInputEl.value = email;
         this.renderer.hide(emailErrorMsgEl);
+        isValidEmail = true;
+      } else { // eliminar este else cuando se habilite pedir email a ususario
+        this.renderer.unmount(
+          ID_SELECT_PLAN_EMAIL_CONTAINER
+        );
+      }
+
+      // TODO descomentar cuando se habilite pedir email a ususario
+      /* if (validateEmail(emailInputEl.value)) {
         isValidEmail = true;
       }
       const newEmailInputEl = removeListenersFromElement(emailInputEl);
@@ -707,120 +809,83 @@ class SelectPlan {
 
         this.renderer.hide(emailErrorMsgEl);
         isValidEmail = true;
-      });
+      }); */
 
-      // TODO realizar el mapeo real!!!
-      plans.forEach(
-        ({
+      plans.forEach((plan) => {
+        const {
           productId,
           installmentQuantity,
           totalAmount,
           installmentAmount,
-          campaignId,
-          tna,
-          tem,
-          tea,
-          cft,
-        }) => {
-          const planItemEl = document.createElement("li");
-          planItemEl.classList.add("newLoan__selectionScreen__listItem");
-          planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
-          planItemEl.id = productId;
-          planItemEl.addEventListener("click", async (ev) => {
-            if (!isValidEmail) {
-              newEmailInputEl.focus();
-              return showErrorBanner(
-                "Igrese un email válido",
-                this.renderer,
-                2100
-              );
-            }
-            planItemEl.classList.add("newLoan__selectPlan__listItem-selected");
-            this.list.childNodes.forEach((child) =>
-              child.classList.add("banCo-newLoan-unclickable")
+        } = plan;
+        const planItemEl = document.createElement("li");
+        planItemEl.classList.add("newLoan__selectionScreen__listItem");
+        planItemEl.classList.add("newLoan__selectionScreen__listItemPlan");
+        planItemEl.id = productId;
+        planItemEl.addEventListener("click", async (ev) => {
+          if (!isValidEmail) {
+            // newEmailInputEl.focus(); descomentar cuando se habilite pedir email a ususario
+            return showErrorBanner(
+              "Igrese un email válido",
+              this.renderer,
+              2100
             );
-            // modal tambien para confirmar que se quiere solicitar el plan elegido
-            return showModal(this.renderer);
-
-            setSpinner(ID_SELECT_PLAN_EMAIL_CONTAINER);
-            const confirmationResp = await this.getLoanConfirmation({
-              InstallmentQuantity: installmentQuantity,
-              InstallmentAmount: installmentAmount,
-              TNA: tna,
-              TEM: tem,
-              TEA: tea,
-              cft,
-              Branch: branch,
-              AccountNumber: account,
-              SubAccountNumber: subAccount,
-              OperationType: operationType,
-              Module: module,
-              Currency: currency,
-              Amount: totalAmount,
-              CampaignId: campaignId,
-              ProductoId: productId,
-            });
-            this.renderer.destroy(ID_SPINNER);
-            if (confirmationResp.errorCode === "0") {
-              // exito
-              this.storage.saveConfirmData(confirmationResp);
-              this.renderer.navigate(CONFIRM_LOAN_SCREEN_ID);
-            } else {
-              showErrorBanner(
-                `Error de confirmación del préstamo, codigo ${confirmationResp.errorCode}`,
-                this.renderer,
-                5000
-              );
-              planItemEl.classList.remove(
+          }
+          this.list.childNodes.forEach((child) => {
+            if (child === planItemEl) {
+              planItemEl.classList.add(
                 "newLoan__selectPlan__listItem-selected"
               );
-              this.list.childNodes.forEach((child) =>
-                child.classList.remove("banCo-newLoan-unclickable")
-              );
+            } else {
+              child.classList.remove("newLoan__selectPlan__listItem-selected");
             }
           });
+          showModal(this.renderer, {
+            message: "Está seguro que desea solicitar este plan?",
+            onAccepted: () =>
+              this.sendPlanConfirmation({
+                ...plan,
+                ...this.storage.selectedProduct,
+              }),
+            content: this.renderModalContent(plan),
+          });
+        });
 
-          const amountEl = document.createElement("span");
-          amountEl.classList.add(
-            "newLoan__selectionScreen__listItemPlan-amount"
-          );
-          amountEl.textContent = `${formatAmount(totalAmount)}`;
-          planItemEl.appendChild(amountEl);
+        const amountEl = document.createElement("span");
+        amountEl.classList.add("newLoan__selectionScreen__listItemPlan-amount");
+        amountEl.textContent = `${formatAmount(totalAmount)}`;
+        planItemEl.appendChild(amountEl);
 
-          const installmentsContainer = document.createElement("p");
-          installmentsContainer.classList.add(
-            "newLoan__selectionScreen__listItemPlan-installmentsContainer"
-          );
-          const installmentsQty = document.createElement("span");
-          installmentsQty.classList.add(
-            "newLoan__selectionScreen__listItemPlan-installmentsQty"
-          );
-          installmentsQty.textContent = `${installmentQuantity} Cuotas de`;
-          installmentsContainer.appendChild(installmentsQty);
-          const installmentsAmount = document.createElement("span");
-          installmentsAmount.classList.add(
-            "newLoan__selectionScreen__listItemPlan-installmentsAmount"
-          );
-          installmentsAmount.textContent = `${formatAmount(installmentAmount)}`;
-          installmentsContainer.appendChild(installmentsAmount);
+        const installmentsContainer = document.createElement("p");
+        installmentsContainer.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsContainer"
+        );
+        const installmentsQty = document.createElement("span");
+        installmentsQty.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsQty"
+        );
+        installmentsQty.textContent = `${installmentQuantity} Cuotas de`;
+        installmentsContainer.appendChild(installmentsQty);
+        const installmentsAmount = document.createElement("span");
+        installmentsAmount.classList.add(
+          "newLoan__selectionScreen__listItemPlan-installmentsAmount"
+        );
+        installmentsAmount.textContent = `${formatAmount(installmentAmount)}`;
+        installmentsContainer.appendChild(installmentsAmount);
 
-          planItemEl.appendChild(installmentsContainer);
-          this.list.appendChild(planItemEl);
-        }
-      );
+        planItemEl.appendChild(installmentsContainer);
+        this.list.appendChild(planItemEl);
+      });
     }
   }
 
   async getLoanConfirmation(payload) {
-    const confirmation = await this.fetcher.post(
-      "",
-      payload // TODO mapear servicio de confirmación!!!
-    );
+    const confirmation = await this.fetcher.post("", payload);
 
     return confirmation;
   }
 
-  async renderPreQualifiedLoanPlans(amountBtn) {
+  async renderPreQualifiedLoanPlans() {
     this.storage.saveAnotherAmount("0");
     const campaignId = this.storage.selectedCampaign;
     const { productId } = this.storage.selectedProduct;
@@ -828,7 +893,6 @@ class SelectPlan {
     this.renderer.unmount(ID_LINK_VIEW_PRE_QUALIFIED);
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
-    // TODO agregar el param id del plan a la petición. Usar data real
     setSpinner(SELECT_PLAN_SCREEN_ID);
     const plans = await this.fetcher.get("/campaign/product/plans", {
       CUIL: this.storage.customerData.cuil,
@@ -837,13 +901,13 @@ class SelectPlan {
     });
     this.renderer.destroy(ID_SPINNER);
     if (plans?.length) {
-      amountBtn.disabled = false;
+      this.amountBtn.disabled = false;
     }
 
     this.renderPlansList(plans);
   }
 
-  async renderRecalculatedLoanPlans(amount, amountBtn) {
+  async renderRecalculatedLoanPlans(amount) {
     if (Number(amount) <= 0 || amount === "" || amount === "undefined")
       return showErrorBanner("Debe ingresar un monto válido", this.renderer);
     this.storage.saveAnotherAmount(amount);
@@ -857,7 +921,6 @@ class SelectPlan {
     setSpinner(SELECT_PLAN_SCREEN_ID);
     const campaignId = this.storage.selectedCampaign;
     const productId = this.storage.selectedProduct.productId;
-    // TODO agregar el param id del plan y el amount.value a la petición. Usar data real
     const plans = await this.fetcher.get("/campaign/product/recalculate", {
       CUIL: this.storage.customerData.cuil,
       campaignId,
@@ -865,22 +928,19 @@ class SelectPlan {
       amount,
     });
     this.renderer.destroy(ID_SPINNER);
-    if (plans?.length) {
-      amountBtn.disabled = false;
-    } else {
+    if (!plans?.length) {
       // Errores que trae el servicio de recalculo, monto no permitido etc. mensajes del back
-      return showErrorBanner("Error al recalcular monto", this.renderer);
+      showErrorBanner("Error al recalcular monto", this.renderer, 5000);
     }
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
       ID_LINK_VIEW_PRE_QUALIFIED
     );
-    const newViewPreQualifiedLink = removeListenersFromElement(
-      viewPreQualifiedLink
-    );
+    const newViewPreQualifiedLink =
+      removeListenersFromElement(viewPreQualifiedLink);
     newViewPreQualifiedLink.addEventListener("click", async () => {
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
-      await this.renderPreQualifiedLoanPlans(amountBtn);
+      await this.renderPreQualifiedLoanPlans();
     });
     this.renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
     this.renderPlansList(plans);
@@ -895,8 +955,8 @@ class SelectPlan {
       ID_SELECT_PLAN_OTRO_MONTO_FORM_INPUT
     );
     const amountBtn = document.getElementById(ID_SELECT_PLAN_OTRO_MONTO_BUTTON);
-    const newAmountBtn = removeListenersFromElement(amountBtn);
-    newAmountBtn.addEventListener("click", (ev) => {
+    this.amountBtn = removeListenersFromElement(amountBtn);
+    this.amountBtn.addEventListener("click", (ev) => {
       amountInput.value = "";
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
@@ -909,7 +969,7 @@ class SelectPlan {
     const newCalcularBtn = removeListenersFromElement(calcularBtn);
     newCalcularBtn.addEventListener("click", async (ev) => {
       ev.stopPropagation();
-      await this.renderRecalculatedLoanPlans(amountInput.value, newAmountBtn);
+      await this.renderRecalculatedLoanPlans(amountInput.value);
     });
     const cancelarBtn = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_CANCELAR
@@ -918,7 +978,8 @@ class SelectPlan {
     newCancelarBtn.addEventListener("click", async (ev) => {
       ev.stopPropagation();
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
-      await this.renderPreQualifiedLoanPlans(newAmountBtn);
+      this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
+      await this.renderPreQualifiedLoanPlans();
     });
 
     if (
@@ -926,12 +987,9 @@ class SelectPlan {
       this.storage.anotherAmount === "undefined" ||
       this.storage.anotherAmount === "0"
     ) {
-      await this.renderPreQualifiedLoanPlans(newAmountBtn);
+      await this.renderPreQualifiedLoanPlans();
     } else {
-      await this.renderRecalculatedLoanPlans(
-        this.storage.anotherAmount,
-        newAmountBtn
-      );
+      await this.renderRecalculatedLoanPlans(this.storage.anotherAmount);
     }
   }
 }

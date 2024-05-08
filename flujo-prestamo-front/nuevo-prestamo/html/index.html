@@ -20,7 +20,9 @@
       <!-- Modal -->
       <div id="id_BanCo_newLoan_backdrop" class="banCo-newLoan-backdrop"></div>
       <div id="id_BanCo_newLoan_modal" class="banCo-newLoan-modalContainer">
-        <div class="banCo-newLoan-modalContent">
+        <div id="id_BanCo_newLoan_modal_content" class="banCo-newLoan-modalContent">
+          <div id="id_BanCo_newLoan_modal_customContent" class="banCo-newLoan-modal-customContent"></div>
+          <p id="id_BanCo_newLoan_modal_message" class="banCo-newLoan-modalMessage"></p>
           <div class="newLoan__selectPlan__newAmount-buttonsContainer">
             <button
               type="button"
@@ -90,7 +92,6 @@
             <button
               id="id_BanCo_newLoan_selectPlan_otroMontoButton"
               type="button"
-              disabled
               class="newLoan__selectPlan__changeAmount-button"
             >
               Elegir otro monto
@@ -221,29 +222,6 @@
           <div></div>
         </div>
       </template>
-
-      <!-- Confirm info section -->
-      <!--  <template id="id_BanCo_newLoan_infoSectionTemplate">
-        <div
-          id="id_BanCo_newLoan_infoSection"
-          class="newLoan__confirmLoanScreen__info__section"
-        ></div>
-      </template> -->
-
-      <!-- Confirm info section item -->
-      <!-- <template id="id_BanCo_newLoan_infoSectionItemTemplate">
-        <div
-          id="id_BanCo_newLoan_infoSectionItem"
-          class="newLoan__confirmLoanScreen__info__sectionItem"
-        >
-          <span
-            class="newLoan__confirmLoanScreen__info__sectionItemSubtitle"
-          ></span>
-          <span
-            class="newLoan__confirmLoanScreen__info__sectionItemValue"
-          ></span>
-        </div>
-      </template> -->
     </main>
   </body>
 </html>
