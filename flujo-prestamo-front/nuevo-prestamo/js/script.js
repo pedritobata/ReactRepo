@@ -1,7 +1,7 @@
 const propsFake = {
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUxOTMyODksImV4cCI6MTcxNTE5NTA4OSwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTE5MzI4OSIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6InM1N2lVUUxpazQyalBLNFlycnp1ZzdSVUliMVQzc05pVEZyajhCK3pDeVk9Iiwic3BhLXVzZXIiOiIrT0V1MFZ4NkJXUVJDbXRybk9zckJaOEVKYlU4a2hYWGVHYkRMcFFnY2EwPSIsInNwYS1rZXkiOiJqNTRDL25FeWkvdHhSNXlrdnQyZk56R0NzMHNROGtsQWZWRm9Zc3E4Mm44PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.r095n2hgKpPAelO3eOrINWRTiLRnQlti8ZeY3C4J1eJiFZFNEDZSAFiAP4k1jyaVj84ebCH0KJ1NBzujkUgmBqo_t9ApMhu_X51d1FdXqzQiCDHxjMkfzVfxe4HiwTRnfnLkKiPc3reNXnDz2Y5pkNud_UxObVDrczjhnUhmYyv3XAr500QyOJDElHBo9DzMvu6VEPXrfD9Tg_YpqMHSZbf080Hg2xDoWtUjj5YjRS02aGQbXPmus-foY8CAqJqsBK_Rqnv6DNpinPm7fd-HDVh6Wk7ghVBxPM1PV1c2OqdTOIZWYGFBmWxvTAXkJuvOwvJcVF2QooZaKkXypDvEmA",
-  customerId: "a9063427-3d39-435a-bb91-b80713d4e008",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNzE4MTYsImV4cCI6MTcxNTI3MzYxNiwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTI3MTgxNiIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6Ik9yM2RObmpYV083MVBXdkNUUkxMRmhHdHdOV1JvY0dRMFcwMVdsT2MvdWM9Iiwic3BhLXVzZXIiOiJMYjVYODZLU0ZFc3NPK1plT2RTaUxvQmZVV1ZOZHY5UmpkKzJuajNZZWcwPSIsInNwYS1rZXkiOiJ1L3pmaFlKcDF6V1lLRjFCVXRNeVowd1QraWtqRXJSSUo0ei9aRkt5SW9ZPSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.DcHmHnmBaZ7OO0ok4MfgJLeOUwzIcp6T07dK4l-lvff7ZRxc0RArfaNnv09mDBBAYoG7BpUB73D8ds8FkPN2kp4we6Tgqnl5vf_sTiesRB8EYcVNozUtKq-lM-iVC9JiFviJkNVfXUEPDtjeGeVnuCKZWTLwujQR-igTCw5W3GcJGp4Joy_lt923fLsNFOKYvglNBcxzibtD-2el1cXpQl1dsIX0NnBq7d_ATXP_3GVSNk8e-ezKT4Tu_KfRKc6fdLCp-hdia_nhAwcPkOvcnqzElC2SokH-DZosQSSWDEeScLsSDIQxTyK2YT2nTeMZZy7fFjlnk_XO_Vvxrmx7pQ",
+  customerId: "acf0bd34-2c09-4702-8241-9202bfa2dca1",
 };
 
 const dummyCampanas = {
@@ -556,9 +556,11 @@ class SelectCampaign {
           "No existen Campañas disponibles para el cliente";
         this.list.appendChild(noResultsEl);
       } else {
+        const { cuil, emailList, customerName } = campaignsResp;
         this.storage.saveCustomerData({
-          cuil: campaignsResp.cuil,
-          emailList: campaignsResp.emailList,
+          cuil,
+          emailList,
+          customerName,
         });
         campaignsResp.campaigns.forEach(
           ({ campaignId, description, startDate, endDate }) => {
@@ -699,6 +701,8 @@ class SelectPlan {
     subAccount,
     operationType,
     currency,
+    emailList,
+    customerName,
   }) {
     setSpinner(ID_SELECT_PLAN_EMAIL_CONTAINER);
     this.list.childNodes.forEach((child) =>
@@ -722,6 +726,8 @@ class SelectPlan {
       Amount: totalAmount,
       CampaignId: campaignId,
       ProductoId: productId,
+      Emails: emailList,
+      CustomerName: customerName,
     });
     this.renderer.destroy(ID_SPINNER);
     if (confirmationResp?.errorCode === "0") {
@@ -783,10 +789,9 @@ class SelectPlan {
         emailInputEl.value = email;
         this.renderer.hide(emailErrorMsgEl);
         isValidEmail = true;
-      } else { // eliminar este else cuando se habilite pedir email a ususario
-        this.renderer.unmount(
-          ID_SELECT_PLAN_EMAIL_CONTAINER
-        );
+      } else {
+        // eliminar este else cuando se habilite pedir email a ususario
+        this.renderer.unmount(ID_SELECT_PLAN_EMAIL_CONTAINER);
       }
 
       // TODO descomentar cuando se habilite pedir email a ususario
@@ -846,6 +851,7 @@ class SelectPlan {
               this.sendPlanConfirmation({
                 ...plan,
                 ...this.storage.selectedProduct,
+                ...this.storage.customerData,
               }),
             content: this.renderModalContent(plan),
           });
