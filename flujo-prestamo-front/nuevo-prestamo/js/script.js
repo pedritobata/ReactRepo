@@ -334,7 +334,8 @@ function validateEmail(email) {
 class NewLoanHTTPFetcher {
   baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
 
-  constructor() {
+  constructor(renderer) {
+    this.renderer = renderer;
     this.configRequest();
   }
 
@@ -342,7 +343,7 @@ class NewLoanHTTPFetcher {
     const headers = new Headers();
     headers.append("accept", "text/plain");
     headers.append("Content-Type", "application/json-patch+json");
-    headers.append("Authorization", `Bearer ${propsFake.token}`);
+    headers.append("Authorization", `Bearer ${props.token}`);
     this.requestOptions = {
       headers,
       redirect: "follow",
@@ -368,7 +369,13 @@ class NewLoanHTTPFetcher {
         ...this.requestOptions,
         // signal: controller.signal,
       });
-      if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
+      if (!response.ok) {
+        console.log("response ==>", response);
+        if(response.status === 401) {
+          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000)
+        }
+        throw new Error("No se obtuvo respuesta del servicio");
+      }
       // clearTimeout(idTimer);
       const data = await response.json();
       if (
@@ -414,7 +421,12 @@ class NewLoanHTTPFetcher {
         method: "POST",
         body: strPayload,
       });
-      if (!response.ok) throw new Error("No se obtuvo respuesta del servicio");
+      if (!response.ok) {
+        if(response.status === 401) {
+          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000)
+        }
+        throw new Error("No se obtuvo respuesta del servicio");
+      }
       // clearTimeout(idTimer);
       const data = await response.json();
       if (
@@ -513,7 +525,7 @@ class NewLoanStorage {
   }
 }
 
-//console.log("PROPS =>", props);
+console.log("PROPS =>", props);
 
 /***************** SELECT CAMPAIGN ***************** */
 /**
@@ -530,7 +542,7 @@ class SelectCampaign {
 
   init() {
     try {
-      this.fetcher = new NewLoanHTTPFetcher();
+      this.fetcher = new NewLoanHTTPFetcher(this.renderer);
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -547,7 +559,7 @@ class SelectCampaign {
       this.list.replaceChildren();
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
       const campaignsResp = await this.fetcher.get("/campaigns", {
-        customerId: propsFake.customerId,
+        customerId: props.customerId,
       });
       this.renderer.destroy(ID_SPINNER);
       if (!campaignsResp || !campaignsResp.campaigns?.length) {
@@ -606,7 +618,7 @@ class SelectProduct {
 
   init() {
     try {
-      this.fetcher = new NewLoanHTTPFetcher();
+      this.fetcher = new NewLoanHTTPFetcher(this.renderer);
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -676,7 +688,7 @@ class SelectPlan {
 
   init() {
     try {
-      this.fetcher = new NewLoanHTTPFetcher();
+      this.fetcher = new NewLoanHTTPFetcher(this.renderer);
       this.storage = new NewLoanStorage(this.customerId);
       return true;
     } catch (err) {
@@ -1280,4 +1292,14 @@ class Renderer {
 /***************** RUN !!! ***************** */
 console.log("Ruuunnnn");
 
-const renderer = new Renderer(propsFake.customerId);
+try {
+  const renderer = new Renderer(props.customerId);
+  const submitButton = document.querySelector("button[type='submit']");
+  console.log("submitButton =>", submitButton);
+  if(submitButton) {
+    submitButton.innerText = "Finalizar flujo";
+    submitButton.textContent = "Finalizar flujo";
+  }
+} catch(err) {
+  console.log("Error general");
+}
