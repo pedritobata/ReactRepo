@@ -332,7 +332,8 @@ function validateEmail(email) {
 
 /***************** SERVICES ***************** */
 class NewLoanHTTPFetcher {
-  baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
+  // baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
+  baseUrl = `${props?.config?.API_URL}/v1/integration/flow/loan`;
 
   constructor(renderer) {
     this.renderer = renderer;
