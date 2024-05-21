@@ -1,7 +1,7 @@
 const propsFake = {
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTUyNzE4MTYsImV4cCI6MTcxNTI3MzYxNiwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNTI3MTgxNiIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6Ik9yM2RObmpYV083MVBXdkNUUkxMRmhHdHdOV1JvY0dRMFcwMVdsT2MvdWM9Iiwic3BhLXVzZXIiOiJMYjVYODZLU0ZFc3NPK1plT2RTaUxvQmZVV1ZOZHY5UmpkKzJuajNZZWcwPSIsInNwYS1rZXkiOiJ1L3pmaFlKcDF6V1lLRjFCVXRNeVowd1QraWtqRXJSSUo0ei9aRkt5SW9ZPSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.DcHmHnmBaZ7OO0ok4MfgJLeOUwzIcp6T07dK4l-lvff7ZRxc0RArfaNnv09mDBBAYoG7BpUB73D8ds8FkPN2kp4we6Tgqnl5vf_sTiesRB8EYcVNozUtKq-lM-iVC9JiFviJkNVfXUEPDtjeGeVnuCKZWTLwujQR-igTCw5W3GcJGp4Joy_lt923fLsNFOKYvglNBcxzibtD-2el1cXpQl1dsIX0NnBq7d_ATXP_3GVSNk8e-ezKT4Tu_KfRKc6fdLCp-hdia_nhAwcPkOvcnqzElC2SokH-DZosQSSWDEeScLsSDIQxTyK2YT2nTeMZZy7fFjlnk_XO_Vvxrmx7pQ",
-  customerId: "acf0bd34-2c09-4702-8241-9202bfa2dca1",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTYzMDg5MjIsImV4cCI6MTcxNjMxMDcyMiwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNjMwODkyMiIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjVYQ3doQmJBVmVSSjN4NnNGYUZ6aHUrci9yWnVUbFRJQVlZakF5dFQ2UmM9Iiwic3BhLXVzZXIiOiJRTCtzWk9PN0ZHWjROeWhiMDB4SVU5TVdhM3grWTNudklnY1o5aUhNa2FFPSIsInNwYS1rZXkiOiJiK1RTT3FDWTVqSGNnZTRseG9ycUU4ektuclVmcUZhdkcvcWJXNGlSYTM0PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.iFNvKyv_BF9Tylj1txKUlQBHRsP9b1ab77hfaMWK1b_R2ZZ8WpCt0f0-rQS99tWICiFB3MR9DFvHgysrU3PDTeKBCj6cIrJjXcflOtRnsVYbdADroZZ4ZCKefUpi_c8YR0PLuDzeAwyAFDxLMuoKDuez6j7aUwoYO8-Hypv4TlV5UDhxpKceXunmk1fgxOlYOn5lN9nl-NZQOYIKqbMh58pxtp0DsH3AE-jpXQGB3Yna_QY_Z9ODjMxOnuocNjrqjUsCWx-qjwjMuti6DA1Vc-8UHEejkYw1f-l7c8JSPS_ZL1h2Wx500rumyBcQ_BIH0j8NwSjQzO4ms7hrYti-FA",
+  customerId: "0b14969c-7251-40a2-83c3-4ee8f96e8792",
 };
 
 const dummyCampanas = {
@@ -128,6 +128,9 @@ const dummyConfirmation = {
 };
 
 /***************** IDS ***************** */
+const ID_MAIN_CONTAINER = "id_BanCo_newLoan_mainContainer";
+const ID_CONTENT_CONTAINER = "id_BanCo_newLoan_contentContainer";
+
 const SELECT_CAMPAIGN_SCREEN_ID = "id_BanCo_newLoan_SelectCampaign_screen";
 const SELECT_PRODUCT_SCREEN_ID = "id_BanCo_newLoan_SelectProduct_screen";
 const SELECT_PLAN_SCREEN_ID = "id_BanCo_newLoan_SelectPlan_screen";
@@ -371,9 +374,9 @@ class NewLoanHTTPFetcher {
         // signal: controller.signal,
       });
       if (!response.ok) {
-        console.log("response ==>", response);
         if(response.status === 401) {
-          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000)
+          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000);
+          return;
         }
         throw new Error("No se obtuvo respuesta del servicio");
       }
@@ -526,7 +529,7 @@ class NewLoanStorage {
   }
 }
 
-console.log("PROPS =>", props);
+// console.log("PROPS =>", props);
 
 /***************** SELECT CAMPAIGN ***************** */
 /**
@@ -947,9 +950,14 @@ class SelectPlan {
       amount,
     });
     this.renderer.destroy(ID_SPINNER);
-    if (!plans?.length) {
+    if (plans !== undefined && !plans?.length) {
       // Errores que trae el servicio de recalculo, monto no permitido etc. mensajes del back
       showErrorBanner("Error al recalcular monto", this.renderer, 5000);
+    }
+    const filteredValidPlans = plans.filter(plan => plan.installmentQuantity > 0);
+    if (!filteredValidPlans?.length) {
+      // Error por superar monto máximo
+      showErrorBanner("El monto no puede exceder el máximo", this.renderer, 5000);
     }
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
@@ -962,7 +970,7 @@ class SelectPlan {
       await this.renderPreQualifiedLoanPlans();
     });
     this.renderer.mount(ID_LINK_VIEW_PRE_QUALIFIED);
-    this.renderPlansList(plans);
+    this.renderPlansList(filteredValidPlans);
   }
 
   async render() {
@@ -1292,9 +1300,10 @@ class Renderer {
 
 /***************** RUN !!! ***************** */
 console.log("Ruuunnnn");
-
+let renderer;
 try {
-  const renderer = new Renderer(props.customerId);
+  renderer = new Renderer(propsFake.customerId);
+  renderer.mount(ID_CONTENT_CONTAINER);
   const submitButton = document.querySelector("button[type='submit']");
   console.log("submitButton =>", submitButton);
   if(submitButton) {
@@ -1302,5 +1311,14 @@ try {
     submitButton.textContent = "Finalizar flujo";
   }
 } catch(err) {
-  console.log("Error general");
+  const contentContainer = document.getElementById(ID_CONTENT_CONTAINER);
+  if (contentContainer) {
+    contentContainer.style.display = "none";
+  }
+  const mainContainer = document.getElementById(ID_MAIN_CONTAINER);
+  const errorMsgEl = document.createElement("p");
+  errorMsgEl.textContent = "Ocurrió un error inesperado";
+  errorMsgEl.classList.add("banCo-newLoan-centered");
+  mainContainer?.appendChild(errorMsgEl); 
+  console.log("Error general", err);
 }

@@ -8,7 +8,7 @@
     <script defer src="../js/script.js"></script>
   </head>
   <body>
-    <main class="newLoan__container">
+    <main id="id_BanCo_newLoan_mainContainer" class="newLoan__container">
       <!-- Header class-->
       <header class="newLoan__header">
         <div id="id_BanCo_newLoan_LeftArrow" class="newLoan__arrow-left"></div>
@@ -17,211 +17,228 @@
         </h1>
       </header>
 
-      <!-- Modal -->
-      <div id="id_BanCo_newLoan_backdrop" class="banCo-newLoan-backdrop"></div>
-      <div id="id_BanCo_newLoan_modal" class="banCo-newLoan-modalContainer">
-        <div id="id_BanCo_newLoan_modal_content" class="banCo-newLoan-modalContent">
-          <div id="id_BanCo_newLoan_modal_customContent" class="banCo-newLoan-modal-customContent"></div>
-          <p id="id_BanCo_newLoan_modal_message" class="banCo-newLoan-modalMessage"></p>
-          <div class="newLoan__selectPlan__newAmount-buttonsContainer">
-            <button
-              type="button"
-              id="id_BanCo_newLoan_modal_cancelar"
-              class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnCancelar"
-            >
-              Cancelar
-            </button>
-            <button
-              type="button"
-              id="id_BanCo_newLoan_modal_aceptar"
-              class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnAceptar"
-            >
-              Aceptar
-            </button>
-          </div>
-        </div>
-       
-      </div>
-
-      <!-- ErrorBanner -->
-      <div
-        id="id_BanCo_newLoan_errorBanner"
-        class="newLoan__errorBanner banCo-newLoan-fadeInRight"
-      >
-        <div>
-          <span>x</span>
-          <p></p>
-        </div>
-      </div>
-
-      <!-- SelectCampaign class-->
-      <section
-        id="id_BanCo_newLoan_SelectCampaign_screen"
-        class="newLoan__selectionScreen__container"
-      >
-        <h2 class="newLoan__selectionScreen__subTitle">Seleccionar campaña</h2>
-        <ul
-          id="id_BanCo_newLoan_selectCampaign_list"
-          class="newLoan__selectionScreen__list"
-        ></ul>
-      </section>
-
-      <!-- SelectProduct class-->
-      <section
-        id="id_BanCo_newLoan_SelectProduct_screen"
-        class="newLoan__selectionScreen__container"
-      >
-        <h2 class="newLoan__selectionScreen__subTitle">Seleccionar Producto</h2>
-        <ul
-          id="id_BanCo_newLoan_selectProduct_list"
-          class="newLoan__selectionScreen__list"
-        ></ul>
-      </section>
-
-      <!-- SelectPlan class-->
-      <section
-        id="id_BanCo_newLoan_SelectPlan_screen"
-        class="newLoan__selectionScreen__container"
-      >
-        <h2 class="newLoan__selectionScreen__subTitle">Seleccionar Plan</h2>
-        <div class="newLoan__selectPlan__changeAmount-container">
+      <div id="id_BanCo_newLoan_contentContainer">
+        <!-- Modal -->
+        <div
+          id="id_BanCo_newLoan_backdrop"
+          class="banCo-newLoan-backdrop"
+        ></div>
+        <div id="id_BanCo_newLoan_modal" class="banCo-newLoan-modalContainer">
           <div
-            id="id_BanCo_newLoan_selectPlan_otroMontoButtonContainer"
-            class="newLoan__selectPlan__changeAmount-buttonContainer"
+            id="id_BanCo_newLoan_modal_content"
+            class="banCo-newLoan-modalContent"
           >
-            <button
-              id="id_BanCo_newLoan_selectPlan_otroMontoButton"
-              type="button"
-              class="newLoan__selectPlan__changeAmount-button"
-            >
-              Elegir otro monto
-            </button>
-            <a
-              id="id_BanCo_newLoan_selectPlan_viewPreQualified"
-              class="newLoan__selectPlan__viewPreQualified"
-              href="#"
-              >Ver precalificados</a
-            >
+            <div
+              id="id_BanCo_newLoan_modal_customContent"
+              class="banCo-newLoan-modal-customContent"
+            ></div>
             <p
-              id="id_BanCo_newLoan_selectPlan_otroMontoText"
-              class="newLoan__selectPlan__changeAmount-text"
+              id="id_BanCo_newLoan_modal_message"
+              class="banCo-newLoan-modalMessage"
             ></p>
-          </div>
-
-          <form
-            id="id_BanCo_newLoan_selectPlan_otroMontoForm"
-            class="newLoan__selectPlan__changeAmount-form"
-            action="#"
-          >
-            <input
-              id="id_BanCo_newLoan_selectPlan_otroMontoForm-input"
-              class="newLoan__selectPlan__newAmount-input"
-              type="number"
-              value=""
-            />
             <div class="newLoan__selectPlan__newAmount-buttonsContainer">
               <button
                 type="button"
-                id="id_BanCo_newLoan_selectPlan_otroMontoCancelar"
+                id="id_BanCo_newLoan_modal_cancelar"
                 class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnCancelar"
               >
                 Cancelar
               </button>
               <button
                 type="button"
-                id="id_BanCo_newLoan_selectPlan_otroMontoCalcular"
+                id="id_BanCo_newLoan_modal_aceptar"
                 class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnAceptar"
               >
-                Calcular
+                Aceptar
               </button>
             </div>
-          </form>
+          </div>
         </div>
-        <div
-          id="id_BanCo_newLoan_selectPlan_emailContainer"
-          class="newLoan__selectPlan__emailContainer"
-        >
-          <label>
-            Ingrese email
-            <input type="text" value="" />
-          </label>
-          <p>Email inválido</p>
-        </div>
-        <ul
-          id="id_BanCo_newLoan_selectPlan_list"
-          class="newLoan__selectPlan__list"
-        ></ul>
-      </section>
 
-      <!-- ConfirmLoan class-->
-      <section
-        id="id_BanCo_newLoan_ConfirmLoan_screen"
-        class="newLoan__confirmLoanScreen__container"
-      >
-        <header class="newLoan__confirmLoanScreen__aprovalCheck">
-          <svg
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 130.2 130.2"
-          >
-            <circle
-              class="path circle"
-              fill="none"
-              stroke="#73AF55"
-              stroke-width="6"
-              stroke-miterlimit="10"
-              cx="65.1"
-              cy="65.1"
-              r="62.1"
-            />
-            <polyline
-              class="path check"
-              fill="none"
-              stroke="#73AF55"
-              stroke-width="6"
-              stroke-linecap="round"
-              stroke-miterlimit="10"
-              points="100.2,40.2 51.5,88.8 29.8,67.5 "
-            />
-          </svg>
-          <h2
-            class="newLoan__selectionScreen__subTitle banCo-newLoan-centered banCo-newLoan-fadeInTop"
-          >
-            El préstamo se acreditó correctamente
-          </h2>
-        </header>
+        <!-- ErrorBanner -->
         <div
-          id="id_BanCo_newLoan_ConfirmLoan_info"
-          class="newLoan__confirmLoanScreen__info banCo-newLoan-fadeInBottom"
+          id="id_BanCo_newLoan_errorBanner"
+          class="newLoan__errorBanner banCo-newLoan-fadeInRight"
         >
-          <div
-            id="id_BanCo_newLoan_ConfirmLoan_infoHeader"
-            class="newLoan__confirmLoanScreen__info__header"
-          >
-            <h3 class="newLoan__confirmLoanScreen__info__title"></h3>
-            <p class="newLoan__confirmLoanScreen__info__date"></p>
+          <div>
+            <span>x</span>
+            <p></p>
+          </div>
+        </div>
+
+        <!-- SelectCampaign class-->
+        <section
+          id="id_BanCo_newLoan_SelectCampaign_screen"
+          class="newLoan__selectionScreen__container"
+        >
+          <h2 class="newLoan__selectionScreen__subTitle">
+            Seleccionar campaña
+          </h2>
+          <ul
+            id="id_BanCo_newLoan_selectCampaign_list"
+            class="newLoan__selectionScreen__list"
+          ></ul>
+        </section>
+
+        <!-- SelectProduct class-->
+        <section
+          id="id_BanCo_newLoan_SelectProduct_screen"
+          class="newLoan__selectionScreen__container"
+        >
+          <h2 class="newLoan__selectionScreen__subTitle">
+            Seleccionar Producto
+          </h2>
+          <ul
+            id="id_BanCo_newLoan_selectProduct_list"
+            class="newLoan__selectionScreen__list"
+          ></ul>
+        </section>
+
+        <!-- SelectPlan class-->
+        <section
+          id="id_BanCo_newLoan_SelectPlan_screen"
+          class="newLoan__selectionScreen__container"
+        >
+          <h2 class="newLoan__selectionScreen__subTitle">Seleccionar Plan</h2>
+          <div class="newLoan__selectPlan__changeAmount-container">
+            <div
+              id="id_BanCo_newLoan_selectPlan_otroMontoButtonContainer"
+              class="newLoan__selectPlan__changeAmount-buttonContainer"
+            >
+              <button
+                id="id_BanCo_newLoan_selectPlan_otroMontoButton"
+                type="button"
+                class="newLoan__selectPlan__changeAmount-button"
+              >
+                Elegir otro monto
+              </button>
+              <a
+                id="id_BanCo_newLoan_selectPlan_viewPreQualified"
+                class="newLoan__selectPlan__viewPreQualified"
+                href="#"
+                >Ver precalificados</a
+              >
+              <p
+                id="id_BanCo_newLoan_selectPlan_otroMontoText"
+                class="newLoan__selectPlan__changeAmount-text"
+              ></p>
+            </div>
+
+            <form
+              id="id_BanCo_newLoan_selectPlan_otroMontoForm"
+              class="newLoan__selectPlan__changeAmount-form"
+              action="#"
+            >
+              <input
+                id="id_BanCo_newLoan_selectPlan_otroMontoForm-input"
+                class="newLoan__selectPlan__newAmount-input"
+                type="number"
+                value=""
+              />
+              <div class="newLoan__selectPlan__newAmount-buttonsContainer">
+                <button
+                  type="button"
+                  id="id_BanCo_newLoan_selectPlan_otroMontoCancelar"
+                  class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnCancelar"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  id="id_BanCo_newLoan_selectPlan_otroMontoCalcular"
+                  class="newLoan__selectPlan__newAmount-btn newLoan__selectPlan__newAmount-BtnAceptar"
+                >
+                  Calcular
+                </button>
+              </div>
+            </form>
           </div>
           <div
-            id="id_BanCo_newLoan_ConfirmLoan_infoDataContainer"
-            class="newLoan__confirmLoanScreen__info__dataContainer"
-          ></div>
-        </div>
-      </section>
+            id="id_BanCo_newLoan_selectPlan_emailContainer"
+            class="newLoan__selectPlan__emailContainer"
+          >
+            <label>
+              Ingrese email
+              <input type="text" value="" />
+            </label>
+            <p>Email inválido</p>
+          </div>
+          <ul
+            id="id_BanCo_newLoan_selectPlan_list"
+            class="newLoan__selectPlan__list"
+          ></ul>
+        </section>
 
-      <!------------ Templates ----------->
-      <!-- Spinner -->
-      <template id="id_BanCo_newLoan_spinnerTemplate">
-        <div id="id_BanCo_newLoan_spinner" class="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </template>
+        <!-- ConfirmLoan class-->
+        <section
+          id="id_BanCo_newLoan_ConfirmLoan_screen"
+          class="newLoan__confirmLoanScreen__container"
+        >
+          <header class="newLoan__confirmLoanScreen__aprovalCheck">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 130.2 130.2"
+            >
+              <circle
+                class="path circle"
+                fill="none"
+                stroke="#73AF55"
+                stroke-width="6"
+                stroke-miterlimit="10"
+                cx="65.1"
+                cy="65.1"
+                r="62.1"
+              />
+              <polyline
+                class="path check"
+                fill="none"
+                stroke="#73AF55"
+                stroke-width="6"
+                stroke-linecap="round"
+                stroke-miterlimit="10"
+                points="100.2,40.2 51.5,88.8 29.8,67.5 "
+              />
+            </svg>
+            <h2
+              class="newLoan__selectionScreen__subTitle banCo-newLoan-centered banCo-newLoan-fadeInTop"
+            >
+              El préstamo se acreditó correctamente
+            </h2>
+          </header>
+          <div
+            id="id_BanCo_newLoan_ConfirmLoan_info"
+            class="newLoan__confirmLoanScreen__info banCo-newLoan-fadeInBottom"
+          >
+            <div
+              id="id_BanCo_newLoan_ConfirmLoan_infoHeader"
+              class="newLoan__confirmLoanScreen__info__header"
+            >
+              <h3 class="newLoan__confirmLoanScreen__info__title"></h3>
+              <p class="newLoan__confirmLoanScreen__info__date"></p>
+            </div>
+            <div
+              id="id_BanCo_newLoan_ConfirmLoan_infoDataContainer"
+              class="newLoan__confirmLoanScreen__info__dataContainer"
+            ></div>
+          </div>
+        </section>
+
+        <!------------ Templates ----------->
+        <!-- Spinner -->
+        <template id="id_BanCo_newLoan_spinnerTemplate">
+          <div id="id_BanCo_newLoan_spinner" class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </template>
+      </div>
     </main>
   </body>
 </html>
