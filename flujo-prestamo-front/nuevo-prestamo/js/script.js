@@ -957,7 +957,7 @@ class SelectPlan {
     const filteredValidPlans = plans.filter(plan => plan.installmentQuantity > 0);
     if (!filteredValidPlans?.length) {
       // Error por superar monto máximo
-      showErrorBanner("El monto no puede exceder el máximo", this.renderer, 5000);
+      showErrorBanner("El monto seleccionado excede el máximo precalificado", this.renderer, 5000);
     }
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
