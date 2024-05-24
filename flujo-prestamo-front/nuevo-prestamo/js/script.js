@@ -1,7 +1,28 @@
+let propsToUse;
+
 const propsFake = {
+  flagFake: true,
   token:
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTYzMDg5MjIsImV4cCI6MTcxNjMxMDcyMiwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNjMwODkyMiIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6IjVYQ3doQmJBVmVSSjN4NnNGYUZ6aHUrci9yWnVUbFRJQVlZakF5dFQ2UmM9Iiwic3BhLXVzZXIiOiJRTCtzWk9PN0ZHWjROeWhiMDB4SVU5TVdhM3grWTNudklnY1o5aUhNa2FFPSIsInNwYS1rZXkiOiJiK1RTT3FDWTVqSGNnZTRseG9ycUU4ektuclVmcUZhdkcvcWJXNGlSYTM0PSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.iFNvKyv_BF9Tylj1txKUlQBHRsP9b1ab77hfaMWK1b_R2ZZ8WpCt0f0-rQS99tWICiFB3MR9DFvHgysrU3PDTeKBCj6cIrJjXcflOtRnsVYbdADroZZ4ZCKefUpi_c8YR0PLuDzeAwyAFDxLMuoKDuez6j7aUwoYO8-Hypv4TlV5UDhxpKceXunmk1fgxOlYOn5lN9nl-NZQOYIKqbMh58pxtp0DsH3AE-jpXQGB3Yna_QY_Z9ODjMxOnuocNjrqjUsCWx-qjwjMuti6DA1Vc-8UHEejkYw1f-l7c8JSPS_ZL1h2Wx500rumyBcQ_BIH0j8NwSjQzO4ms7hrYti-FA",
-  customerId: "0b14969c-7251-40a2-83c3-4ee8f96e8792",
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE3MTY1NzIwNzIsImV4cCI6MTcxNjU3Mzg3MiwiaXNzIjoiaHR0cDovL3VzZXItc2VydmljZS5uNS5zdmMuY2x1c3Rlci5sb2NhbDo4MDgwIiwibmFtZSI6ImFkbWluIiwic3ViIjoiMWU3OTYzZWItZDM2YS00ODQ3LWEzMWMtYzg2MjlmOGNjZGViIiwiYXV0aF90aW1lIjoiMTcxNjU3MjA3MiIsImlkcCI6ImxvY2FsIiwicm9sZSI6IiIsInNwYS1lbWFpbCI6Im1ReGFmeVpoSko1M1NUTHpWN0JRWTN3Wk8yV0hjM2JPZ1ZKa1hJUmFEZEU9Iiwic3BhLXVzZXIiOiJ3aEVDVWQvYWFwQkhHZXhMWjY4UEsvQkI1ZVU4YzV1UlBhaFdwQTYxWjNrPSIsInNwYS1rZXkiOiJMVVNyYUpBWE9LekkyaDlPTWE4czJ3ZDAzOHNrVW9XeHpIdnpkOXd0VG1BPSIsImF1ZCI6InVzciIsImNsaWVudF9pZCI6InVzZXJzLXNlcnZpY2UiLCJzY29wZSI6WyJvcGVuaWQiLCJiYURhIiwidXNyIl0sImFtciI6WyJwd2QiXX0.VaG2aYooC2EjM_tzRTc_yfJlqZCPUMH7pfqeD-q7rDM6m6ychLbd0PbgLQuffvrhkPB7TxkerhVHfjuVHNtliMQGcSCZyVnLzhk_KGKK2jdjMMuhadA6kVqul1DOJBDQSpkWIjU_7esIWZ0FCQRs5o7nflvwvgi-DZKg2zTFfC3nAdaHJqDSl6OxnBGs98MDDl-RoQxIF0u2IiTwZdZNgjm9xGcF_wptdXbZkF6czmjRt3OE8AZFAjfxAhiGMjFItJ_qLtDs4lGfLmswDAEccOG-BNT3F5nE5TMI3uiVJx6sW_k5YhfwFw-A_ZeiYJyQlJ0qhtNjlE0s7JiExr8MiA",
+  customerId: "ac1d2973-2ce3-41ec-96ac-f8bffe57151f",
+  config: {
+    API_URL: "https://n5develop.bcoctes.com.ar",
+  },
+  info: {
+    customerCtasStore: {
+      customerStore: {
+        customer: {
+          allData: {
+            firstName: "Pedro Antonio",
+            lastName: "Martínez",
+            identityTypeDescription: "CUIL/CUIT bla bla",
+            identityNumber: "20103265899725",
+            emailList: ["pedritom@gmail.com"],
+          },
+        },
+      },
+    },
+  },
 };
 
 const dummyCampanas = {
@@ -121,7 +142,7 @@ const dummyConfirmation = {
   subAccountNumber: "1",
   installmentQuantity: 24,
   installmentAmount: 22081.66,
-  tna: 101.0,
+  tna: 101.598884444,
   tem: 8.301369863013708,
   tea: 163.86374594874832,
   cft: 0.0,
@@ -137,6 +158,7 @@ const SELECT_PLAN_SCREEN_ID = "id_BanCo_newLoan_SelectPlan_screen";
 const CONFIRM_LOAN_SCREEN_ID = "id_BanCo_newLoan_ConfirmLoan_screen";
 
 const ID_LEFT_ARROW = "id_BanCo_newLoan_LeftArrow";
+const ID_PERSON_INFO = "id_BanCo_newLoan_personInfo";
 const ID_HEADER_TITLE = "id_BanCo_newLoan_headerTitle";
 const ID_SELECT_CAMPAIGN_LIST = "id_BanCo_newLoan_selectCampaign_list";
 const ID_SELECT_PRODUCT_LIST = "id_BanCo_newLoan_selectProduct_list";
@@ -183,7 +205,7 @@ function removeListenersFromElement(element) {
   return newElement;
 }
 
-function setSpinner(parentId, cssClasses) {
+function setSpinner(parentId, cssClasses, prepend = false) {
   if ("content" in document.createElement("template")) {
     const spinner = document.getElementById(ID_SPINNER_TEMPLATE);
     const parent = document.getElementById(parentId);
@@ -193,7 +215,11 @@ function setSpinner(parentId, cssClasses) {
         spinnerClone.classList.add(css);
       });
     }
-    parent.appendChild(spinnerClone);
+    if (prepend) {
+      parent.prepend(spinnerClone);
+    } else {
+      parent.appendChild(spinnerClone);
+    }
   }
 }
 
@@ -335,8 +361,7 @@ function validateEmail(email) {
 
 /***************** SERVICES ***************** */
 class NewLoanHTTPFetcher {
-  // baseUrl = "https://n5develop.bcoctes.com.ar/api/v1/integration/flow/loan";
-  baseUrl = `${props?.config?.API_URL}/v1/integration/flow/loan`;
+  baseUrl = `${propsToUse?.config?.API_URL}/v1/integration/flow/loan`;
 
   constructor(renderer) {
     this.renderer = renderer;
@@ -347,7 +372,7 @@ class NewLoanHTTPFetcher {
     const headers = new Headers();
     headers.append("accept", "text/plain");
     headers.append("Content-Type", "application/json-patch+json");
-    headers.append("Authorization", `Bearer ${props.token}`);
+    headers.append("Authorization", `Bearer ${propsToUse.token}`);
     this.requestOptions = {
       headers,
       redirect: "follow",
@@ -374,8 +399,12 @@ class NewLoanHTTPFetcher {
         // signal: controller.signal,
       });
       if (!response.ok) {
-        if(response.status === 401) {
-          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000);
+        if (response.status === 401) {
+          showErrorBanner(
+            "Su sesión ha expirado, por favor vuelva a iniciar sesión",
+            this.renderer,
+            10000
+          );
           return;
         }
         throw new Error("No se obtuvo respuesta del servicio");
@@ -426,8 +455,12 @@ class NewLoanHTTPFetcher {
         body: strPayload,
       });
       if (!response.ok) {
-        if(response.status === 401) {
-          showErrorBanner("Su sesión ha expirado, por favor vuelva a iniciar sesión", this.renderer, 10000)
+        if (response.status === 401) {
+          showErrorBanner(
+            "Su sesión ha expirado, por favor vuelva a iniciar sesión",
+            this.renderer,
+            10000
+          );
         }
         throw new Error("No se obtuvo respuesta del servicio");
       }
@@ -529,8 +562,6 @@ class NewLoanStorage {
   }
 }
 
-// console.log("PROPS =>", props);
-
 /***************** SELECT CAMPAIGN ***************** */
 /**
  * Clase para formulario de seleccionar campaña
@@ -563,7 +594,7 @@ class SelectCampaign {
       this.list.replaceChildren();
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
       const campaignsResp = await this.fetcher.get("/campaigns", {
-        customerId: props.customerId,
+        customerId: propsToUse.customerId,
       });
       this.renderer.destroy(ID_SPINNER);
       if (!campaignsResp || !campaignsResp.campaigns?.length) {
@@ -572,12 +603,6 @@ class SelectCampaign {
           "No existen Campañas disponibles para el cliente";
         this.list.appendChild(noResultsEl);
       } else {
-        const { cuil, emailList, customerName } = campaignsResp;
-        this.storage.saveCustomerData({
-          cuil,
-          emailList,
-          customerName,
-        });
         campaignsResp.campaigns.forEach(
           ({ campaignId, description, startDate, endDate }) => {
             const campItemEl = document.createElement("li");
@@ -720,9 +745,9 @@ class SelectPlan {
     emailList,
     customerName,
   }) {
-    setSpinner(ID_SELECT_PLAN_EMAIL_CONTAINER);
+    setSpinner(ID_SELECT_PLAN_LIST , null, true);
     this.list.childNodes.forEach((child) =>
-      child.classList.add("banCo-newLoan-unclickable")
+      child.classList?.add("banCo-newLoan-unclickable")
     );
     this.renderer.hide(ID_LINK_VIEW_PRE_QUALIFIED);
     this.amountBtn.disabled = true;
@@ -784,53 +809,46 @@ class SelectPlan {
 
   renderPlansList(plans) {
     this.renderer.mount(ID_SELECT_PLAN_LIST);
+    const input = document
+      .getElementById(ID_SELECT_PLAN_EMAIL_CONTAINER)
+      ?.querySelector("input");
+    input.value = "";
     if (!plans || !plans.length) {
       const noResultsEl = document.createElement("p");
       noResultsEl.classList.add("banCo-newLoan-centered");
       noResultsEl.textContent = "No se encontraron planes disponibles";
       this.list.appendChild(noResultsEl);
     } else {
-      let isValidEmail = true; // TODO cambiar a false cuando se habilite pedir email a ususario
-      // mostrar email si ya existe o solicitarlo si no
       const email = this.storage.customerData.emailList[0];
-      const emailContainerEl = this.renderer.mount(
-        ID_SELECT_PLAN_EMAIL_CONTAINER
-      );
-      const emailLabelEl = emailContainerEl?.querySelector("label");
-      const emailInputEl = emailContainerEl?.querySelector("label > input");
-      const emailErrorMsgEl = emailContainerEl?.querySelector("p");
-      if (email) {
-        emailLabelEl.childNodes[0].textContent = "";
-        emailInputEl.disabled = true;
-        emailInputEl.value = email;
+      let newEmailInputEl;
+      let isValidEmail = true;
+      if (!email) {
+        isValidEmail = false;
+        // solicitar el email si no existe
+        const emailContainerEl = this.renderer.mount(
+          ID_SELECT_PLAN_EMAIL_CONTAINER
+        );
+        const emailInputEl = emailContainerEl?.querySelector("input");
+        const emailErrorMsgEl = emailContainerEl?.querySelector("p");
         this.renderer.hide(emailErrorMsgEl);
-        isValidEmail = true;
-      } else {
-        // eliminar este else cuando se habilite pedir email a ususario
-        this.renderer.unmount(ID_SELECT_PLAN_EMAIL_CONTAINER);
-      }
+        newEmailInputEl = removeListenersFromElement(emailInputEl);
+        newEmailInputEl?.addEventListener("keyup", (ev) => {
+          const value = ev.target.value;
+          if (value === "") {
+            isValidEmail = false;
+            this.renderer.hide(emailErrorMsgEl);
+            return;
+          }
+          if (!validateEmail(value)) {
+            isValidEmail = false;
+            this.renderer.show(emailErrorMsgEl);
+            return;
+          }
 
-      // TODO descomentar cuando se habilite pedir email a ususario
-      /* if (validateEmail(emailInputEl.value)) {
-        isValidEmail = true;
-      }
-      const newEmailInputEl = removeListenersFromElement(emailInputEl);
-      newEmailInputEl?.addEventListener("keyup", (ev) => {
-        const value = ev.target.value;
-        if (value === "") {
-          isValidEmail = false;
           this.renderer.hide(emailErrorMsgEl);
-          return;
-        }
-        if (!validateEmail(value)) {
-          isValidEmail = false;
-          this.renderer.show(emailErrorMsgEl);
-          return;
-        }
-
-        this.renderer.hide(emailErrorMsgEl);
-        isValidEmail = true;
-      }); */
+          isValidEmail = true;
+        });
+      }
 
       plans.forEach((plan) => {
         const {
@@ -845,7 +863,7 @@ class SelectPlan {
         planItemEl.id = productId;
         planItemEl.addEventListener("click", async (ev) => {
           if (!isValidEmail) {
-            // newEmailInputEl.focus(); descomentar cuando se habilite pedir email a ususario
+            newEmailInputEl?.focus();
             return showErrorBanner(
               "Igrese un email válido",
               this.renderer,
@@ -936,7 +954,7 @@ class SelectPlan {
     const anotherAmountText = this.renderer.mount(
       ID_SELECT_PLAN_OTRO_MONTO_TEXT
     );
-    anotherAmountText.textContent = `$ ${amount}`;
+    anotherAmountText.textContent = `$ ${formatNumber(amount)}`;
 
     this.list = document.getElementById(ID_SELECT_PLAN_LIST);
     this.list.replaceChildren();
@@ -954,10 +972,16 @@ class SelectPlan {
       // Errores que trae el servicio de recalculo, monto no permitido etc. mensajes del back
       showErrorBanner("Error al recalcular monto", this.renderer, 5000);
     }
-    const filteredValidPlans = plans.filter(plan => plan.installmentQuantity > 0);
-    if (!filteredValidPlans?.length) {
+    const filteredValidPlans = plans?.filter(
+      (plan) => plan.installmentQuantity > 0
+    );
+    if (filteredValidPlans && !filteredValidPlans.length) {
       // Error por superar monto máximo
-      showErrorBanner("El monto seleccionado excede el máximo precalificado", this.renderer, 5000);
+      showErrorBanner(
+        "El monto seleccionado excede el máximo precalificado",
+        this.renderer,
+        5000
+      );
     }
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
@@ -981,10 +1005,17 @@ class SelectPlan {
     const amountInput = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_FORM_INPUT
     );
+    const newAmountInput = removeListenersFromElement(amountInput);
+    newAmountInput.addEventListener("input", (ev) => {
+      let maxNum = 17;
+      if (ev.target.value.length > maxNum) {
+        ev.target.value = ev.target.value.slice(0, maxNum);
+      }
+    });
     const amountBtn = document.getElementById(ID_SELECT_PLAN_OTRO_MONTO_BUTTON);
     this.amountBtn = removeListenersFromElement(amountBtn);
     this.amountBtn.addEventListener("click", (ev) => {
-      amountInput.value = "";
+      newAmountInput.value = "";
       this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_TEXT);
       this.renderer.mount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
       this.renderer.unmount(ID_SELECT_PLAN_LIST);
@@ -996,7 +1027,7 @@ class SelectPlan {
     const newCalcularBtn = removeListenersFromElement(calcularBtn);
     newCalcularBtn.addEventListener("click", async (ev) => {
       ev.stopPropagation();
-      await this.renderRecalculatedLoanPlans(amountInput.value);
+      await this.renderRecalculatedLoanPlans(newAmountInput.value);
     });
     const cancelarBtn = document.getElementById(
       ID_SELECT_PLAN_OTRO_MONTO_CANCELAR
@@ -1094,7 +1125,9 @@ class ConfirmLoan {
         confirmData.loanDate.split("T")[1]
       }`;
 
-      let section = [{ label: "Importe", value: `$ ${confirmData.amount}` }];
+      let section = [
+        { label: "Importe", value: `$ ${formatNumber(confirmData.amount)}` },
+      ];
       this.renderInfoSection(section);
 
       section = [{ label: "Cuenta", value: confirmData.accountNumber }];
@@ -1108,15 +1141,18 @@ class ConfirmLoan {
 
       section = [
         { label: "Nro Cuotas", value: confirmData.installmentQuantity },
-        { label: "Valor cuotas", value: confirmData.installmentAmount },
+        {
+          label: "Valor cuotas",
+          value: `$ ${formatNumber(confirmData.installmentAmount)}`,
+        },
       ];
       this.renderInfoSection(section);
 
       section = [
-        { label: "TNA", value: confirmData.tna },
-        { label: "TEA", value: confirmData.tea },
-        { label: "TEM", value: confirmData.tem },
-        { label: "CFT", value: confirmData.cft },
+        { label: "TNA", value: `${formatNumber(confirmData.tna)}%` },
+        { label: "TEA", value: `${formatNumber(confirmData.tea)}%` },
+        { label: "TEM", value: `${formatNumber(confirmData.tem)}%` },
+        { label: "CFT", value: `${formatNumber(confirmData.cft)}%` },
       ];
       this.renderInfoSection(section);
     }
@@ -1165,6 +1201,18 @@ class Header {
   }
 
   render() {
+    const emailList =
+      propsToUse.info?.customerCtasStore?.customerStore?.customer?.allData
+        ?.emailList || [];
+    const customerName = `${propsToUse.info?.customerCtasStore?.customerStore?.customer?.allData?.firstName} ${propsToUse.info?.customerCtasStore?.customerStore?.customer?.allData?.lastName}`;
+    const cuil =
+      propsToUse.info?.customerCtasStore?.customerStore?.customer?.allData
+        ?.identityNumber;
+    this.storage.saveCustomerData({
+      cuil,
+      emailList,
+      customerName,
+    });
     const arrow = document.getElementById(ID_LEFT_ARROW);
     const newArrow = removeListenersFromElement(arrow);
     newArrow.addEventListener("click", () => {
@@ -1177,6 +1225,17 @@ class Header {
         this.renderer.navigate(configScreens[currFormIdx - 1].id);
       }
     });
+    const personInfoEl = document.getElementById(ID_PERSON_INFO);
+    const info = Array.from(personInfoEl.querySelectorAll("span"));
+    if (info?.length) {
+      info[0].textContent = customerName;
+      info[1].textContent = `${propsToUse.info?.customerCtasStore?.customerStore?.customer?.allData?.identityTypeDescription} ${cuil}`;
+      if (emailList && emailList[0]) {
+        info[2].textContent = emailList[0];
+      } else {
+        this.renderer.destroy(info[2]);
+      }
+    }
   }
 }
 
@@ -1301,24 +1360,43 @@ class Renderer {
 /***************** RUN !!! ***************** */
 console.log("Ruuunnnn");
 let renderer;
-try {
-  renderer = new Renderer(propsFake.customerId);
+function initialize(props) {
+  renderer = new Renderer(props.customerId);
   renderer.mount(ID_CONTENT_CONTAINER);
   const submitButton = document.querySelector("button[type='submit']");
-  console.log("submitButton =>", submitButton);
-  if(submitButton) {
+  if (submitButton) {
     submitButton.innerText = "Finalizar flujo";
     submitButton.textContent = "Finalizar flujo";
   }
-} catch(err) {
-  const contentContainer = document.getElementById(ID_CONTENT_CONTAINER);
-  if (contentContainer) {
-    contentContainer.style.display = "none";
+  const rootParent = document.getElementById(
+    props.info?.customerCtasStore?.rootContainerId
+  );
+  rootParent?.setAttribute(
+    "style",
+    "width: var(--size-root-container-crm-banco-newloan); max-width: var(--max-size-root-container-crm-banco-newloan)"
+  );
+}
+try {
+  if (props) {
+    propsToUse = props;
   }
-  const mainContainer = document.getElementById(ID_MAIN_CONTAINER);
-  const errorMsgEl = document.createElement("p");
-  errorMsgEl.textContent = "Ocurrió un error inesperado";
-  errorMsgEl.classList.add("banCo-newLoan-centered");
-  mainContainer?.appendChild(errorMsgEl); 
-  console.log("Error general", err);
+  initialize(propsToUse);
+  console.log("PROPS =>", propsToUse);
+} catch (err) {
+  if (err.message?.includes("props is not defined")) {
+    propsToUse = propsFake;
+    console.log("PROPS error =>", propsToUse);
+    initialize(propsToUse);
+  } else {
+    const contentContainer = document.getElementById(ID_CONTENT_CONTAINER);
+    if (contentContainer) {
+      contentContainer.style.display = "none";
+    }
+    const mainContainer = document.getElementById(ID_MAIN_CONTAINER);
+    const errorMsgEl = document.createElement("p");
+    errorMsgEl.textContent = "Ocurrió un error inesperado";
+    errorMsgEl.classList.add("banCo-newLoan-centered");
+    mainContainer?.appendChild(errorMsgEl);
+    console.log("Error general", err);
+  }
 }

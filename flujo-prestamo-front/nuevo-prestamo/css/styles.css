@@ -2,9 +2,11 @@
 .newLoan__container {
   position: relative;
   margin: 0px;
-  padding: 5px;
   width: 100%;
   font-family: "Work Sans", sans-serif;
+  -webkit-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.22);
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.22);
 
   --color-primary: #003366;
   --color-secondary: #3a7abb;
@@ -17,29 +19,49 @@
 
   --size-container-medium: 40%;
 }
+/************ ROOT CONTAINER (FROM CRM) **************/
+:root {
+  --size-root-container-crm-banco-newloan: 60% !important;
+  --max-size-root-container-crm-banco-newloan: 970px !important;
+}
 
 /************ HEADER **************/
 .newLoan__header {
   position: relative;
-  height: 4em;
-  padding: 10px;
+  padding: 5px 13px;
   background-color: var(--color-primary);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .newLoan__headerTitle {
   color: white;
   letter-spacing: 1px;
   font-size: 1.8em;
+  flex: 1;
+}
+
+.newLoan__personInfo {
+  right: 1em; 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.newLoan__personInfo span:nth-child(1) {
+  font-weight: bold;
 }
 
 /************ ERROR BANNER **************/
 .newLoan__errorBanner {
   margin-top: 1em;
+  padding: 14px 0;
   position: absolute;
-  width: 18%;
+  width: 20%;
   z-index: 100;
   border: 1px solid var(--color-danger);
   height: 70px;
@@ -182,13 +204,14 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  gap: 4px;
   background-color: var(--color-light);
   list-style-type: none;
   text-decoration: none;
   color: black;
   cursor: pointer;
   min-height: 80px;
-  padding: 0px 0.8em;
+  padding: 8px 0.8em;
   -webkit-box-shadow: 0px 2px 13px -4px rgba(0, 0, 0, 0.34);
   -moz-box-shadow: 0px 2px 13px -4px rgba(0, 0, 0, 0.34);
   box-shadow: 0px 2px 13px -4px rgba(0, 0, 0, 0.34);
@@ -202,6 +225,10 @@
 .newLoan__selectionScreen__listItem > p {
   font-weight: 550;
   color: rgb(85, 84, 84);
+  margin: 0;
+}
+
+.newLoan__selectionScreen__listItem > h3 {
   margin: 0;
 }
 
@@ -239,12 +266,6 @@
   text-align: center;
 }
 
-.newLoan__selectPlan__emailContainer > label {
-  color: var(--color-primary);
-  font-size: 1.1em;
-  font-weight: 600;
-}
-
 .newLoan__selectPlan__emailContainer > p {
   visibility: hidden;
   color: var(--color-danger);
@@ -252,12 +273,13 @@
   margin-top: 0.5em;
 }
 
-.newLoan__selectPlan__emailContainer > label > input {
+.newLoan__selectPlan__emailContainer > input {
   font-size: 0.85em;
-  min-width: 33%;
-  text-align: center;
+  min-width: 26%;
   padding: 6px 8px;
   margin-left: 10px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-primary) !important;
 }
 
 .newLoan__selectPlan__changeAmount-button:hover {
@@ -293,6 +315,12 @@ input[type="number"] {
 }
 
 .newLoan__selectPlan__newAmount-buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 41px;
+}
+
+.newLoan__selectPlan__modal-buttonsContainer {
   display: flex;
   justify-content: space-between;
   height: 41px;
@@ -384,8 +412,16 @@ input[type="number"].newLoan__selectPlan__newAmount-input {
   color: var(--color-success);
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1280px) {
   .newLoan__selectPlan__newAmount-buttonsContainer {
+    flex-direction: column-reverse;
+    gap: 1em;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .newLoan__selectPlan__modal-buttonsContainer {
     flex-direction: column-reverse;
     gap: 1em;
     height: auto;
@@ -395,6 +431,8 @@ input[type="number"].newLoan__selectPlan__newAmount-input {
 /************ CONFIRM LOAN **************/
 .newLoan__confirmLoanScreen__container {
   position: relative;
+  max-width: 80%;
+  margin: 0 auto;
 }
 
 .newLoan__confirmLoanScreen__info {
@@ -556,9 +594,11 @@ input[type="number"].newLoan__selectPlan__newAmount-input {
 
 .banCo-newLoan-modalContainer {
   position: absolute;
-  left: calc(50% - 12.5vw);
-  width: 25vw;
-  padding: 3.3em;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+  padding: 2.5em 2em;
   z-index: 1001;
   background-color: white;
 
@@ -613,11 +653,10 @@ input[type="number"].newLoan__selectPlan__newAmount-input {
 
 /************ LEFT ARROW **************/
 .newLoan__arrow-left {
-  position: absolute;
-  left: 2em;
   display: block;
   width: 20px;
   height: 20px;
+  margin-left: 10px;
   cursor: pointer;
   border-top: 5px solid white;
   border-left: 5px solid white;
@@ -634,7 +673,7 @@ input[type="number"].newLoan__selectPlan__newAmount-input {
 /************ APROVAL CHECK MARK **************/
 .newLoan__confirmLoanScreen__aprovalCheck {
   position: relative;
-  margin-bottom: 5em;
+  margin-bottom: 6.5em;
 }
 
 .newLoan__confirmLoanScreen__aprovalCheck svg {
