@@ -239,6 +239,10 @@ function showErrorBanner(message, renderer, duration = 3000) {
   renderer.mount(ID_ERROR_BANNER);
 }
 
+function getNoUserEmailErrortext(userName) {
+  return `Con el usuario ${userName} no dispones de una cuenta que permita la ejecución del flujo por falta de correo electrónico.`;
+}
+
 function showModal(
   renderer,
   { message, content, onAccepted = () => {}, onCanceled = () => {} }
@@ -552,6 +556,10 @@ class NewLoanStorage {
     );
   }
 
+  get userDataNow() {
+    return JSON.parse(localStorage.getItem("userDataNow"));
+  }
+
   reset() {
     this.saveCurrentForm("");
     this.saveSelectedCampaign("");
@@ -592,13 +600,20 @@ class SelectCampaign {
       this.storage.saveCurrentForm(SELECT_CAMPAIGN_SCREEN_ID);
       this.list = document.getElementById(ID_SELECT_CAMPAIGN_LIST);
       this.list.replaceChildren();
+      let noResultsEl = document.createElement("p");
+      if (!this.storage.userDataNow?.email) {
+        noResultsEl.textContent = getNoUserEmailErrortext(
+          this.storage.userDataNow?.userName
+        );
+        this.list.appendChild(noResultsEl);
+        return;
+      }
       setSpinner(SELECT_CAMPAIGN_SCREEN_ID);
       const campaignsResp = await this.fetcher.get("/campaigns", {
         customerId: propsToUse.customerId,
       });
       this.renderer.destroy(ID_SPINNER);
       if (!campaignsResp || !campaignsResp.campaigns?.length) {
-        const noResultsEl = document.createElement("p");
         noResultsEl.textContent =
           "No existen Campañas disponibles para el cliente";
         this.list.appendChild(noResultsEl);
@@ -745,7 +760,15 @@ class SelectPlan {
     emailList,
     customerName,
   }) {
-    setSpinner(ID_SELECT_PLAN_LIST , null, true);
+    if (!this.storage.userDataNow?.email) {
+      showErrorBanner(
+        getNoUserEmailErrortext(this.storage.userDataNow?.userName),
+        this.renderer,
+        10000
+      );
+      return;
+    }
+    setSpinner(ID_SELECT_PLAN_LIST, null, true);
     this.list.childNodes.forEach((child) =>
       child.classList?.add("banCo-newLoan-unclickable")
     );
@@ -769,6 +792,7 @@ class SelectPlan {
       ProductoId: productId,
       Emails: emailList,
       CustomerName: customerName,
+      UserEmail: this.storage.userDataNow?.email,
     });
     this.renderer.destroy(ID_SPINNER);
     if (confirmationResp?.errorCode === "0") {
