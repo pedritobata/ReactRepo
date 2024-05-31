@@ -782,7 +782,7 @@ class SelectPlan {
         5000
       );
       this.list.childNodes.forEach((child) =>
-        child.classList.remove("banCo-newLoan-unclickable")
+        child.classList?.remove("banCo-newLoan-unclickable")
       );
       this.amountBtn.disabled = false;
       this.renderer.show(ID_LINK_VIEW_PRE_QUALIFIED);
@@ -876,7 +876,7 @@ class SelectPlan {
                 "newLoan__selectPlan__listItem-selected"
               );
             } else {
-              child.classList.remove("newLoan__selectPlan__listItem-selected");
+              child.classList?.remove("newLoan__selectPlan__listItem-selected");
             }
           });
           showModal(this.renderer, {
