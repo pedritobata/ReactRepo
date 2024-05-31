@@ -17,7 +17,7 @@ const propsFake = {
             lastName: "Martínez",
             identityTypeDescription: "CUIL/CUIT bla bla",
             identityNumber: "20103265899725",
-            emailList: ["pedritom@gmail.com"],
+            emailList: ["pedritom@gmail.com", "perico@hotmail.com"],
           },
         },
       },
@@ -845,6 +845,7 @@ class SelectPlan {
     } else {
       const email = this.storage.customerData.emailList[0];
       let newEmailInputEl;
+      let newEmail;
       let isValidEmail = true;
       if (!email) {
         isValidEmail = false;
@@ -869,6 +870,7 @@ class SelectPlan {
             return;
           }
 
+          newEmail = value;
           this.renderer.hide(emailErrorMsgEl);
           isValidEmail = true;
         });
@@ -910,6 +912,7 @@ class SelectPlan {
                 ...plan,
                 ...this.storage.selectedProduct,
                 ...this.storage.customerData,
+                ...(!email && { emailList: [newEmail] })
               }),
             content: this.renderModalContent(plan),
           });
