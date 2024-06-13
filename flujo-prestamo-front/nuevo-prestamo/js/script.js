@@ -25,6 +25,11 @@ const propsFake = {
   },
 };
 
+const fakeUserDataNow = {
+  email: "pedrito.user@hotmail.com",
+  userName: "pmartinezg",
+};
+
 const dummyCampanas = {
   cuil: "20045149715",
   emailList: ["mullersofia@gmail.com"],
@@ -560,6 +565,19 @@ class NewLoanStorage {
     return JSON.parse(localStorage.getItem("userDataNow"));
   }
 
+  get preQualifiedPlans() {
+    return JSON.parse(
+      localStorage.getItem(this.buildIdentifier("preQualifiedPlans"))
+    );
+  }
+
+  savePreQualifiedPlans(preQualifiedPlans) {
+    localStorage.setItem(
+      this.buildIdentifier("preQualifiedPlans"),
+      JSON.stringify(preQualifiedPlans)
+    );
+  }
+
   reset() {
     this.saveCurrentForm("");
     this.saveSelectedCampaign("");
@@ -567,6 +585,7 @@ class NewLoanStorage {
     this.saveAnotherAmount("");
     this.saveConfirmData("");
     this.saveCustomerData("");
+    this.savePreQualifiedPlans("");
   }
 }
 
@@ -768,6 +787,14 @@ class SelectPlan {
       );
       return;
     }
+    if (!this.storage.currentForm) {
+      showErrorBanner(
+        "Ya fue confirmado un préstamo para este cliente o finalizó el flujo",
+        this.renderer,
+        10000
+      );
+      return;
+    }
     setSpinner(ID_SELECT_PLAN_LIST, null, true);
     this.list.childNodes.forEach((child) =>
       child.classList?.add("banCo-newLoan-unclickable")
@@ -912,7 +939,7 @@ class SelectPlan {
                 ...plan,
                 ...this.storage.selectedProduct,
                 ...this.storage.customerData,
-                ...(!email && { emailList: [newEmail] })
+                ...(!email && { emailList: [newEmail] }),
               }),
             content: this.renderModalContent(plan),
           });
@@ -969,6 +996,9 @@ class SelectPlan {
     this.renderer.destroy(ID_SPINNER);
     if (plans?.length) {
       this.amountBtn.disabled = false;
+      this.storage.savePreQualifiedPlans(plans);
+    } else {
+      this.amountBtn.disabled = true;
     }
 
     this.renderPlansList(plans);
@@ -1003,12 +1033,24 @@ class SelectPlan {
       (plan) => plan.installmentQuantity > 0
     );
     if (filteredValidPlans && !filteredValidPlans.length) {
-      // Error por superar monto máximo
-      showErrorBanner(
-        "El monto seleccionado excede el máximo precalificado",
-        this.renderer,
-        5000
+      const maxPlanAmount = this.storage.preQualifiedPlans?.reduce(
+        (max, currPlan) => Math.max(max, currPlan.totalAmount),
+        0
       );
+      if (Number(amount) > maxPlanAmount) {
+        // Error por superar monto máximo
+        showErrorBanner(
+          "El monto seleccionado excede el máximo precalificado",
+          this.renderer,
+          5000
+        );
+      } else {
+        showErrorBanner(
+          "El monto seleccionado es inferior al mínimo permitido",
+          this.renderer,
+          5000
+        );
+      }
     }
     this.renderer.unmount(ID_SELECT_PLAN_OTRO_MONTO_FORM);
     const viewPreQualifiedLink = document.getElementById(
@@ -1134,7 +1176,7 @@ class ConfirmLoan {
     const headerTitle = document.getElementById(ID_HEADER_TITLE);
     headerTitle.textContent = "Ticket préstamo";
 
-    this.storage.saveCurrentForm(CONFIRM_LOAN_SCREEN_ID);
+    this.storage.saveCurrentForm("");
     this.screen = this.renderer.mount(CONFIRM_LOAN_SCREEN_ID);
     this.info = document.getElementById(ID_CONFIRM_LOAN_INFO);
     const infoHeader = document.getElementById(ID_CONFIRM_LOAN_INFO_HEADER);
