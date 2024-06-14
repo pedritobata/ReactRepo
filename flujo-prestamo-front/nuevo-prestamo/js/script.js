@@ -820,6 +820,7 @@ class SelectPlan {
       Emails: emailList,
       CustomerName: customerName,
       UserEmail: this.storage.userDataNow?.email,
+      Date: new Date().toISOString(),
     });
     this.renderer.destroy(ID_SPINNER);
     if (confirmationResp?.errorCode === "0") {
