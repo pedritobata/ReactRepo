@@ -321,6 +321,12 @@ function formatAmount(amount, currency = "$") {
   return amount;
 }
 
+function getLocalDatetime() {
+  let d = new Date();
+  d = new Date(d.getTime() - d.getTimezoneOffset() * 60000);
+  return d.toISOString();
+}
+
 function formatNumber(
   number,
   decimals = 2,
@@ -820,7 +826,7 @@ class SelectPlan {
       Emails: emailList,
       CustomerName: customerName,
       UserEmail: this.storage.userDataNow?.email,
-      Date: new Date().toISOString(),
+      Date: getLocalDatetime(),
     });
     this.renderer.destroy(ID_SPINNER);
     if (confirmationResp?.errorCode === "0") {
